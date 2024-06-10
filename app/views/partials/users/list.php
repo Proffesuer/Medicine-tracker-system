@@ -121,7 +121,7 @@ $show_pagination = $this->show_pagination;
                                                 <th  class="td-location"> Location</th>
                                                 <th  class="td-DOB"> Dob</th>
                                                 <th  class="td-role"> Role</th>
-                                                <th  class="td-password"> Password</th>
+                                                <th  class="td-image"> Image</th>
                                                 <th class="td-btn"></th>
                                             </tr>
                                         </thead>
@@ -222,21 +222,7 @@ $show_pagination = $this->show_pagination;
                                                             <?php echo $data['role']; ?> 
                                                         </span>
                                                     </td>
-                                                    <td class="td-password">
-                                                        <span  data-value="<?php echo $data['password']; ?>" 
-                                                            data-pk="<?php echo $data['id'] ?>" 
-                                                            data-url="<?php print_link("users/editfield/" . urlencode($data['id'])); ?>" 
-                                                            data-name="password" 
-                                                            data-title="Enter Password" 
-                                                            data-placement="left" 
-                                                            data-toggle="click" 
-                                                            data-type="password" 
-                                                            data-mode="popover" 
-                                                            data-showbuttons="left" 
-                                                            class="is-editable" >
-                                                            <?php echo $data['password']; ?> 
-                                                        </span>
-                                                    </td>
+                                                    <td class="td-image"><?php Html :: page_img($data['image'],50,50,1); ?></td>
                                                     <th class="td-btn">
                                                         <a class="btn btn-sm btn-success has-tooltip" title="View Record" href="<?php print_link("users/view/$rec_id"); ?>">
                                                             <i class="fa fa-eye"></i> View
