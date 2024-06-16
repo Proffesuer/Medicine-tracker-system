@@ -69,21 +69,7 @@ $show_export_btn = $this->show_export_btn;
                                     </tr>
                                     <tr  class="td-email">
                                         <th class="title"> Email: </th>
-                                        <td class="value">
-                                            <span  data-value="<?php echo $data['email']; ?>" 
-                                                data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("users/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="email" 
-                                                data-title="Enter Email" 
-                                                data-placement="left" 
-                                                data-toggle="click" 
-                                                data-type="email" 
-                                                data-mode="popover" 
-                                                data-showbuttons="left" 
-                                                class="is-editable" >
-                                                <?php echo $data['email']; ?> 
-                                            </span>
-                                        </td>
+                                        <td class="value"> <?php echo $data['email']; ?></td>
                                     </tr>
                                     <tr  class="td-gender">
                                         <th class="title"> Gender: </th>
@@ -155,24 +141,6 @@ $show_export_btn = $this->show_export_btn;
                                                 data-showbuttons="left" 
                                                 class="is-editable" >
                                                 <?php echo $data['role']; ?> 
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr  class="td-password">
-                                        <th class="title"> Password: </th>
-                                        <td class="value">
-                                            <span  data-value="<?php echo $data['password']; ?>" 
-                                                data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("users/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="password" 
-                                                data-title="Enter Password" 
-                                                data-placement="left" 
-                                                data-toggle="click" 
-                                                data-type="password" 
-                                                data-mode="popover" 
-                                                data-showbuttons="left" 
-                                                class="is-editable" >
-                                                <?php echo $data['password']; ?> 
                                             </span>
                                         </td>
                                     </tr>

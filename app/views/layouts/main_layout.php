@@ -29,10 +29,17 @@
 		?>
 		<?php
 			Html ::  page_css('bootstrap-editable.css');
+			Html ::  page_css('dropzone.min.css');
 			Html ::  page_js('jquery-3.3.1.min.js');
 		?>
 	</head>
-	<body id="main" class="<?php echo $body_class ?>">
+	<?php 
+		$page_id = "index";
+		if(user_login_status() == true){
+			$page_id = "main";
+		}
+	?>
+	<body id="<?php echo $page_id ?>" class="with-login <?php echo $body_class ?>">
 		<div id="page-wrapper">
 			<!-- Show progress bar when ajax upload-->
 			<div class="progress ajax-progress-bar">
@@ -125,6 +132,7 @@
 		?>
 		<?php
 			Html ::  page_js('bootstrap-editable.js');
+			Html ::  page_js('dropzone.min.js');
 			Html ::  page_js('plugins.js'); //boostrapswitch, passwordStrength, twbs-pagination, blueimp-gallery,
 			Html ::  page_js('plugins-init.js');
 			Html ::  page_js('page-scripts.js');
