@@ -19,6 +19,18 @@ class Menu{
 			'path' => 'user', 
 			'label' => 'User', 
 			'icon' => ''
+		),
+		
+		array(
+			'path' => 'medicine', 
+			'label' => 'Medicine', 
+			'icon' => ''
+		),
+		
+		array(
+			'path' => 'test', 
+			'label' => 'Test', 
+			'icon' => ''
 		)
 	);
 		
@@ -32,6 +44,18 @@ class Menu{
 		array(
 			'path' => 'user', 
 			'label' => 'User', 
+			'icon' => ''
+		),
+		
+		array(
+			'path' => 'medicine', 
+			'label' => 'Medicine', 
+			'icon' => ''
+		),
+		
+		array(
+			'path' => 'test', 
+			'label' => 'Test', 
 			'icon' => ''
 		)
 	);
