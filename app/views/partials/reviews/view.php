@@ -1,9 +1,9 @@
 <?php 
 //check if current user role is allowed access to the pages
-$can_add = ACL::is_allowed("user/add");
-$can_edit = ACL::is_allowed("user/edit");
-$can_view = ACL::is_allowed("user/view");
-$can_delete = ACL::is_allowed("user/delete");
+$can_add = ACL::is_allowed("reviews/add");
+$can_edit = ACL::is_allowed("reviews/edit");
+$can_view = ACL::is_allowed("reviews/view");
+$can_delete = ACL::is_allowed("reviews/delete");
 ?>
 <?php
 $comp_model = new SharedController;
@@ -28,7 +28,7 @@ $show_export_btn = $this->show_export_btn;
         <div class="container">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">View  User</h4>
+                    <h4 class="record-title">View  Reviews</h4>
                 </div>
             </div>
         </div>
@@ -45,92 +45,105 @@ $show_export_btn = $this->show_export_btn;
                         <?php
                         $counter = 0;
                         if(!empty($data)){
-                        $rec_id = (!empty($data['id']) ? urlencode($data['id']) : null);
+                        $rec_id = (!empty($data['review_id']) ? urlencode($data['review_id']) : null);
                         $counter++;
                         ?>
                         <div id="page-report-body" class="">
                             <table class="table table-hover table-borderless table-striped">
                                 <!-- Table Body Start -->
                                 <tbody class="page-data" id="page-data-<?php echo $page_element_id; ?>">
-                                    <tr  class="td-id">
-                                        <th class="title"> Id: </th>
-                                        <td class="value"> <?php echo $data['id']; ?></td>
+                                    <tr  class="td-review_id">
+                                        <th class="title"> Review Id: </th>
+                                        <td class="value"> <?php echo $data['review_id']; ?></td>
                                     </tr>
-                                    <tr  class="td-name">
-                                        <th class="title"> Name: </th>
+                                    <tr  class="td-patient_id">
+                                        <th class="title"> Patient Id: </th>
                                         <td class="value">
-                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['name']; ?>" 
-                                                data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="name" 
-                                                data-title="Enter Name" 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['patient_id']; ?>" 
+                                                data-pk="<?php echo $data['review_id'] ?>" 
+                                                data-url="<?php print_link("reviews/editfield/" . urlencode($data['review_id'])); ?>" 
+                                                data-name="patient_id" 
+                                                data-title="Enter Patient Id" 
                                                 data-placement="left" 
                                                 data-toggle="click" 
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
                                                 class="is-editable" <?php } ?>>
-                                                <?php echo $data['name']; ?> 
+                                                <?php echo $data['patient_id']; ?> 
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr  class="td-email">
-                                        <th class="title"> Email: </th>
-                                        <td class="value"> <?php echo $data['email']; ?></td>
-                                    </tr>
-                                    <tr  class="td-gender">
-                                        <th class="title"> Gender: </th>
+                                    <tr  class="td-tittle">
+                                        <th class="title"> Tittle: </th>
                                         <td class="value">
-                                            <span <?php if($can_edit){ ?> data-source='<?php echo json_encode_quote(Menu :: $gender); ?>' 
-                                                data-value="<?php echo $data['gender']; ?>" 
-                                                data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="gender" 
-                                                data-title="Enter Gender" 
-                                                data-placement="left" 
-                                                data-toggle="click" 
-                                                data-type="radiolist" 
-                                                data-mode="popover" 
-                                                data-showbuttons="left" 
-                                                class="is-editable" <?php } ?>>
-                                                <?php echo $data['gender']; ?> 
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr  class="td-DOB">
-                                        <th class="title"> Dob: </th>
-                                        <td class="value">
-                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['DOB']; ?>" 
-                                                data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="DOB" 
-                                                data-title="Enter Dob" 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['tittle']; ?>" 
+                                                data-pk="<?php echo $data['review_id'] ?>" 
+                                                data-url="<?php print_link("reviews/editfield/" . urlencode($data['review_id'])); ?>" 
+                                                data-name="tittle" 
+                                                data-title="Enter Tittle" 
                                                 data-placement="left" 
                                                 data-toggle="click" 
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
                                                 class="is-editable" <?php } ?>>
-                                                <?php echo $data['DOB']; ?> 
+                                                <?php echo $data['tittle']; ?> 
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr  class="td-role">
-                                        <th class="title"> Role: </th>
+                                    <tr  class="td-message">
+                                        <th class="title"> Message: </th>
                                         <td class="value">
-                                            <span <?php if($can_edit){ ?> data-source='<?php echo json_encode_quote(Menu :: $role); ?>' 
-                                                data-value="<?php echo $data['role']; ?>" 
-                                                data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="role" 
-                                                data-title="Select a value ..." 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['message']; ?>" 
+                                                data-pk="<?php echo $data['review_id'] ?>" 
+                                                data-url="<?php print_link("reviews/editfield/" . urlencode($data['review_id'])); ?>" 
+                                                data-name="message" 
+                                                data-title="Enter Message" 
                                                 data-placement="left" 
                                                 data-toggle="click" 
-                                                data-type="select" 
+                                                data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
                                                 class="is-editable" <?php } ?>>
-                                                <?php echo $data['role']; ?> 
+                                                <?php echo $data['message']; ?> 
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr  class="td-doctor_id">
+                                        <th class="title"> Doctor Id: </th>
+                                        <td class="value">
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['doctor_id']; ?>" 
+                                                data-pk="<?php echo $data['review_id'] ?>" 
+                                                data-url="<?php print_link("reviews/editfield/" . urlencode($data['review_id'])); ?>" 
+                                                data-name="doctor_id" 
+                                                data-title="Enter Doctor Id" 
+                                                data-placement="left" 
+                                                data-toggle="click" 
+                                                data-type="text" 
+                                                data-mode="popover" 
+                                                data-showbuttons="left" 
+                                                class="is-editable" <?php } ?>>
+                                                <?php echo $data['doctor_id']; ?> 
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr  class="td-date">
+                                        <th class="title"> Date: </th>
+                                        <td class="value">
+                                            <span <?php if($can_edit){ ?> data-flatpickr="{ minDate: '', maxDate: ''}" 
+                                                data-value="<?php echo $data['date']; ?>" 
+                                                data-pk="<?php echo $data['review_id'] ?>" 
+                                                data-url="<?php print_link("reviews/editfield/" . urlencode($data['review_id'])); ?>" 
+                                                data-name="date" 
+                                                data-title="Enter Date" 
+                                                data-placement="left" 
+                                                data-toggle="click" 
+                                                data-type="flatdatetimepicker" 
+                                                data-mode="popover" 
+                                                data-showbuttons="left" 
+                                                class="is-editable" <?php } ?>>
+                                                <?php echo $data['date']; ?> 
                                             </span>
                                         </td>
                                     </tr>
@@ -167,12 +180,12 @@ $show_export_btn = $this->show_export_btn;
                                                     </div>
                                                 </div>
                                                 <?php if($can_edit){ ?>
-                                                <a class="btn btn-sm btn-info"  href="<?php print_link("user/edit/$rec_id"); ?>">
+                                                <a class="btn btn-sm btn-info"  href="<?php print_link("reviews/edit/$rec_id"); ?>">
                                                     <i class="material-icons">edit</i> Edit
                                                 </a>
                                                 <?php } ?>
                                                 <?php if($can_delete){ ?>
-                                                <a class="btn btn-sm btn-danger record-delete-btn mx-1"  href="<?php print_link("user/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
+                                                <a class="btn btn-sm btn-danger record-delete-btn mx-1"  href="<?php print_link("reviews/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
                                                     <i class="material-icons">clear</i> Delete
                                                 </a>
                                                 <?php } ?>

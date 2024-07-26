@@ -1,9 +1,9 @@
 <?php 
 //check if current user role is allowed access to the pages
-$can_add = ACL::is_allowed("user/add");
-$can_edit = ACL::is_allowed("user/edit");
-$can_view = ACL::is_allowed("user/view");
-$can_delete = ACL::is_allowed("user/delete");
+$can_add = ACL::is_allowed("test/add");
+$can_edit = ACL::is_allowed("test/edit");
+$can_view = ACL::is_allowed("test/view");
+$can_delete = ACL::is_allowed("test/delete");
 ?>
 <?php
 $comp_model = new SharedController;
@@ -28,7 +28,7 @@ $show_export_btn = $this->show_export_btn;
         <div class="container">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">View  User</h4>
+                    <h4 class="record-title">View  Test</h4>
                 </div>
             </div>
         </div>
@@ -56,81 +56,148 @@ $show_export_btn = $this->show_export_btn;
                                         <th class="title"> Id: </th>
                                         <td class="value"> <?php echo $data['id']; ?></td>
                                     </tr>
-                                    <tr  class="td-name">
-                                        <th class="title"> Name: </th>
+                                    <tr  class="td-patient_id">
+                                        <th class="title"> Patient Id: </th>
                                         <td class="value">
-                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['name']; ?>" 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['patient_id']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="name" 
-                                                data-title="Enter Name" 
+                                                data-url="<?php print_link("test/editfield/" . urlencode($data['id'])); ?>" 
+                                                data-name="patient_id" 
+                                                data-title="Enter Patient Id" 
                                                 data-placement="left" 
                                                 data-toggle="click" 
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
                                                 class="is-editable" <?php } ?>>
-                                                <?php echo $data['name']; ?> 
+                                                <?php echo $data['patient_id']; ?> 
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr  class="td-email">
-                                        <th class="title"> Email: </th>
-                                        <td class="value"> <?php echo $data['email']; ?></td>
-                                    </tr>
-                                    <tr  class="td-gender">
-                                        <th class="title"> Gender: </th>
+                                    <tr  class="td-symptoms">
+                                        <th class="title"> Symptoms: </th>
                                         <td class="value">
-                                            <span <?php if($can_edit){ ?> data-source='<?php echo json_encode_quote(Menu :: $gender); ?>' 
-                                                data-value="<?php echo $data['gender']; ?>" 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['symptoms']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="gender" 
-                                                data-title="Enter Gender" 
-                                                data-placement="left" 
-                                                data-toggle="click" 
-                                                data-type="radiolist" 
-                                                data-mode="popover" 
-                                                data-showbuttons="left" 
-                                                class="is-editable" <?php } ?>>
-                                                <?php echo $data['gender']; ?> 
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr  class="td-DOB">
-                                        <th class="title"> Dob: </th>
-                                        <td class="value">
-                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['DOB']; ?>" 
-                                                data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="DOB" 
-                                                data-title="Enter Dob" 
+                                                data-url="<?php print_link("test/editfield/" . urlencode($data['id'])); ?>" 
+                                                data-name="symptoms" 
+                                                data-title="Enter Symptoms" 
                                                 data-placement="left" 
                                                 data-toggle="click" 
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
                                                 class="is-editable" <?php } ?>>
-                                                <?php echo $data['DOB']; ?> 
+                                                <?php echo $data['symptoms']; ?> 
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr  class="td-role">
-                                        <th class="title"> Role: </th>
+                                    <tr  class="td-age">
+                                        <th class="title"> Age: </th>
                                         <td class="value">
-                                            <span <?php if($can_edit){ ?> data-source='<?php echo json_encode_quote(Menu :: $role); ?>' 
-                                                data-value="<?php echo $data['role']; ?>" 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['age']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="role" 
-                                                data-title="Select a value ..." 
+                                                data-url="<?php print_link("test/editfield/" . urlencode($data['id'])); ?>" 
+                                                data-name="age" 
+                                                data-title="Enter Age" 
                                                 data-placement="left" 
                                                 data-toggle="click" 
-                                                data-type="select" 
+                                                data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
                                                 class="is-editable" <?php } ?>>
-                                                <?php echo $data['role']; ?> 
+                                                <?php echo $data['age']; ?> 
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr  class="td-results">
+                                        <th class="title"> Results: </th>
+                                        <td class="value">
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['results']; ?>" 
+                                                data-pk="<?php echo $data['id'] ?>" 
+                                                data-url="<?php print_link("test/editfield/" . urlencode($data['id'])); ?>" 
+                                                data-name="results" 
+                                                data-title="Enter Results" 
+                                                data-placement="left" 
+                                                data-toggle="click" 
+                                                data-type="text" 
+                                                data-mode="popover" 
+                                                data-showbuttons="left" 
+                                                class="is-editable" <?php } ?>>
+                                                <?php echo $data['results']; ?> 
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr  class="td-disease">
+                                        <th class="title"> Disease: </th>
+                                        <td class="value">
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['disease']; ?>" 
+                                                data-pk="<?php echo $data['id'] ?>" 
+                                                data-url="<?php print_link("test/editfield/" . urlencode($data['id'])); ?>" 
+                                                data-name="disease" 
+                                                data-title="Enter Disease" 
+                                                data-placement="left" 
+                                                data-toggle="click" 
+                                                data-type="text" 
+                                                data-mode="popover" 
+                                                data-showbuttons="left" 
+                                                class="is-editable" <?php } ?>>
+                                                <?php echo $data['disease']; ?> 
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr  class="td-Date">
+                                        <th class="title"> Date: </th>
+                                        <td class="value">
+                                            <span <?php if($can_edit){ ?> data-flatpickr="{ minDate: '', maxDate: ''}" 
+                                                data-value="<?php echo $data['Date']; ?>" 
+                                                data-pk="<?php echo $data['id'] ?>" 
+                                                data-url="<?php print_link("test/editfield/" . urlencode($data['id'])); ?>" 
+                                                data-name="Date" 
+                                                data-title="Enter Date" 
+                                                data-placement="left" 
+                                                data-toggle="click" 
+                                                data-type="flatdatetimepicker" 
+                                                data-mode="popover" 
+                                                data-showbuttons="left" 
+                                                class="is-editable" <?php } ?>>
+                                                <?php echo $data['Date']; ?> 
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr  class="td-Doctor_id">
+                                        <th class="title"> Doctor Id: </th>
+                                        <td class="value">
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['Doctor_id']; ?>" 
+                                                data-pk="<?php echo $data['id'] ?>" 
+                                                data-url="<?php print_link("test/editfield/" . urlencode($data['id'])); ?>" 
+                                                data-name="Doctor_id" 
+                                                data-title="Enter Doctor Id" 
+                                                data-placement="left" 
+                                                data-toggle="click" 
+                                                data-type="text" 
+                                                data-mode="popover" 
+                                                data-showbuttons="left" 
+                                                class="is-editable" <?php } ?>>
+                                                <?php echo $data['Doctor_id']; ?> 
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr  class="td-Locaton">
+                                        <th class="title"> Locaton: </th>
+                                        <td class="value">
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['Locaton']; ?>" 
+                                                data-pk="<?php echo $data['id'] ?>" 
+                                                data-url="<?php print_link("test/editfield/" . urlencode($data['id'])); ?>" 
+                                                data-name="Locaton" 
+                                                data-title="Enter Locaton" 
+                                                data-placement="left" 
+                                                data-toggle="click" 
+                                                data-type="text" 
+                                                data-mode="popover" 
+                                                data-showbuttons="left" 
+                                                class="is-editable" <?php } ?>>
+                                                <?php echo $data['Locaton']; ?> 
                                             </span>
                                         </td>
                                     </tr>
@@ -167,12 +234,12 @@ $show_export_btn = $this->show_export_btn;
                                                     </div>
                                                 </div>
                                                 <?php if($can_edit){ ?>
-                                                <a class="btn btn-sm btn-info"  href="<?php print_link("user/edit/$rec_id"); ?>">
+                                                <a class="btn btn-sm btn-info"  href="<?php print_link("test/edit/$rec_id"); ?>">
                                                     <i class="material-icons">edit</i> Edit
                                                 </a>
                                                 <?php } ?>
                                                 <?php if($can_delete){ ?>
-                                                <a class="btn btn-sm btn-danger record-delete-btn mx-1"  href="<?php print_link("user/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
+                                                <a class="btn btn-sm btn-danger record-delete-btn mx-1"  href="<?php print_link("test/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
                                                     <i class="material-icons">clear</i> Delete
                                                 </a>
                                                 <?php } ?>

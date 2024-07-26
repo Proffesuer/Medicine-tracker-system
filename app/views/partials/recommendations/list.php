@@ -1,9 +1,9 @@
 <?php 
 //check if current user role is allowed access to the pages
-$can_add = ACL::is_allowed("user/add");
-$can_edit = ACL::is_allowed("user/edit");
-$can_view = ACL::is_allowed("user/view");
-$can_delete = ACL::is_allowed("user/delete");
+$can_add = ACL::is_allowed("recommendations/add");
+$can_edit = ACL::is_allowed("recommendations/edit");
+$can_view = ACL::is_allowed("recommendations/view");
+$can_delete = ACL::is_allowed("recommendations/delete");
 ?>
 <?php
 $comp_model = new SharedController;
@@ -30,18 +30,18 @@ $show_pagination = $this->show_pagination;
         <div class="container-fluid">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">User</h4>
+                    <h4 class="record-title">Recommendations</h4>
                 </div>
                 <div class="col-sm-3 ">
                     <?php if($can_add){ ?>
-                    <a  class="btn btn btn-primary my-1" href="<?php print_link("user/add") ?>">
+                    <a  class="btn btn btn-primary my-1" href="<?php print_link("recommendations/add") ?>">
                         <i class="material-icons">add</i>                               
-                        Add New User 
+                        Add New Recommendations 
                     </a>
                     <?php } ?>
                 </div>
                 <div class="col-sm-4 ">
-                    <form  class="search" action="<?php print_link('user'); ?>" method="get">
+                    <form  class="search" action="<?php print_link('recommendations'); ?>" method="get">
                         <div class="input-group">
                             <input value="<?php echo get_value('search'); ?>" class="form-control" type="text" name="search"  placeholder="Search" />
                                 <div class="input-group-append">
@@ -63,7 +63,7 @@ $show_pagination = $this->show_pagination;
                                     if(!empty($field_name)){
                                     ?>
                                     <li class="breadcrumb-item">
-                                        <a class="text-decoration-none" href="<?php print_link('user'); ?>">
+                                        <a class="text-decoration-none" href="<?php print_link('recommendations'); ?>">
                                             <i class="material-icons">arrow_back</i>
                                         </a>
                                     </li>
@@ -80,7 +80,7 @@ $show_pagination = $this->show_pagination;
                                     if(get_value("search")){
                                     ?>
                                     <li class="breadcrumb-item">
-                                        <a class="text-decoration-none" href="<?php print_link('user'); ?>">
+                                        <a class="text-decoration-none" href="<?php print_link('recommendations'); ?>">
                                             <i class="material-icons">arrow_back</i>
                                         </a>
                                     </li>
@@ -111,7 +111,7 @@ $show_pagination = $this->show_pagination;
                     <div class="col-md-12 comp-grid">
                         <?php $this :: display_page_errors(); ?>
                         <div  class=" animated fadeIn page-content">
-                            <div id="user-list-records">
+                            <div id="recommendations-list-records">
                                 <div id="page-report-body" class="table-responsive">
                                     <table class="table  table-striped table-sm text-left">
                                         <thead class="table-header bg-light">
@@ -125,13 +125,12 @@ $show_pagination = $this->show_pagination;
                                                 </th>
                                                 <?php } ?>
                                                 <th class="td-sno">#</th>
-                                                <th  class="td-id"> Id</th>
-                                                <th  class="td-name"> Name</th>
-                                                <th  class="td-email"> Email</th>
-                                                <th  class="td-gender"> Gender</th>
-                                                <th  class="td-image"> Image</th>
-                                                <th  class="td-DOB"> Dob</th>
-                                                <th  class="td-role"> Role</th>
+                                                <th  class="td-recommendation_id"> Recommendation Id</th>
+                                                <th  class="td-patient_id"> Patient Id</th>
+                                                <th  class="td-doctors_id"> Doctors Id</th>
+                                                <th  class="td-title"> Title</th>
+                                                <th  class="td-message"> Message</th>
+                                                <th  class="td-date"> Date</th>
                                                 <th class="td-btn"></th>
                                             </tr>
                                         </thead>
@@ -143,97 +142,109 @@ $show_pagination = $this->show_pagination;
                                             <?php
                                             $counter = 0;
                                             foreach($records as $data){
-                                            $rec_id = (!empty($data['id']) ? urlencode($data['id']) : null);
+                                            $rec_id = (!empty($data['recommendation_id']) ? urlencode($data['recommendation_id']) : null);
                                             $counter++;
                                             ?>
                                             <tr>
                                                 <?php if($can_delete){ ?>
                                                 <th class=" td-checkbox">
                                                     <label class="custom-control custom-checkbox custom-control-inline">
-                                                        <input class="optioncheck custom-control-input" name="optioncheck[]" value="<?php echo $data['id'] ?>" type="checkbox" />
+                                                        <input class="optioncheck custom-control-input" name="optioncheck[]" value="<?php echo $data['recommendation_id'] ?>" type="checkbox" />
                                                             <span class="custom-control-label"></span>
                                                         </label>
                                                     </th>
                                                     <?php } ?>
                                                     <th class="td-sno"><?php echo $counter; ?></th>
-                                                    <td class="td-id"><a href="<?php print_link("user/view/$data[id]") ?>"><?php echo $data['id']; ?></a></td>
-                                                    <td class="td-name">
-                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['name']; ?>" 
-                                                            data-pk="<?php echo $data['id'] ?>" 
-                                                            data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
-                                                            data-name="name" 
-                                                            data-title="Enter Name" 
+                                                    <td class="td-recommendation_id"><a href="<?php print_link("recommendations/view/$data[recommendation_id]") ?>"><?php echo $data['recommendation_id']; ?></a></td>
+                                                    <td class="td-patient_id">
+                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['patient_id']; ?>" 
+                                                            data-pk="<?php echo $data['recommendation_id'] ?>" 
+                                                            data-url="<?php print_link("recommendations/editfield/" . urlencode($data['recommendation_id'])); ?>" 
+                                                            data-name="patient_id" 
+                                                            data-title="Enter Patient Id" 
                                                             data-placement="left" 
                                                             data-toggle="click" 
                                                             data-type="text" 
                                                             data-mode="popover" 
                                                             data-showbuttons="left" 
                                                             class="is-editable" <?php } ?>>
-                                                            <?php echo $data['name']; ?> 
+                                                            <?php echo $data['patient_id']; ?> 
                                                         </span>
                                                     </td>
-                                                    <td class="td-email"><a href="<?php print_link("mailto:$data[email]") ?>"><?php echo $data['email']; ?></a></td>
-                                                    <td class="td-gender">
-                                                        <span <?php if($can_edit){ ?> data-source='<?php echo json_encode_quote(Menu :: $gender); ?>' 
-                                                            data-value="<?php echo $data['gender']; ?>" 
-                                                            data-pk="<?php echo $data['id'] ?>" 
-                                                            data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
-                                                            data-name="gender" 
-                                                            data-title="Enter Gender" 
-                                                            data-placement="left" 
-                                                            data-toggle="click" 
-                                                            data-type="radiolist" 
-                                                            data-mode="popover" 
-                                                            data-showbuttons="left" 
-                                                            class="is-editable" <?php } ?>>
-                                                            <?php echo $data['gender']; ?> 
-                                                        </span>
-                                                    </td>
-                                                    <td class="td-image"><?php Html :: page_img($data['image'],50,50,1); ?></td>
-                                                    <td class="td-DOB">
-                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['DOB']; ?>" 
-                                                            data-pk="<?php echo $data['id'] ?>" 
-                                                            data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
-                                                            data-name="DOB" 
-                                                            data-title="Enter Dob" 
+                                                    <td class="td-doctors_id">
+                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['doctors_id']; ?>" 
+                                                            data-pk="<?php echo $data['recommendation_id'] ?>" 
+                                                            data-url="<?php print_link("recommendations/editfield/" . urlencode($data['recommendation_id'])); ?>" 
+                                                            data-name="doctors_id" 
+                                                            data-title="Enter Doctors Id" 
                                                             data-placement="left" 
                                                             data-toggle="click" 
                                                             data-type="text" 
                                                             data-mode="popover" 
                                                             data-showbuttons="left" 
                                                             class="is-editable" <?php } ?>>
-                                                            <?php echo $data['DOB']; ?> 
+                                                            <?php echo $data['doctors_id']; ?> 
                                                         </span>
                                                     </td>
-                                                    <td class="td-role">
-                                                        <span <?php if($can_edit){ ?> data-source='<?php echo json_encode_quote(Menu :: $role); ?>' 
-                                                            data-value="<?php echo $data['role']; ?>" 
-                                                            data-pk="<?php echo $data['id'] ?>" 
-                                                            data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
-                                                            data-name="role" 
-                                                            data-title="Select a value ..." 
+                                                    <td class="td-title">
+                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['title']; ?>" 
+                                                            data-pk="<?php echo $data['recommendation_id'] ?>" 
+                                                            data-url="<?php print_link("recommendations/editfield/" . urlencode($data['recommendation_id'])); ?>" 
+                                                            data-name="title" 
+                                                            data-title="Enter Title" 
                                                             data-placement="left" 
                                                             data-toggle="click" 
-                                                            data-type="select" 
+                                                            data-type="text" 
                                                             data-mode="popover" 
                                                             data-showbuttons="left" 
                                                             class="is-editable" <?php } ?>>
-                                                            <?php echo $data['role']; ?> 
+                                                            <?php echo $data['title']; ?> 
+                                                        </span>
+                                                    </td>
+                                                    <td class="td-message">
+                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['message']; ?>" 
+                                                            data-pk="<?php echo $data['recommendation_id'] ?>" 
+                                                            data-url="<?php print_link("recommendations/editfield/" . urlencode($data['recommendation_id'])); ?>" 
+                                                            data-name="message" 
+                                                            data-title="Enter Message" 
+                                                            data-placement="left" 
+                                                            data-toggle="click" 
+                                                            data-type="text" 
+                                                            data-mode="popover" 
+                                                            data-showbuttons="left" 
+                                                            class="is-editable" <?php } ?>>
+                                                            <?php echo $data['message']; ?> 
+                                                        </span>
+                                                    </td>
+                                                    <td class="td-date">
+                                                        <span <?php if($can_edit){ ?> data-flatpickr="{ minDate: '', maxDate: ''}" 
+                                                            data-value="<?php echo $data['date']; ?>" 
+                                                            data-pk="<?php echo $data['recommendation_id'] ?>" 
+                                                            data-url="<?php print_link("recommendations/editfield/" . urlencode($data['recommendation_id'])); ?>" 
+                                                            data-name="date" 
+                                                            data-title="Enter Date" 
+                                                            data-placement="left" 
+                                                            data-toggle="click" 
+                                                            data-type="flatdatetimepicker" 
+                                                            data-mode="popover" 
+                                                            data-showbuttons="left" 
+                                                            class="is-editable" <?php } ?>>
+                                                            <?php echo $data['date']; ?> 
                                                         </span>
                                                     </td>
                                                     <th class="td-btn">
                                                         <?php if($can_view){ ?>
-                                                        <a class="btn btn-sm btn-success has-tooltip" title="View Record" href="<?php print_link("user/view/$rec_id"); ?>">
+                                                        <a class="btn btn-sm btn-success has-tooltip" title="View Record" href="<?php print_link("recommendations/view/$rec_id"); ?>">
                                                             <i class="material-icons">visibility</i> View
                                                         </a>
                                                         <?php } ?>
                                                         <?php if($can_edit){ ?>
-                                                        <a class="btn btn-sm btn-info has-tooltip" title="Edit This Record" href="<?php print_link("user/edit/$rec_id"); ?>">
+                                                        <a class="btn btn-sm btn-info has-tooltip" title="Edit This Record" href="<?php print_link("recommendations/edit/$rec_id"); ?>">
                                                             <i class="material-icons">edit</i> Edit
                                                         </a>
                                                         <?php } ?>
                                                         <?php if($can_delete){ ?>
-                                                        <a class="btn btn-sm btn-danger has-tooltip record-delete-btn" title="Delete this record" href="<?php print_link("user/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
+                                                        <a class="btn btn-sm btn-danger has-tooltip record-delete-btn" title="Delete this record" href="<?php print_link("recommendations/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
                                                             <i class="material-icons">clear</i>
                                                             Delete
                                                         </a>
@@ -268,7 +279,7 @@ $show_pagination = $this->show_pagination;
                                             <div class="col-md-auto justify-content-center">    
                                                 <div class="p-3 d-flex justify-content-between">    
                                                     <?php if($can_delete){ ?>
-                                                    <button data-prompt-msg="Are you sure you want to delete these records?" data-display-style="modal" data-url="<?php print_link("user/delete/{sel_ids}/?csrf_token=$csrf_token&redirect=$current_page"); ?>" class="btn btn-sm btn-danger btn-delete-selected d-none">
+                                                    <button data-prompt-msg="Are you sure you want to delete these records?" data-display-style="modal" data-url="<?php print_link("recommendations/delete/{sel_ids}/?csrf_token=$csrf_token&redirect=$current_page"); ?>" class="btn btn-sm btn-danger btn-delete-selected d-none">
                                                         <i class="material-icons">clear</i> Delete Selected
                                                     </button>
                                                     <?php } ?>
