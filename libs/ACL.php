@@ -18,7 +18,8 @@ class ACL
 						array(
 							'user' => array('list','view','add','edit', 'editfield','delete','import_data','userregister','accountedit','accountview'),
 							'medicine' => array('list','view','add','edit', 'editfield','delete'),
-							'test' => array('list','view','add','edit', 'editfield','delete')
+							'test' => array('list','view','add','edit', 'editfield','delete'),
+							'prescriptions' => array('list','view','add','edit', 'editfield','delete')
 						),
 		
 			'patient' =>

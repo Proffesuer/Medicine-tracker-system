@@ -31,6 +31,12 @@ class Menu{
 			'path' => 'test', 
 			'label' => 'Test', 
 			'icon' => ''
+		),
+		
+		array(
+			'path' => 'prescriptions', 
+			'label' => 'Prescriptions', 
+			'icon' => ''
 		)
 	);
 		
@@ -56,6 +62,12 @@ class Menu{
 		array(
 			'path' => 'test', 
 			'label' => 'Test', 
+			'icon' => ''
+		),
+		
+		array(
+			'path' => 'prescriptions', 
+			'label' => 'Prescriptions', 
 			'icon' => ''
 		)
 	);
