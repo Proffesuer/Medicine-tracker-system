@@ -37,6 +37,18 @@ class Menu{
 			'path' => 'prescriptions', 
 			'label' => 'Prescriptions', 
 			'icon' => ''
+		),
+		
+		array(
+			'path' => 'recommendations', 
+			'label' => 'Recommendations', 
+			'icon' => ''
+		),
+		
+		array(
+			'path' => 'reviews', 
+			'label' => 'Reviews', 
+			'icon' => ''
 		)
 	);
 		
@@ -68,6 +80,18 @@ class Menu{
 		array(
 			'path' => 'prescriptions', 
 			'label' => 'Prescriptions', 
+			'icon' => ''
+		),
+		
+		array(
+			'path' => 'recommendations', 
+			'label' => 'Recommendations', 
+			'icon' => ''
+		),
+		
+		array(
+			'path' => 'reviews', 
+			'label' => 'Reviews', 
 			'icon' => ''
 		)
 	);
