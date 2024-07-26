@@ -160,23 +160,40 @@ $redirect_to = $this->redirect_to;
                                                                 </div>
                                                                 <div class="col-sm-8">
                                                                     <div class="">
-                                                                        <input id="ctrl-role"  value="<?php  echo $this->set_field_value('role',""); ?>" type="text" placeholder="Enter Role"  required="" name="role"  class="form-control " />
-                                                                        </div>
+                                                                        <select required=""  id="ctrl-role" name="role"  placeholder="Select a value ..."    class="custom-select" >
+                                                                            <option value="">Select a value ...</option>
+                                                                            <?php
+                                                                            $role_options = Menu :: $role;
+                                                                            if(!empty($role_options)){
+                                                                            foreach($role_options as $option){
+                                                                            $value = $option['value'];
+                                                                            $label = $option['label'];
+                                                                            $selected = $this->set_field_selected('role', $value, "");
+                                                                            ?>
+                                                                            <option <?php echo $selected ?> value="<?php echo $value ?>">
+                                                                                <?php echo $label ?>
+                                                                            </option>                                   
+                                                                            <?php
+                                                                            }
+                                                                            }
+                                                                            ?>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group form-submit-btn-holder text-center mt-3">
-                                                            <div class="form-ajax-status"></div>
-                                                            <button class="btn btn-primary" type="submit">
-                                                                Submit
-                                                                <i class="material-icons">send</i>
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                                    </div>
+                                                    <div class="form-group form-submit-btn-holder text-center mt-3">
+                                                        <div class="form-ajax-status"></div>
+                                                        <button class="btn btn-primary" type="submit">
+                                                            Submit
+                                                            <i class="material-icons">send</i>
+                                                        </button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </section>
+                            </div>
+                        </section>
