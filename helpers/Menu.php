@@ -16,18 +16,6 @@ class Menu{
 		),
 		
 		array(
-			'path' => 'user', 
-			'label' => 'User', 
-			'icon' => '<i class="material-icons ">perm_identity</i>'
-		),
-		
-		array(
-			'path' => 'medicine', 
-			'label' => 'Medicine', 
-			'icon' => '<i class="material-icons ">local_pharmacy</i>'
-		),
-		
-		array(
 			'path' => 'test', 
 			'label' => 'Test', 
 			'icon' => '<i class="material-icons ">add_circle</i>'
@@ -49,6 +37,18 @@ class Menu{
 			'path' => 'reviews', 
 			'label' => 'Reviews', 
 			'icon' => '<i class="material-icons ">message</i>'
+		),
+		
+		array(
+			'path' => 'medicine', 
+			'label' => 'Medicine', 
+			'icon' => '<i class="material-icons ">local_pharmacy</i>'
+		),
+		
+		array(
+			'path' => 'user', 
+			'label' => 'User', 
+			'icon' => '<i class="material-icons ">perm_identity</i>'
 		)
 	);
 		
