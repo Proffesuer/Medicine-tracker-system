@@ -14,7 +14,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 comp-grid">
+                    <div class="col-sm-4 d-none comp-grid">
                         <?php $this :: display_page_errors(); ?>
                         
                         <div  class="bg-light p-3 animated fadeIn page-content">
