@@ -1,4 +1,4 @@
-<div id="topbar" class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+<div id="topbar" class="navbar navbar-expand-md fixed-top navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href="<?php print_link(HOME_PAGE) ?>">
             <img class="img-responsive" src="<?php print_link(SITE_LOGO); ?>" /> <?php echo SITE_NAME ?>
@@ -6,7 +6,7 @@
             <?php 
             if(user_login_status() == true ){ 
             ?>
-            <button type="button" id="sidebarCollapse" class="btn btn-dark">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -45,7 +45,7 @@
         <?php 
         if(user_login_status() == true ){ 
         ?>
-        <nav id="sidebar" class="navbar-dark bg-dark">
+        <nav id="sidebar" class="navbar-dark bg-primary">
             <ul class="nav navbar-nav w-100 flex-column align-self-start">
                 <li class="menu-profile text-center nav-item">
                     <a class="avatar" href="<?php print_link('account') ?>">

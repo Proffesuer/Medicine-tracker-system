@@ -7,14 +7,14 @@
                 <div class="row ">
                     <div class="col-md-8 comp-grid">
                         <div class="">
-                            <div class="fadeIn animated mb-4">
+                            <div class="fadeIn animated mb-4 d-none">
                                 <div class="text-capitalize">
                                     <h2 class="text-capitalize">Welcome To <?php echo SITE_NAME ?></h2>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 comp-grid">
+                    <div class="col-sm-4 d-none comp-grid">
                         <?php $this :: display_page_errors(); ?>
                         
                         <div  class="bg-light p-3 animated fadeIn page-content">

@@ -12,43 +12,43 @@ class Menu{
 		array(
 			'path' => 'home', 
 			'label' => 'Home', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'user', 
-			'label' => 'User', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'medicine', 
-			'label' => 'Medicine', 
-			'icon' => ''
+			'icon' => '<i class="material-icons ">home</i>'
 		),
 		
 		array(
 			'path' => 'test', 
 			'label' => 'Test', 
-			'icon' => ''
+			'icon' => '<i class="material-icons ">add_circle</i>'
 		),
 		
 		array(
 			'path' => 'prescriptions', 
 			'label' => 'Prescriptions', 
-			'icon' => ''
+			'icon' => '<i class="material-icons ">local_hospital</i>'
 		),
 		
 		array(
 			'path' => 'recommendations', 
 			'label' => 'Recommendations', 
-			'icon' => ''
+			'icon' => '<i class="material-icons ">note</i>'
 		),
 		
 		array(
 			'path' => 'reviews', 
 			'label' => 'Reviews', 
-			'icon' => ''
+			'icon' => '<i class="material-icons ">message</i>'
+		),
+		
+		array(
+			'path' => 'medicine', 
+			'label' => 'Medicine', 
+			'icon' => '<i class="material-icons ">local_pharmacy</i>'
+		),
+		
+		array(
+			'path' => 'user', 
+			'label' => 'User', 
+			'icon' => '<i class="material-icons ">perm_identity</i>'
 		)
 	);
 		
