@@ -7,7 +7,7 @@
                 <div class="row ">
                     <div class="col-md-8 comp-grid">
                         <div class="">
-                            <div class="fadeIn animated mb-4">
+                            <div class="fadeIn animated mb-4 d-none">
                                 <div class="text-capitalize">
                                     <h2 class="text-capitalize">Welcome To <?php echo SITE_NAME ?></h2>
                                 </div>
