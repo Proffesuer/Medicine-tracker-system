@@ -3,7 +3,7 @@
  * Medicine Page Controller
  * @category  Controller
  */
-class MedicineController extends BaseController{
+class MedicineController extends SecureController{
 	function __construct(){
 		parent::__construct();
 		$this->tablename = "medicine";

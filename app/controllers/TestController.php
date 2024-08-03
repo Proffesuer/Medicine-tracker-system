@@ -3,7 +3,7 @@
  * Test Page Controller
  * @category  Controller
  */
-class TestController extends BaseController{
+class TestController extends SecureController{
 	function __construct(){
 		parent::__construct();
 		$this->tablename = "test";

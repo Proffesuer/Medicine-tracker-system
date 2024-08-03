@@ -3,7 +3,7 @@
  * Recommendations Page Controller
  * @category  Controller
  */
-class RecommendationsController extends BaseController{
+class RecommendationsController extends SecureController{
 	function __construct(){
 		parent::__construct();
 		$this->tablename = "recommendations";

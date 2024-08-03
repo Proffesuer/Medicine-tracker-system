@@ -8,91 +8,47 @@
 class Menu{
 	
 	
-			public static $navbartopleft = array(
-		array(
-			'path' => 'home', 
-			'label' => 'Home', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'medicine', 
-			'label' => 'Medicine', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'prescriptions', 
-			'label' => 'Prescriptions', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'recommendations', 
-			'label' => 'Recommendations', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'reviews', 
-			'label' => 'Reviews', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'test', 
-			'label' => 'Test', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'user', 
-			'label' => 'User', 
-			'icon' => ''
-		)
-	);
-		
 			public static $navbarsideleft = array(
 		array(
 			'path' => 'home', 
 			'label' => 'Home', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'medicine', 
-			'label' => 'Medicine', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'prescriptions', 
-			'label' => 'Prescriptions', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'recommendations', 
-			'label' => 'Recommendations', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'reviews', 
-			'label' => 'Reviews', 
-			'icon' => ''
+			'icon' => '<i class="fa fa-home "></i>'
 		),
 		
 		array(
 			'path' => 'test', 
 			'label' => 'Test', 
-			'icon' => ''
+			'icon' => '<i class="fa fa-user-md "></i>'
+		),
+		
+		array(
+			'path' => 'prescriptions', 
+			'label' => 'Prescriptions', 
+			'icon' => '<i class="fa fa-heartbeat "></i>'
+		),
+		
+		array(
+			'path' => 'recommendations', 
+			'label' => 'Recommendations', 
+			'icon' => '<i class="fa fa-commenting-o "></i>'
+		),
+		
+		array(
+			'path' => 'reviews', 
+			'label' => 'Reviews', 
+			'icon' => '<i class="fa fa-comments "></i>'
+		),
+		
+		array(
+			'path' => 'medicine', 
+			'label' => 'Medicine', 
+			'icon' => '<i class="fa fa-medkit "></i>'
 		),
 		
 		array(
 			'path' => 'user', 
 			'label' => 'User', 
-			'icon' => ''
+			'icon' => '<i class="fa fa-user "></i>'
 		)
 	);
 		
@@ -106,6 +62,20 @@ class Menu{
 		array(
 			"value" => "Female", 
 			"label" => "Female", 
+		),);
+		
+			public static $role = array(
+		array(
+			"value" => "Administrator", 
+			"label" => "Administrator", 
+		),
+		array(
+			"value" => "patient", 
+			"label" => "patient", 
+		),
+		array(
+			"value" => "Doctor", 
+			"label" => "Doctor", 
 		),);
 		
 }
