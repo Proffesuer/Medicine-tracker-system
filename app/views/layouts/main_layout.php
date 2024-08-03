@@ -24,7 +24,7 @@
 			Html ::  page_css('blueimp-gallery.css');
 		?>
 				<?php 
-			Html ::  page_css('bootstrap-theme-lumen.css');
+			Html ::  page_css('bootstrap-theme-celurean.css');
 			Html ::  page_css('custom-style.css');
 		?>
 		<?php

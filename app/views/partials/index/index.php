@@ -5,16 +5,16 @@
         <div  class=" py-5">
             <div class="container">
                 <div class="row ">
-                    <div class="col-md-8 comp-grid">
+                    <div class="col-md-8 d-none comp-grid">
                         <div class="">
-                            <div class="fadeIn animated mb-4">
+                            <div class="fadeIn animated mb-4 d-none">
                                 <div class="text-capitalize">
                                     <h2 class="text-capitalize">Welcome To <?php echo SITE_NAME ?></h2>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 comp-grid">
+                    <div class="col-md-5 d-none comp-grid">
                         <?php $this :: display_page_errors(); ?>
                         
                         <div  class="bg-light p-3 animated fadeIn page-content">
