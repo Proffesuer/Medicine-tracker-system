@@ -28,7 +28,7 @@
                                                     <nav class="site-navigation text-right text-md-center" role="navigation">
                                                         <ul class="site-menu js-clone-nav d-none d-lg-block">
                                                             <li class="active"><a href="./">Home</a></li>
-                                                            <li><a href="shop.html">About Us</a></li>
+                                                            <li><a href="./info/about">About Us</a></li>
                                                             <li class="has-children">
                                                                 <a href="#">Nutrition</a>
                                                                 <ul class="dropdown">
@@ -44,14 +44,14 @@
                                                                     <li><a href="#">Diet &amp; Nutrition</a></li>
                                                                 </ul>
                                                             </li>
-                                                            <li><a href="about.html">Contact</a></li>
+                                                            <li><a href="./info/contact">Contact</a></li>
                                                             <li><a href="/medicine-tracker-system/Home">Login</a></li>
                                                         </ul>
                                                     </nav>
                                                 </div>
                                                 <div class="icons">
                                                     <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
-                                                    <a href="cart.html" class="icons-btn d-inline-block bag">
+                                                    <a href="./info/help" class="icons-btn d-inline-block bag">
                                                         <span class="icon-shopping-bag"></span>
                                                         <span class="number">2</span>
                                                     </a>
@@ -69,7 +69,7 @@
                                                         <h2 class="sub-title">Effective Medicine, New Medicine Everyday</h2>
                                                         <h1>Welcome To Pharma</h1>
                                                         <p>
-                                                            <a href="#" class="btn btn-primary px-5 py-3">Shop Now</a>
+                                                            <a href="#" class="btn btn-primary px-5 py-3">Get Started</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -119,7 +119,7 @@
                                                     <div class="container">
                                                         <div class="row">
                                                             <div class="title-section text-center col-12">
-                                                                <h2 class="text-uppercase">Popular Products</h2>
+                                                                <h2 class="text-uppercase">Popular Medicine</h2>
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -204,8 +204,7 @@
                                                                                                     <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
                                                                                                         <div class="block-7">
                                                                                                             <h3 class="footer-heading mb-4">About Us</h3>
-                                                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quae reiciendis distinctio voluptates
-                                                                                                            sed dolorum excepturi iure eaque, aut unde.</p>
+                                                                                                            <p>This project was done for learning purposes.The project intends to help patients have a tool to remind them when to take medicine.</p>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                     <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
@@ -221,9 +220,9 @@
                                                                                                         <div class="block-5 mb-5">
                                                                                                             <h3 class="footer-heading mb-4">Contact Info</h3>
                                                                                                             <ul class="list-unstyled">
-                                                                                                                <li class="address">203 Fake St. Mountain View, San Francisco, California, USA</li>
-                                                                                                                <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-                                                                                                                <li class="email">emailaddress@domain.com</li>
+                                                                                                                <li class="address">CUEA Gaba Campus,Eldoret,Kenya</li>
+                                                                                                                <li class="phone"><a href="tel://23923929210">+254 700 892737</a></li>
+                                                                                                                <li class="email">patricia@gmail.com</li>
                                                                                                             </ul>
                                                                                                         </div>
                                                                                                     </div>
@@ -233,9 +232,9 @@
                                                                                                         <p>
                                                                                                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                                                                                             Copyright &copy;
-                                                                                                            <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
-                                                                                                            with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank"
-                                                                                                            class="text-primary">Colorlib</a>
+                                                                                                            <script>document.write(new Date().getFullYear());</script> All rights reserved | This Project is made by
+                                                                                                            <i class="icon-heart" aria-hidden="true"></i><a href="https://cuea.edu" target="_blank"
+                                                                                                            class="text-primary">Patricia</a>
                                                                                                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                                                                                         </p>
                                                                                                     </div>
