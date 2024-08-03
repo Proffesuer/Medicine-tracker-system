@@ -27,10 +27,10 @@
                                                 <div class="main-nav d-none d-lg-block">
                                                     <nav class="site-navigation text-right text-md-center" role="navigation">
                                                         <ul class="site-menu js-clone-nav d-none d-lg-block">
-                                                            <li class="active"><a href="index.html">Home</a></li>
-                                                            <li><a href="shop.html">Store</a></li>
+                                                            <li class="active"><a href="./">Home</a></li>
+                                                            <li><a href="shop.html">About Us</a></li>
                                                             <li class="has-children">
-                                                                <a href="#">Dropdown</a>
+                                                                <a href="#">Nutrition</a>
                                                                 <ul class="dropdown">
                                                                     <li><a href="#">Supplements</a></li>
                                                                     <li class="has-children">
@@ -39,15 +39,13 @@
                                                                             <li><a href="#">Supplements</a></li>
                                                                             <li><a href="#">Vitamins</a></li>
                                                                             <li><a href="#">Diet &amp; Nutrition</a></li>
-                                                                            <li><a href="#">Tea &amp; Coffee</a></li>
                                                                         </ul>
                                                                     </li>
                                                                     <li><a href="#">Diet &amp; Nutrition</a></li>
-                                                                    <li><a href="#">Tea &amp; Coffee</a></li>
                                                                 </ul>
                                                             </li>
-                                                            <li><a href="about.html">About</a></li>
-                                                            <li><a href="contact.html">Contact</a></li>
+                                                            <li><a href="about.html">Contact</a></li>
+                                                            <li><a href="/medicine-tracker-system/Home">Login</a></li>
                                                         </ul>
                                                     </nav>
                                                 </div>
