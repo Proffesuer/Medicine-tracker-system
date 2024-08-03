@@ -8,50 +8,6 @@
 class Menu{
 	
 	
-			public static $navbartopleft = array(
-		array(
-			'path' => 'home', 
-			'label' => 'Home', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'medicine', 
-			'label' => 'Medicine', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'prescriptions', 
-			'label' => 'Prescriptions', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'recommendations', 
-			'label' => 'Recommendations', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'reviews', 
-			'label' => 'Reviews', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'test', 
-			'label' => 'Test', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'user', 
-			'label' => 'User', 
-			'icon' => ''
-		)
-	);
-		
 			public static $navbarsideleft = array(
 		array(
 			'path' => 'home', 
