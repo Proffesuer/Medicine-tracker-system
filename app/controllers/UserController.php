@@ -3,7 +3,7 @@
  * User Page Controller
  * @category  Controller
  */
-class UserController extends BaseController{
+class UserController extends SecureController{
 	function __construct(){
 		parent::__construct();
 		$this->tablename = "user";
@@ -24,7 +24,6 @@ class UserController extends BaseController{
 			"gender", 
 			"image", 
 			"DOB", 
-			"password", 
 			"role");
 		$pagination = $this->get_pagination(MAX_RECORD_COUNT); // get current pagination e.g array(page_number, page_limit)
 		//search table record
@@ -96,9 +95,7 @@ class UserController extends BaseController{
 			"name", 
 			"email", 
 			"gender", 
-			"image", 
 			"DOB", 
-			"password", 
 			"role");
 		if($value){
 			$db->where($rec_id, urldecode($value)); //select record based on field name
@@ -165,6 +162,16 @@ class UserController extends BaseController{
 			$password_text = $modeldata['password'];
 			//update modeldata with the password hash
 			$modeldata['password'] = $this->modeldata['password'] = password_hash($password_text , PASSWORD_DEFAULT);
+			//Check if Duplicate Record Already Exit In The Database
+			$db->where("name", $modeldata['name']);
+			if($db->has($tablename)){
+				$this->view->page_error[] = $modeldata['name']." Already exist!";
+			}
+			//Check if Duplicate Record Already Exit In The Database
+			$db->where("email", $modeldata['email']);
+			if($db->has($tablename)){
+				$this->view->page_error[] = $modeldata['email']." Already exist!";
+			} 
 			if($this->validated()){
 				$rec_id = $this->rec_id = $db->insert($tablename, $modeldata);
 				if($rec_id){
@@ -191,35 +198,31 @@ class UserController extends BaseController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		 //editable fields
-		$fields = $this->fields = array("id","name","email","gender","image","DOB","password","role");
+		$fields = $this->fields = array("id","name","gender","image","DOB","role");
 		if($formdata){
 			$postdata = $this->format_request_data($formdata);
-			$cpassword = $postdata['confirm_password'];
-			$password = $postdata['password'];
-			if($cpassword != $password){
-				$this->view->page_error[] = "Your password confirmation is not consistent";
-			}
 			$this->rules_array = array(
 				'name' => 'required',
-				'email' => 'required|valid_email',
 				'gender' => 'required',
 				'image' => 'required',
 				'DOB' => 'required',
-				'password' => 'required',
 				'role' => 'required',
 			);
 			$this->sanitize_array = array(
 				'name' => 'sanitize_string',
-				'email' => 'sanitize_string',
 				'gender' => 'sanitize_string',
 				'image' => 'sanitize_string',
 				'DOB' => 'sanitize_string',
 				'role' => 'sanitize_string',
 			);
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
-			$password_text = $modeldata['password'];
-			//update modeldata with the password hash
-			$modeldata['password'] = $this->modeldata['password'] = password_hash($password_text , PASSWORD_DEFAULT);
+			//Check if Duplicate Record Already Exit In The Database
+			if(isset($modeldata['name'])){
+				$db->where("name", $modeldata['name'])->where("id", $rec_id, "!=");
+				if($db->has($tablename)){
+					$this->view->page_error[] = $modeldata['name']." Already exist!";
+				}
+			} 
 			if($this->validated()){
 				$db->where("user.id", $rec_id);;
 				$bool = $db->update($tablename, $modeldata);
@@ -261,7 +264,7 @@ class UserController extends BaseController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		//editable fields
-		$fields = $this->fields = array("id","name","email","gender","image","DOB","password","role");
+		$fields = $this->fields = array("id","name","gender","image","DOB","role");
 		$page_error = null;
 		if($formdata){
 			$postdata = array();
@@ -271,16 +274,13 @@ class UserController extends BaseController{
 			$postdata = $this->format_request_data($postdata);
 			$this->rules_array = array(
 				'name' => 'required',
-				'email' => 'required|valid_email',
 				'gender' => 'required',
 				'image' => 'required',
 				'DOB' => 'required',
-				'password' => 'required',
 				'role' => 'required',
 			);
 			$this->sanitize_array = array(
 				'name' => 'sanitize_string',
-				'email' => 'sanitize_string',
 				'gender' => 'sanitize_string',
 				'image' => 'sanitize_string',
 				'DOB' => 'sanitize_string',
@@ -288,6 +288,13 @@ class UserController extends BaseController{
 			);
 			$this->filter_rules = true; //filter validation rules by excluding fields not in the formdata
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
+			//Check if Duplicate Record Already Exit In The Database
+			if(isset($modeldata['name'])){
+				$db->where("name", $modeldata['name'])->where("id", $rec_id, "!=");
+				if($db->has($tablename)){
+					$this->view->page_error[] = $modeldata['name']." Already exist!";
+				}
+			} 
 			if($this->validated()){
 				$db->where("user.id", $rec_id);;
 				$bool = $db->update($tablename, $modeldata);
