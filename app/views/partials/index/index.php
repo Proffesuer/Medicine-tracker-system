@@ -67,10 +67,10 @@
                                                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
                                                     <div class="banner-wrap bg-primary h-100">
                                                         <a href="#" class="h-100">
-                                                            <h5>Free <br> Shipping</h5>
+                                                            <h5>Track<br> Medication</h5>
                                                                 <p>
-                                                                    Amet sit amet dolor
-                                                                    <strong>Lorem, ipsum dolor sit amet consectetur adipisicing.</strong>
+                                                                    Set Reminders!!
+                                                                    <strong>Have SMS reminders to remind you when to take your medication.</strong>
                                                                 </p>
                                                             </a>
                                                         </div>
@@ -78,10 +78,10 @@
                                                     <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
                                                         <div class="banner-wrap h-100">
                                                             <a href="#" class="h-100">
-                                                                <h5>Season <br> Sale 50% Off</h5>
+                                                                <h5>Talk <br> To Daktari </h5>
                                                                     <p>
-                                                                        Amet sit amet dolor
-                                                                        <strong>Lorem, ipsum dolor sit amet consectetur adipisicing.</strong>
+                                                                        Today
+                                                                        <strong>Communicate to Daktari without someone between</strong>
                                                                     </p>
                                                                 </a>
                                                             </div>
@@ -89,10 +89,10 @@
                                                         <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
                                                             <div class="banner-wrap bg-warning h-100">
                                                                 <a href="#" class="h-100">
-                                                                    <h5>Buy <br> A Gift Card</h5>
+                                                                    <h5>Experience<br> Automated</h5>
                                                                         <p>
-                                                                            Amet sit amet dolor
-                                                                            <strong>Lorem, ipsum dolor sit amet consectetur adipisicing.</strong>
+                                                                            Reminders!!
+                                                                            <strong>Dont Miss out To Take Medication Coz You Forgot.</strong>
                                                                         </p>
                                                                     </a>
                                                                 </div>
