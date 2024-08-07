@@ -8,7 +8,7 @@ $current_page = $this->set_current_page_link();
         <div class="container">
             <div class="row ">
                 <div class="col-md-12 comp-grid">
-                    <h4 >The Dashboard</h4>
+                    <h4 >Welcome Dr.<?php echo USER_NAME;?></h4>
                 </div>
             </div>
         </div>
