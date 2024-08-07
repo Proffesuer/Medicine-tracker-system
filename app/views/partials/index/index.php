@@ -29,21 +29,6 @@
                                                         <ul class="site-menu js-clone-nav d-none d-lg-block">
                                                             <li class="active"><a href="./">Home</a></li>
                                                             <li><a href="./info/about">About Us</a></li>
-                                                            <li class="has-children">
-                                                                <a href="#">Nutrition</a>
-                                                                <ul class="dropdown">
-                                                                    <li><a href="#">Supplements</a></li>
-                                                                    <li class="has-children">
-                                                                        <a href="#">Vitamins</a>
-                                                                        <ul class="dropdown">
-                                                                            <li><a href="#">Supplements</a></li>
-                                                                            <li><a href="#">Vitamins</a></li>
-                                                                            <li><a href="#">Diet &amp; Nutrition</a></li>
-                                                                        </ul>
-                                                                    </li>
-                                                                    <li><a href="#">Diet &amp; Nutrition</a></li>
-                                                                </ul>
-                                                            </li>
                                                             <li><a href="./info/contact">Contact</a></li>
                                                             <li><a href="/medicine-tracker-system/Home">Login</a></li>
                                                         </ul>
