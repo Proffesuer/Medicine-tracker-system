@@ -18,20 +18,27 @@ class ACL
 						array(
 							'medicine' => array('list','view','add','edit', 'editfield','delete','import_data'),
 							'prescriptions' => array('list','view','add','edit', 'editfield','delete','import_data'),
-							'recommendations' => array('list','view','add','edit', 'editfield','delete','import_data'),
 							'reviews' => array('list','view','add','edit', 'editfield','delete','import_data'),
-							'test' => array('list','view','add','edit', 'editfield','delete','import_data'),
-							'user' => array('list','view','add','edit', 'editfield','delete','import_data','userregister','accountedit','accountview')
+							'user' => array('list','view','add','edit', 'editfield','delete','import_data','userregister','accountedit','accountview'),
+							'reminder' => array('list','view','add','edit', 'editfield','delete')
 						),
 		
 			'patient' =>
 						array(
-							'user' => array('userregister','accountedit','accountview')
+							'medicine' => array('list','view'),
+							'prescriptions' => array('list','view'),
+							'reviews' => array('list','view','add','edit', 'editfield'),
+							'user' => array('userregister','accountedit','accountview'),
+							'reminder' => array('list','view','add','edit', 'editfield')
 						),
 		
 			'doctor' =>
 						array(
-							
+							'medicine' => array('list','view','add','edit', 'editfield','import_data'),
+							'prescriptions' => array('list','view','add','edit', 'editfield','delete','import_data'),
+							'reviews' => array('list','view','add','edit', 'editfield','import_data'),
+							'user' => array('list','view','userregister','add','edit', 'editfield'),
+							'reminder' => array('list','view','add','edit', 'editfield','delete')
 						)
 		);
 

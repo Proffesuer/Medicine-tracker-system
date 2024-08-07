@@ -16,21 +16,15 @@ class Menu{
 		),
 		
 		array(
-			'path' => 'test', 
-			'label' => 'Test', 
-			'icon' => '<i class="fa fa-user-md "></i>'
-		),
-		
-		array(
 			'path' => 'prescriptions', 
 			'label' => 'Prescriptions', 
 			'icon' => '<i class="fa fa-heartbeat "></i>'
 		),
 		
 		array(
-			'path' => 'recommendations', 
-			'label' => 'Recommendations', 
-			'icon' => '<i class="fa fa-commenting-o "></i>'
+			'path' => 'reminder', 
+			'label' => 'Reminder', 
+			'icon' => '<i class="fa fa-commenting "></i>'
 		),
 		
 		array(

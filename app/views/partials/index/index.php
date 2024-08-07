@@ -21,7 +21,7 @@
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <div class="logo">
                                                     <div class="site-logo">
-                                                        <a href="index.html" class="js-logo-clone">Pharma</a>
+                                                        <a href="index.html" class="js-logo-clone">MTS</a>
                                                     </div>
                                                 </div>
                                                 <div class="main-nav d-none d-lg-block">
@@ -29,21 +29,6 @@
                                                         <ul class="site-menu js-clone-nav d-none d-lg-block">
                                                             <li class="active"><a href="./">Home</a></li>
                                                             <li><a href="./info/about">About Us</a></li>
-                                                            <li class="has-children">
-                                                                <a href="#">Nutrition</a>
-                                                                <ul class="dropdown">
-                                                                    <li><a href="#">Supplements</a></li>
-                                                                    <li class="has-children">
-                                                                        <a href="#">Vitamins</a>
-                                                                        <ul class="dropdown">
-                                                                            <li><a href="#">Supplements</a></li>
-                                                                            <li><a href="#">Vitamins</a></li>
-                                                                            <li><a href="#">Diet &amp; Nutrition</a></li>
-                                                                        </ul>
-                                                                    </li>
-                                                                    <li><a href="#">Diet &amp; Nutrition</a></li>
-                                                                </ul>
-                                                            </li>
                                                             <li><a href="./info/contact">Contact</a></li>
                                                             <li><a href="/medicine-tracker-system/Home">Login</a></li>
                                                         </ul>
@@ -67,7 +52,7 @@
                                                 <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
                                                     <div class="site-block-cover-content text-center">
                                                         <h2 class="sub-title">Effective Medicine, New Medicine Everyday</h2>
-                                                        <h1>Welcome To Pharma</h1>
+                                                        <h1>Welcome To MTS</h1>
                                                         <p>
                                                             <a href="#" class="btn btn-primary px-5 py-3">Get Started</a>
                                                         </p>
@@ -82,10 +67,10 @@
                                                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
                                                     <div class="banner-wrap bg-primary h-100">
                                                         <a href="#" class="h-100">
-                                                            <h5>Free <br> Shipping</h5>
+                                                            <h5>Track<br> Medication</h5>
                                                                 <p>
-                                                                    Amet sit amet dolor
-                                                                    <strong>Lorem, ipsum dolor sit amet consectetur adipisicing.</strong>
+                                                                    Set Reminders!!
+                                                                    <strong>Have SMS reminders to remind you when to take your medication.</strong>
                                                                 </p>
                                                             </a>
                                                         </div>
@@ -93,10 +78,10 @@
                                                     <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
                                                         <div class="banner-wrap h-100">
                                                             <a href="#" class="h-100">
-                                                                <h5>Season <br> Sale 50% Off</h5>
+                                                                <h5>Talk <br> To Daktari </h5>
                                                                     <p>
-                                                                        Amet sit amet dolor
-                                                                        <strong>Lorem, ipsum dolor sit amet consectetur adipisicing.</strong>
+                                                                        Today
+                                                                        <strong>Communicate to Daktari without someone between</strong>
                                                                     </p>
                                                                 </a>
                                                             </div>
@@ -104,10 +89,10 @@
                                                         <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
                                                             <div class="banner-wrap bg-warning h-100">
                                                                 <a href="#" class="h-100">
-                                                                    <h5>Buy <br> A Gift Card</h5>
+                                                                    <h5>Experience<br> Automated</h5>
                                                                         <p>
-                                                                            Amet sit amet dolor
-                                                                            <strong>Lorem, ipsum dolor sit amet consectetur adipisicing.</strong>
+                                                                            Reminders!!
+                                                                            <strong>Dont Miss out To Take Medication Coz You Forgot.</strong>
                                                                         </p>
                                                                     </a>
                                                                 </div>
