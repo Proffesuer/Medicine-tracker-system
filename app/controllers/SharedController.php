@@ -28,4 +28,84 @@ class SharedController extends BaseController{
 		return $exist;
 	}
 
+	/**
+     * getcount_medicine Model Action
+     * @return Value
+     */
+	function getcount_medicine(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT COUNT(*) AS num FROM medicine";
+		$queryparams = null;
+		$val = $db->rawQueryValue($sqltext, $queryparams);
+		
+		if(is_array($val)){
+			return $val[0];
+		}
+		return $val;
+	}
+
+	/**
+     * getcount_prescriptions Model Action
+     * @return Value
+     */
+	function getcount_prescriptions(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT COUNT(*) AS num FROM prescriptions";
+		$queryparams = null;
+		$val = $db->rawQueryValue($sqltext, $queryparams);
+		
+		if(is_array($val)){
+			return $val[0];
+		}
+		return $val;
+	}
+
+	/**
+     * getcount_reviews Model Action
+     * @return Value
+     */
+	function getcount_reviews(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT COUNT(*) AS num FROM reviews";
+		$queryparams = null;
+		$val = $db->rawQueryValue($sqltext, $queryparams);
+		
+		if(is_array($val)){
+			return $val[0];
+		}
+		return $val;
+	}
+
+	/**
+     * getcount_user Model Action
+     * @return Value
+     */
+	function getcount_user(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT COUNT(*) AS num FROM user";
+		$queryparams = null;
+		$val = $db->rawQueryValue($sqltext, $queryparams);
+		
+		if(is_array($val)){
+			return $val[0];
+		}
+		return $val;
+	}
+
+	/**
+     * getcount_reminder Model Action
+     * @return Value
+     */
+	function getcount_reminder(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT COUNT(*) AS num FROM reminder";
+		$queryparams = null;
+		$val = $db->rawQueryValue($sqltext, $queryparams);
+		
+		if(is_array($val)){
+			return $val[0];
+		}
+		return $val;
+	}
+
 }
