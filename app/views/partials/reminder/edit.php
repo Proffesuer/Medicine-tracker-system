@@ -41,71 +41,145 @@ $redirect_to = $this->redirect_to;
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <input id="ctrl-patient_id"  value="<?php  echo $data['patient_id']; ?>" type="text" placeholder="Enter Patient Id"  required="" name="patient_id"  class="form-control " />
-                                                </div>
+                                                <select required=""  id="ctrl-patient_id" name="patient_id"  placeholder="Select a value ..."    class="custom-select" >
+                                                    <option value="">Select a value ...</option>
+                                                    <?php
+                                                    $rec = $data['patient_id'];
+                                                    $patient_id_options = $comp_model -> reminder_patient_id_option_list();
+                                                    if(!empty($patient_id_options)){
+                                                    foreach($patient_id_options as $option){
+                                                    $value = (!empty($option['value']) ? $option['value'] : null);
+                                                    $label = (!empty($option['label']) ? $option['label'] : $value);
+                                                    $selected = ( $value == $rec ? 'selected' : null );
+                                                    ?>
+                                                    <option 
+                                                        <?php echo $selected; ?> value="<?php echo $value; ?>"><?php echo $label; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                    }
+                                                    ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group ">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <label class="control-label" for="doctors_id">Doctors Id <span class="text-danger">*</span></label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <div class="">
-                                                    <input id="ctrl-doctors_id"  value="<?php  echo $data['doctors_id']; ?>" type="text" placeholder="Enter Doctors Id"  required="" name="doctors_id"  class="form-control " />
-                                                    </div>
-                                                </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="control-label" for="doctors_id">Doctors Id <span class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="">
+                                                <select required=""  id="ctrl-doctors_id" name="doctors_id"  placeholder="Select a value ..."    class="custom-select" >
+                                                    <option value="">Select a value ...</option>
+                                                    <?php
+                                                    $rec = $data['doctors_id'];
+                                                    $doctors_id_options = $comp_model -> reminder_doctors_id_option_list();
+                                                    if(!empty($doctors_id_options)){
+                                                    foreach($doctors_id_options as $option){
+                                                    $value = (!empty($option['value']) ? $option['value'] : null);
+                                                    $label = (!empty($option['label']) ? $option['label'] : $value);
+                                                    $selected = ( $value == $rec ? 'selected' : null );
+                                                    ?>
+                                                    <option 
+                                                        <?php echo $selected; ?> value="<?php echo $value; ?>"><?php echo $label; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                    }
+                                                    ?>
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="form-group ">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label class="control-label" for="prescription_id">Prescription Id <span class="text-danger">*</span></label>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <div class="">
-                                                        <input id="ctrl-prescription_id"  value="<?php  echo $data['prescription_id']; ?>" type="text" placeholder="Enter Prescription Id"  required="" name="prescription_id"  class="form-control " />
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="control-label" for="prescription_id">Prescription Id <span class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="">
+                                                <select required=""  id="ctrl-prescription_id" name="prescription_id"  placeholder="Select a value ..."    class="custom-select" >
+                                                    <option value="">Select a value ...</option>
+                                                </select>
                                             </div>
-                                            <div class="form-group ">
-                                                <div class="row">
-                                                    <div class="col-sm-4">
-                                                        <label class="control-label" for="mode">Mode <span class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-sm-8">
-                                                        <div class="">
-                                                            <input id="ctrl-mode"  value="<?php  echo $data['mode']; ?>" type="text" placeholder="Enter Mode"  required="" name="mode"  class="form-control " />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <label class="control-label" for="status">Status <span class="text-danger">*</span></label>
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <div class="">
-                                                                <input id="ctrl-status"  value="<?php  echo $data['status']; ?>" type="text" placeholder="Enter Status"  required="" name="status"  class="form-control " />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-ajax-status"></div>
-                                                <div class="form-group text-center">
-                                                    <button class="btn btn-primary" type="submit">
-                                                        Update
-                                                        <i class="fa fa-send"></i>
-                                                    </button>
-                                                </div>
-                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="control-label" for="mode">Mode <span class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="">
+                                                <select required=""  id="ctrl-mode" name="mode"  placeholder="Select a value ..."    class="custom-select" >
+                                                    <option value="">Select a value ...</option>
+                                                    <?php
+                                                    $mode_options = Menu :: $mode;
+                                                    $field_value = $data['mode'];
+                                                    if(!empty($mode_options)){
+                                                    foreach($mode_options as $option){
+                                                    $value = $option['value'];
+                                                    $label = $option['label'];
+                                                    $selected = ( $value == $field_value ? 'selected' : null );
+                                                    ?>
+                                                    <option <?php echo $selected ?> value="<?php echo $value ?>">
+                                                        <?php echo $label ?>
+                                                    </option>                                   
+                                                    <?php
+                                                    }
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="control-label" for="status">Status <span class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="">
+                                                <select required=""  id="ctrl-status" name="status"  placeholder="Select a value ..."    class="custom-select" >
+                                                    <option value="">Select a value ...</option>
+                                                    <?php
+                                                    $status_options = Menu :: $status;
+                                                    $field_value = $data['status'];
+                                                    if(!empty($status_options)){
+                                                    foreach($status_options as $option){
+                                                    $value = $option['value'];
+                                                    $label = $option['label'];
+                                                    $selected = ( $value == $field_value ? 'selected' : null );
+                                                    ?>
+                                                    <option <?php echo $selected ?> value="<?php echo $value ?>">
+                                                        <?php echo $label ?>
+                                                    </option>                                   
+                                                    <?php
+                                                    }
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+                            <div class="form-ajax-status"></div>
+                            <div class="form-group text-center">
+                                <button class="btn btn-primary" type="submit">
+                                    Update
+                                    <i class="fa fa-send"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
