@@ -16,9 +16,9 @@ class Menu{
 		),
 		
 		array(
-			'path' => 'prescriptions', 
-			'label' => 'Prescriptions', 
-			'icon' => '<i class="fa fa-heartbeat "></i>'
+			'path' => 'prescription', 
+			'label' => 'Prescription', 
+			'icon' => '<i class="fa fa-user-md "></i>'
 		),
 		
 		array(

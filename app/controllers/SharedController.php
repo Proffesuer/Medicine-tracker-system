@@ -53,6 +53,42 @@ class SharedController extends BaseController{
 	}
 
 	/**
+     * prescription_medicine_id_option_list Model Action
+     * @return array
+     */
+	function prescription_medicine_id_option_list(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT  DISTINCT medicine_name AS value,medicine_name AS label FROM medicine";
+		$queryparams = null;
+		$arr = $db->rawQuery($sqltext, $queryparams);
+		return $arr;
+	}
+
+	/**
+     * prescription_patient_id_option_list Model Action
+     * @return array
+     */
+	function prescription_patient_id_option_list(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT  DISTINCT name AS value,name AS label FROM user where role='patient'";
+		$queryparams = null;
+		$arr = $db->rawQuery($sqltext, $queryparams);
+		return $arr;
+	}
+
+	/**
+     * prescription_doctor_id_option_list Model Action
+     * @return array
+     */
+	function prescription_doctor_id_option_list(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT  DISTINCT name AS value,name AS label FROM user where role='Doctor'";
+		$queryparams = null;
+		$arr = $db->rawQuery($sqltext, $queryparams);
+		return $arr;
+	}
+
+	/**
      * getcount_medicine Model Action
      * @return Value
      */
@@ -69,12 +105,12 @@ class SharedController extends BaseController{
 	}
 
 	/**
-     * getcount_prescriptions Model Action
+     * getcount_prescription Model Action
      * @return Value
      */
-	function getcount_prescriptions(){
+	function getcount_prescription(){
 		$db = $this->GetModel();
-		$sqltext = "SELECT COUNT(*) AS num FROM prescriptions";
+		$sqltext = "SELECT COUNT(*) AS num FROM prescription";
 		$queryparams = null;
 		$val = $db->rawQueryValue($sqltext, $queryparams);
 		
