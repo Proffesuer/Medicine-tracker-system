@@ -126,11 +126,9 @@ $show_pagination = $this->show_pagination;
                                                 <?php } ?>
                                                 <th class="td-sno">#</th>
                                                 <th  class="td-prescriptions_id"> Prescriptions Id</th>
-                                                <th  class="td-test_id"> Test Id</th>
                                                 <th  class="td-medicine_id"> Medicine Id</th>
                                                 <th  class="td-date_issue"> Date Issue</th>
                                                 <th  class="td-patient_address"> Patient Address</th>
-                                                <th  class="td-clinic_id"> Clinic Id</th>
                                                 <th  class="td-patient_id"> Patient Id</th>
                                                 <th  class="td-doctor_id"> Doctor Id</th>
                                                 <th  class="td-quantity_prescribe"> Quantity Prescribe</th>
@@ -163,21 +161,6 @@ $show_pagination = $this->show_pagination;
                                                     <?php } ?>
                                                     <th class="td-sno"><?php echo $counter; ?></th>
                                                     <td class="td-prescriptions_id"><a href="<?php print_link("prescriptions/view/$data[prescriptions_id]") ?>"><?php echo $data['prescriptions_id']; ?></a></td>
-                                                    <td class="td-test_id">
-                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['test_id']; ?>" 
-                                                            data-pk="<?php echo $data['prescriptions_id'] ?>" 
-                                                            data-url="<?php print_link("prescriptions/editfield/" . urlencode($data['prescriptions_id'])); ?>" 
-                                                            data-name="test_id" 
-                                                            data-title="Enter Test Id" 
-                                                            data-placement="left" 
-                                                            data-toggle="click" 
-                                                            data-type="text" 
-                                                            data-mode="popover" 
-                                                            data-showbuttons="left" 
-                                                            class="is-editable" <?php } ?>>
-                                                            <?php echo $data['test_id']; ?> 
-                                                        </span>
-                                                    </td>
                                                     <td class="td-medicine_id">
                                                         <span <?php if($can_edit){ ?> data-value="<?php echo $data['medicine_id']; ?>" 
                                                             data-pk="<?php echo $data['prescriptions_id'] ?>" 
@@ -222,21 +205,6 @@ $show_pagination = $this->show_pagination;
                                                             data-showbuttons="left" 
                                                             class="is-editable" <?php } ?>>
                                                             <?php echo $data['patient_address']; ?> 
-                                                        </span>
-                                                    </td>
-                                                    <td class="td-clinic_id">
-                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['clinic_id']; ?>" 
-                                                            data-pk="<?php echo $data['prescriptions_id'] ?>" 
-                                                            data-url="<?php print_link("prescriptions/editfield/" . urlencode($data['prescriptions_id'])); ?>" 
-                                                            data-name="clinic_id" 
-                                                            data-title="Enter Clinic Id" 
-                                                            data-placement="left" 
-                                                            data-toggle="click" 
-                                                            data-type="text" 
-                                                            data-mode="popover" 
-                                                            data-showbuttons="left" 
-                                                            class="is-editable" <?php } ?>>
-                                                            <?php echo $data['clinic_id']; ?> 
                                                         </span>
                                                     </td>
                                                     <td class="td-patient_id">

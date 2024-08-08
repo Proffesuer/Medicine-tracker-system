@@ -19,11 +19,9 @@ class PrescriptionsController extends SecureController{
 		$db = $this->GetModel();
 		$tablename = $this->tablename;
 		$fields = array("prescriptions_id", 
-			"test_id", 
 			"medicine_id", 
 			"date_issue", 
 			"patient_address", 
-			"clinic_id", 
 			"patient_id", 
 			"doctor_id", 
 			"quantity_prescribe", 
@@ -37,11 +35,9 @@ class PrescriptionsController extends SecureController{
 			$text = trim($request->search); 
 			$search_condition = "(
 				prescriptions.prescriptions_id LIKE ? OR 
-				prescriptions.test_id LIKE ? OR 
 				prescriptions.medicine_id LIKE ? OR 
 				prescriptions.date_issue LIKE ? OR 
 				prescriptions.patient_address LIKE ? OR 
-				prescriptions.clinic_id LIKE ? OR 
 				prescriptions.patient_id LIKE ? OR 
 				prescriptions.doctor_id LIKE ? OR 
 				prescriptions.quantity_prescribe LIKE ? OR 
@@ -51,7 +47,7 @@ class PrescriptionsController extends SecureController{
 				prescriptions.instructions LIKE ?
 			)";
 			$search_params = array(
-				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
+				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
 			);
 			//setting search conditions
 			$db->where($search_condition, $search_params);
@@ -103,11 +99,9 @@ class PrescriptionsController extends SecureController{
 		$rec_id = $this->rec_id = urldecode($rec_id);
 		$tablename = $this->tablename;
 		$fields = array("prescriptions_id", 
-			"test_id", 
 			"medicine_id", 
 			"date_issue", 
 			"patient_address", 
-			"clinic_id", 
 			"patient_id", 
 			"doctor_id", 
 			"quantity_prescribe", 
@@ -151,14 +145,12 @@ class PrescriptionsController extends SecureController{
 			$tablename = $this->tablename;
 			$request = $this->request;
 			//fillable fields
-			$fields = $this->fields = array("test_id","medicine_id","date_issue","patient_address","clinic_id","patient_id","doctor_id","quantity_prescribe","time_prescribe","number_refil","days_prescribe","instructions");
+			$fields = $this->fields = array("medicine_id","date_issue","patient_address","patient_id","doctor_id","quantity_prescribe","time_prescribe","number_refil","days_prescribe","instructions");
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
-				'test_id' => 'required',
 				'medicine_id' => 'required',
 				'date_issue' => 'required',
 				'patient_address' => 'required',
-				'clinic_id' => 'required',
 				'patient_id' => 'required',
 				'doctor_id' => 'required',
 				'quantity_prescribe' => 'required',
@@ -168,11 +160,9 @@ class PrescriptionsController extends SecureController{
 				'instructions' => 'required',
 			);
 			$this->sanitize_array = array(
-				'test_id' => 'sanitize_string',
 				'medicine_id' => 'sanitize_string',
 				'date_issue' => 'sanitize_string',
 				'patient_address' => 'sanitize_string',
-				'clinic_id' => 'sanitize_string',
 				'patient_id' => 'sanitize_string',
 				'doctor_id' => 'sanitize_string',
 				'quantity_prescribe' => 'sanitize_string',
@@ -209,15 +199,13 @@ class PrescriptionsController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		 //editable fields
-		$fields = $this->fields = array("prescriptions_id","test_id","medicine_id","date_issue","patient_address","clinic_id","patient_id","doctor_id","quantity_prescribe","time_prescribe","number_refil","days_prescribe","instructions");
+		$fields = $this->fields = array("prescriptions_id","medicine_id","date_issue","patient_address","patient_id","doctor_id","quantity_prescribe","time_prescribe","number_refil","days_prescribe","instructions");
 		if($formdata){
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
-				'test_id' => 'required',
 				'medicine_id' => 'required',
 				'date_issue' => 'required',
 				'patient_address' => 'required',
-				'clinic_id' => 'required',
 				'patient_id' => 'required',
 				'doctor_id' => 'required',
 				'quantity_prescribe' => 'required',
@@ -227,11 +215,9 @@ class PrescriptionsController extends SecureController{
 				'instructions' => 'required',
 			);
 			$this->sanitize_array = array(
-				'test_id' => 'sanitize_string',
 				'medicine_id' => 'sanitize_string',
 				'date_issue' => 'sanitize_string',
 				'patient_address' => 'sanitize_string',
-				'clinic_id' => 'sanitize_string',
 				'patient_id' => 'sanitize_string',
 				'doctor_id' => 'sanitize_string',
 				'quantity_prescribe' => 'sanitize_string',
@@ -282,7 +268,7 @@ class PrescriptionsController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		//editable fields
-		$fields = $this->fields = array("prescriptions_id","test_id","medicine_id","date_issue","patient_address","clinic_id","patient_id","doctor_id","quantity_prescribe","time_prescribe","number_refil","days_prescribe","instructions");
+		$fields = $this->fields = array("prescriptions_id","medicine_id","date_issue","patient_address","patient_id","doctor_id","quantity_prescribe","time_prescribe","number_refil","days_prescribe","instructions");
 		$page_error = null;
 		if($formdata){
 			$postdata = array();
@@ -291,11 +277,9 @@ class PrescriptionsController extends SecureController{
 			$postdata[$fieldname] = $fieldvalue;
 			$postdata = $this->format_request_data($postdata);
 			$this->rules_array = array(
-				'test_id' => 'required',
 				'medicine_id' => 'required',
 				'date_issue' => 'required',
 				'patient_address' => 'required',
-				'clinic_id' => 'required',
 				'patient_id' => 'required',
 				'doctor_id' => 'required',
 				'quantity_prescribe' => 'required',
@@ -305,11 +289,9 @@ class PrescriptionsController extends SecureController{
 				'instructions' => 'required',
 			);
 			$this->sanitize_array = array(
-				'test_id' => 'sanitize_string',
 				'medicine_id' => 'sanitize_string',
 				'date_issue' => 'sanitize_string',
 				'patient_address' => 'sanitize_string',
-				'clinic_id' => 'sanitize_string',
 				'patient_id' => 'sanitize_string',
 				'doctor_id' => 'sanitize_string',
 				'quantity_prescribe' => 'sanitize_string',

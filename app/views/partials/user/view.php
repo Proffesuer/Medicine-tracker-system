@@ -76,7 +76,21 @@ $show_export_btn = $this->show_export_btn;
                                     </tr>
                                     <tr  class="td-email">
                                         <th class="title"> Email: </th>
-                                        <td class="value"> <?php echo $data['email']; ?></td>
+                                        <td class="value">
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['email']; ?>" 
+                                                data-pk="<?php echo $data['id'] ?>" 
+                                                data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
+                                                data-name="email" 
+                                                data-title="Enter Email" 
+                                                data-placement="left" 
+                                                data-toggle="click" 
+                                                data-type="email" 
+                                                data-mode="popover" 
+                                                data-showbuttons="left" 
+                                                class="is-editable" <?php } ?>>
+                                                <?php echo $data['email']; ?> 
+                                            </span>
+                                        </td>
                                     </tr>
                                     <tr  class="td-gender">
                                         <th class="title"> Gender: </th>
@@ -100,7 +114,7 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-DOB">
                                         <th class="title"> Dob: </th>
                                         <td class="value">
-                                            <span <?php if($can_edit){ ?> data-flatpickr="{ enableTime: false, minDate: '', maxDate: ''}" 
+                                            <span <?php if($can_edit){ ?> data-flatpickr="{ enableTime: false, minDate: '', maxDate: '<?php echo date('Y-m-d', strtotime('-15years')); ?>'}" 
                                                 data-value="<?php echo $data['DOB']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
@@ -118,22 +132,7 @@ $show_export_btn = $this->show_export_btn;
                                     </tr>
                                     <tr  class="td-role">
                                         <th class="title"> Role: </th>
-                                        <td class="value">
-                                            <span <?php if($can_edit){ ?> data-source='<?php echo json_encode_quote(Menu :: $role); ?>' 
-                                                data-value="<?php echo $data['role']; ?>" 
-                                                data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="role" 
-                                                data-title="Select a value ..." 
-                                                data-placement="left" 
-                                                data-toggle="click" 
-                                                data-type="select" 
-                                                data-mode="popover" 
-                                                data-showbuttons="left" 
-                                                class="is-editable" <?php } ?>>
-                                                <?php echo $data['role']; ?> 
-                                            </span>
-                                        </td>
+                                        <td class="value"> <?php echo $data['role']; ?></td>
                                     </tr>
                                 </tbody>
                                 <!-- Table Body End -->
