@@ -216,23 +216,40 @@ $redirect_to = $this->redirect_to;
                                                                 </div>
                                                                 <div class="col-sm-8">
                                                                     <div class="">
-                                                                        <input id="ctrl-prescription_id"  value="<?php  echo $this->set_field_value('prescription_id',""); ?>" type="number" placeholder="Enter Prescription Id" step="1"  required="" name="prescription_id"  class="form-control " />
-                                                                        </div>
+                                                                        <select required=""  id="ctrl-prescription_id" name="prescription_id"  placeholder="Select a value ..."    class="custom-select" >
+                                                                            <option value="">Select a value ...</option>
+                                                                            <?php 
+                                                                            $prescription_id_options = $comp_model -> prescription_prescription_id_option_list();
+                                                                            if(!empty($prescription_id_options)){
+                                                                            foreach($prescription_id_options as $option){
+                                                                            $value = (!empty($option['value']) ? $option['value'] : null);
+                                                                            $label = (!empty($option['label']) ? $option['label'] : $value);
+                                                                            $selected = $this->set_field_selected('prescription_id',$value, "");
+                                                                            ?>
+                                                                            <option <?php echo $selected; ?> value="<?php echo $value; ?>">
+                                                                                <?php echo $label; ?>
+                                                                            </option>
+                                                                            <?php
+                                                                            }
+                                                                            }
+                                                                            ?>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group form-submit-btn-holder text-center mt-3">
-                                                            <div class="form-ajax-status"></div>
-                                                            <button class="btn btn-primary" type="submit">
-                                                                Submit
-                                                                <i class="fa fa-send"></i>
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                                    </div>
+                                                    <div class="form-group form-submit-btn-holder text-center mt-3">
+                                                        <div class="form-ajax-status"></div>
+                                                        <button class="btn btn-primary" type="submit">
+                                                            Submit
+                                                            <i class="fa fa-send"></i>
+                                                        </button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </section>
+                            </div>
+                        </section>

@@ -78,4 +78,32 @@ class Menu{
 			"label" => "Doctor", 
 		),);
 		
+			public static $mode = array(
+		array(
+			"value" => "Daily", 
+			"label" => "Daily", 
+		),
+		array(
+			"value" => "Weekly", 
+			"label" => "Weekly", 
+		),
+		array(
+			"value" => "Monthly", 
+			"label" => "Monthly", 
+		),
+		array(
+			"value" => "Yearly", 
+			"label" => "Yearly", 
+		),);
+		
+			public static $status = array(
+		array(
+			"value" => "Active", 
+			"label" => "Active", 
+		),
+		array(
+			"value" => "Inactive", 
+			"label" => "Inactive", 
+		),);
+		
 }

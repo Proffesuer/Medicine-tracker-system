@@ -158,7 +158,7 @@ class PrescriptionController extends SecureController{
 				'number_refil' => 'required',
 				'days_prescribe' => 'required',
 				'instructions' => 'required',
-				'prescription_id' => 'required|numeric',
+				'prescription_id' => 'required',
 			);
 			$this->sanitize_array = array(
 				'medicine_id' => 'sanitize_string',
@@ -215,7 +215,7 @@ class PrescriptionController extends SecureController{
 				'number_refil' => 'required',
 				'days_prescribe' => 'required',
 				'instructions' => 'required',
-				'prescription_id' => 'required|numeric',
+				'prescription_id' => 'required',
 			);
 			$this->sanitize_array = array(
 				'medicine_id' => 'sanitize_string',
@@ -291,7 +291,7 @@ class PrescriptionController extends SecureController{
 				'number_refil' => 'required',
 				'days_prescribe' => 'required',
 				'instructions' => 'required',
-				'prescription_id' => 'required|numeric',
+				'prescription_id' => 'required',
 			);
 			$this->sanitize_array = array(
 				'medicine_id' => 'sanitize_string',
