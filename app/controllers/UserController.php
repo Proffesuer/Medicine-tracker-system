@@ -144,7 +144,6 @@ class UserController extends SecureController{
 				'name' => 'required',
 				'email' => 'required|valid_email',
 				'gender' => 'required',
-				'image' => 'required',
 				'DOB' => 'required',
 				'password' => 'required',
 				'role' => 'required',
@@ -204,7 +203,6 @@ class UserController extends SecureController{
 			$this->rules_array = array(
 				'name' => 'required',
 				'gender' => 'required',
-				'image' => 'required',
 				'DOB' => 'required',
 				'role' => 'required',
 			);
@@ -275,7 +273,6 @@ class UserController extends SecureController{
 			$this->rules_array = array(
 				'name' => 'required',
 				'gender' => 'required',
-				'image' => 'required',
 				'DOB' => 'required',
 				'role' => 'required',
 			);

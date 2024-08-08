@@ -50,7 +50,6 @@ class AccountController extends SecureController{
 			$this->rules_array = array(
 				'name' => 'required',
 				'gender' => 'required',
-				'image' => 'required',
 				'DOB' => 'required',
 				'role' => 'required',
 			);

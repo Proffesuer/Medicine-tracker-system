@@ -96,12 +96,12 @@ $redirect_to = $this->redirect_to;
                                             <div class="form-group ">
                                                 <div class="row">
                                                     <div class="col-sm-4">
-                                                        <label class="control-label" for="image">Image <span class="text-danger">*</span></label>
+                                                        <label class="control-label" for="image">Image </label>
                                                     </div>
                                                     <div class="col-sm-8">
                                                         <div class="">
-                                                            <div class="dropzone required" input="#ctrl-image" fieldname="image"    data-multiple="false" dropmsg="Choose files or drag and drop files to upload"    btntext="Browse" extensions=".jpg,.png,.gif,.jpeg" filesize="3" maximum="1">
-                                                                <input name="image" id="ctrl-image" required="" class="dropzone-input form-control" value="<?php  echo $this->set_field_value('image',""); ?>" type="text"  />
+                                                            <div class="dropzone " input="#ctrl-image" fieldname="image"    data-multiple="false" dropmsg="Choose files or drag and drop files to upload"    btntext="Browse" extensions=".jpg,.png,.gif,.jpeg" filesize="3" maximum="1">
+                                                                <input name="image" id="ctrl-image" class="dropzone-input form-control" value="<?php  echo $this->set_field_value('image',""); ?>" type="text"  />
                                                                     <!--<div class="invalid-feedback animated bounceIn text-center">Please a choose file</div>-->
                                                                     <div class="dz-file-limit animated bounceIn text-center text-danger"></div>
                                                                 </div>
@@ -116,7 +116,7 @@ $redirect_to = $this->redirect_to;
                                                         </div>
                                                         <div class="col-sm-8">
                                                             <div class="input-group">
-                                                                <input id="ctrl-DOB" class="form-control datepicker  datepicker"  required="" value="<?php  echo $this->set_field_value('DOB',""); ?>" type="datetime" name="DOB" placeholder="Enter Dob" data-enable-time="false" data-min-date="" data-max-date="" data-date-format="Y-m-d" data-alt-format="F j, Y" data-inline="false" data-no-calendar="false" data-mode="single" />
+                                                                <input id="ctrl-DOB" class="form-control datepicker  datepicker"  required="" value="<?php  echo $this->set_field_value('DOB',format_date('Y-m-d H:i:s')); ?>" type="datetime" name="DOB" placeholder="Enter Dob" data-enable-time="false" data-min-date="" data-max-date="" data-date-format="Y-m-d" data-alt-format="F j, Y" data-inline="false" data-no-calendar="false" data-mode="single" />
                                                                     <div class="input-group-append">
                                                                         <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                                     </div>

@@ -113,7 +113,6 @@ class IndexController extends BaseController{
 				'name' => 'required',
 				'email' => 'required|valid_email',
 				'gender' => 'required',
-				'image' => 'required',
 				'DOB' => 'required',
 				'password' => 'required',
 				'role' => 'required',
