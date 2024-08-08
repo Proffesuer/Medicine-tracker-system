@@ -216,24 +216,7 @@ $redirect_to = $this->redirect_to;
                                                                 </div>
                                                                 <div class="col-sm-8">
                                                                     <div class="">
-                                                                        <select required=""  id="ctrl-prescription_id" name="prescription_id"  placeholder="Select a value ..."    class="custom-select" >
-                                                                            <option value="">Select a value ...</option>
-                                                                            <?php 
-                                                                            $prescription_id_options = $comp_model -> prescription_prescription_id_option_list();
-                                                                            if(!empty($prescription_id_options)){
-                                                                            foreach($prescription_id_options as $option){
-                                                                            $value = (!empty($option['value']) ? $option['value'] : null);
-                                                                            $label = (!empty($option['label']) ? $option['label'] : $value);
-                                                                            $selected = $this->set_field_selected('prescription_id',$value, "");
-                                                                            ?>
-                                                                            <option <?php echo $selected; ?> value="<?php echo $value; ?>">
-                                                                                <?php echo $label; ?>
-                                                                            </option>
-                                                                            <?php
-                                                                            }
-                                                                            }
-                                                                            ?>
-                                                                        </select>
+                                                                    <input id="ctrl-prescription_id"  value="<?php  echo $this->set_field_value('prescription_id',""); ?>" type="text" placeholder="enter prescription id"  required="" name="days_prescribe"  class="form-control " />   
                                                                     </div>
                                                                 </div>
                                                             </div>
