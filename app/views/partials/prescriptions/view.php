@@ -56,24 +56,6 @@ $show_export_btn = $this->show_export_btn;
                                         <th class="title"> Prescriptions Id: </th>
                                         <td class="value"> <?php echo $data['prescriptions_id']; ?></td>
                                     </tr>
-                                    <tr  class="td-test_id">
-                                        <th class="title"> Test Id: </th>
-                                        <td class="value">
-                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['test_id']; ?>" 
-                                                data-pk="<?php echo $data['prescriptions_id'] ?>" 
-                                                data-url="<?php print_link("prescriptions/editfield/" . urlencode($data['prescriptions_id'])); ?>" 
-                                                data-name="test_id" 
-                                                data-title="Enter Test Id" 
-                                                data-placement="left" 
-                                                data-toggle="click" 
-                                                data-type="text" 
-                                                data-mode="popover" 
-                                                data-showbuttons="left" 
-                                                class="is-editable" <?php } ?>>
-                                                <?php echo $data['test_id']; ?> 
-                                            </span>
-                                        </td>
-                                    </tr>
                                     <tr  class="td-medicine_id">
                                         <th class="title"> Medicine Id: </th>
                                         <td class="value">
@@ -126,24 +108,6 @@ $show_export_btn = $this->show_export_btn;
                                                 data-showbuttons="left" 
                                                 class="is-editable" <?php } ?>>
                                                 <?php echo $data['patient_address']; ?> 
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr  class="td-clinic_id">
-                                        <th class="title"> Clinic Id: </th>
-                                        <td class="value">
-                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['clinic_id']; ?>" 
-                                                data-pk="<?php echo $data['prescriptions_id'] ?>" 
-                                                data-url="<?php print_link("prescriptions/editfield/" . urlencode($data['prescriptions_id'])); ?>" 
-                                                data-name="clinic_id" 
-                                                data-title="Enter Clinic Id" 
-                                                data-placement="left" 
-                                                data-toggle="click" 
-                                                data-type="text" 
-                                                data-mode="popover" 
-                                                data-showbuttons="left" 
-                                                class="is-editable" <?php } ?>>
-                                                <?php echo $data['clinic_id']; ?> 
                                             </span>
                                         </td>
                                     </tr>
