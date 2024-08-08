@@ -1,9 +1,9 @@
 <?php 
 //check if current user role is allowed access to the pages
-$can_add = ACL::is_allowed("prescriptions/add");
-$can_edit = ACL::is_allowed("prescriptions/edit");
-$can_view = ACL::is_allowed("prescriptions/view");
-$can_delete = ACL::is_allowed("prescriptions/delete");
+$can_add = ACL::is_allowed("prescriptions2/add");
+$can_edit = ACL::is_allowed("prescriptions2/edit");
+$can_view = ACL::is_allowed("prescriptions2/view");
+$can_delete = ACL::is_allowed("prescriptions2/delete");
 ?>
 <?php
 $comp_model = new SharedController;
@@ -30,18 +30,18 @@ $show_pagination = $this->show_pagination;
         <div class="container-fluid">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">Prescriptions</h4>
+                    <h4 class="record-title">Prescriptions2</h4>
                 </div>
                 <div class="col-sm-3 ">
                     <?php if($can_add){ ?>
-                    <a  class="btn btn btn-primary my-1" href="<?php print_link("prescriptions/add") ?>">
+                    <a  class="btn btn btn-primary my-1" href="<?php print_link("prescriptions2/add") ?>">
                         <i class="fa fa-plus"></i>                              
-                        Add New Prescriptions 
+                        Add New Prescriptions2 
                     </a>
                     <?php } ?>
                 </div>
                 <div class="col-sm-4 ">
-                    <form  class="search" action="<?php print_link('prescriptions'); ?>" method="get">
+                    <form  class="search" action="<?php print_link('prescriptions2'); ?>" method="get">
                         <div class="input-group">
                             <input value="<?php echo get_value('search'); ?>" class="form-control" type="text" name="search"  placeholder="Search" />
                                 <div class="input-group-append">
@@ -63,7 +63,7 @@ $show_pagination = $this->show_pagination;
                                     if(!empty($field_name)){
                                     ?>
                                     <li class="breadcrumb-item">
-                                        <a class="text-decoration-none" href="<?php print_link('prescriptions'); ?>">
+                                        <a class="text-decoration-none" href="<?php print_link('prescriptions2'); ?>">
                                             <i class="fa fa-angle-left"></i>
                                         </a>
                                     </li>
@@ -80,7 +80,7 @@ $show_pagination = $this->show_pagination;
                                     if(get_value("search")){
                                     ?>
                                     <li class="breadcrumb-item">
-                                        <a class="text-decoration-none" href="<?php print_link('prescriptions'); ?>">
+                                        <a class="text-decoration-none" href="<?php print_link('prescriptions2'); ?>">
                                             <i class="fa fa-angle-left"></i>
                                         </a>
                                     </li>
@@ -111,7 +111,7 @@ $show_pagination = $this->show_pagination;
                     <div class="col-md-12 comp-grid">
                         <?php $this :: display_page_errors(); ?>
                         <div  class=" animated fadeIn page-content">
-                            <div id="prescriptions-list-records">
+                            <div id="prescriptions2-list-records">
                                 <div id="page-report-body" class="table-responsive">
                                     <table class="table  table-striped table-sm text-left">
                                         <thead class="table-header bg-light">
@@ -143,15 +143,12 @@ $show_pagination = $this->show_pagination;
                                             <tr>
                                                 <th class="td-sno"><?php echo $counter; ?></th>
                                                 <td class="td-medicine_id">
-                                                    <span <?php if($can_edit){ ?> data-source='<?php print_link('api/json/prescriptions_medicine_id_option_list'); ?>' 
-                                                        data-value="<?php echo $data['medicine_id']; ?>" 
-                                                        data-pk="<?php echo $data[''] ?>" 
-                                                        data-url="<?php print_link("prescriptions/editfield/" . urlencode($data['prescriptions_id'])); ?>" 
+                                                    <span <?php if($can_edit){ ?> data-value="<?php echo $data['medicine_id']; ?>" 
                                                         data-name="medicine_id" 
-                                                        data-title="Select a value ..." 
+                                                        data-title="Enter Medicine Id" 
                                                         data-placement="left" 
                                                         data-toggle="click" 
-                                                        data-type="select" 
+                                                        data-type="text" 
                                                         data-mode="popover" 
                                                         data-showbuttons="left" 
                                                         class="is-editable" <?php } ?>>
@@ -161,8 +158,6 @@ $show_pagination = $this->show_pagination;
                                                 <td class="td-date_issue">
                                                     <span <?php if($can_edit){ ?> data-flatpickr="{ minDate: '', maxDate: ''}" 
                                                         data-value="<?php echo $data['date_issue']; ?>" 
-                                                        data-pk="<?php echo $data[''] ?>" 
-                                                        data-url="<?php print_link("prescriptions/editfield/" . urlencode($data['prescriptions_id'])); ?>" 
                                                         data-name="date_issue" 
                                                         data-title="Enter Date Issue" 
                                                         data-placement="left" 
@@ -176,8 +171,6 @@ $show_pagination = $this->show_pagination;
                                                 </td>
                                                 <td class="td-patient_address">
                                                     <span <?php if($can_edit){ ?> data-value="<?php echo $data['patient_address']; ?>" 
-                                                        data-pk="<?php echo $data[''] ?>" 
-                                                        data-url="<?php print_link("prescriptions/editfield/" . urlencode($data['prescriptions_id'])); ?>" 
                                                         data-name="patient_address" 
                                                         data-title="Enter Patient Address" 
                                                         data-placement="left" 
@@ -190,15 +183,12 @@ $show_pagination = $this->show_pagination;
                                                     </span>
                                                 </td>
                                                 <td class="td-patient_id">
-                                                    <span <?php if($can_edit){ ?> data-source='<?php print_link('api/json/prescriptions_patient_id_option_list'); ?>' 
-                                                        data-value="<?php echo $data['patient_id']; ?>" 
-                                                        data-pk="<?php echo $data[''] ?>" 
-                                                        data-url="<?php print_link("prescriptions/editfield/" . urlencode($data['prescriptions_id'])); ?>" 
+                                                    <span <?php if($can_edit){ ?> data-value="<?php echo $data['patient_id']; ?>" 
                                                         data-name="patient_id" 
-                                                        data-title="Select a value ..." 
+                                                        data-title="Enter Patient Id" 
                                                         data-placement="left" 
                                                         data-toggle="click" 
-                                                        data-type="select" 
+                                                        data-type="text" 
                                                         data-mode="popover" 
                                                         data-showbuttons="left" 
                                                         class="is-editable" <?php } ?>>
@@ -206,15 +196,12 @@ $show_pagination = $this->show_pagination;
                                                     </span>
                                                 </td>
                                                 <td class="td-doctor_id">
-                                                    <span <?php if($can_edit){ ?> data-source='<?php print_link('api/json/prescriptions_doctor_id_option_list'); ?>' 
-                                                        data-value="<?php echo $data['doctor_id']; ?>" 
-                                                        data-pk="<?php echo $data[''] ?>" 
-                                                        data-url="<?php print_link("prescriptions/editfield/" . urlencode($data['prescriptions_id'])); ?>" 
+                                                    <span <?php if($can_edit){ ?> data-value="<?php echo $data['doctor_id']; ?>" 
                                                         data-name="doctor_id" 
-                                                        data-title="Select a value ..." 
+                                                        data-title="Enter Doctor Id" 
                                                         data-placement="left" 
                                                         data-toggle="click" 
-                                                        data-type="select" 
+                                                        data-type="text" 
                                                         data-mode="popover" 
                                                         data-showbuttons="left" 
                                                         class="is-editable" <?php } ?>>
@@ -223,8 +210,6 @@ $show_pagination = $this->show_pagination;
                                                 </td>
                                                 <td class="td-quantity_prescribe">
                                                     <span <?php if($can_edit){ ?> data-value="<?php echo $data['quantity_prescribe']; ?>" 
-                                                        data-pk="<?php echo $data[''] ?>" 
-                                                        data-url="<?php print_link("prescriptions/editfield/" . urlencode($data['prescriptions_id'])); ?>" 
                                                         data-name="quantity_prescribe" 
                                                         data-title="Enter Quantity Prescribe" 
                                                         data-placement="left" 
@@ -238,8 +223,6 @@ $show_pagination = $this->show_pagination;
                                                 </td>
                                                 <td class="td-time_prescribe">
                                                     <span <?php if($can_edit){ ?> data-value="<?php echo $data['time_prescribe']; ?>" 
-                                                        data-pk="<?php echo $data[''] ?>" 
-                                                        data-url="<?php print_link("prescriptions/editfield/" . urlencode($data['prescriptions_id'])); ?>" 
                                                         data-name="time_prescribe" 
                                                         data-title="Enter Time Prescribe" 
                                                         data-placement="left" 
@@ -253,8 +236,6 @@ $show_pagination = $this->show_pagination;
                                                 </td>
                                                 <td class="td-number_refil">
                                                     <span <?php if($can_edit){ ?> data-value="<?php echo $data['number_refil']; ?>" 
-                                                        data-pk="<?php echo $data[''] ?>" 
-                                                        data-url="<?php print_link("prescriptions/editfield/" . urlencode($data['prescriptions_id'])); ?>" 
                                                         data-name="number_refil" 
                                                         data-title="Enter Number Refil" 
                                                         data-placement="left" 
@@ -268,8 +249,6 @@ $show_pagination = $this->show_pagination;
                                                 </td>
                                                 <td class="td-days_prescribe">
                                                     <span <?php if($can_edit){ ?> data-value="<?php echo $data['days_prescribe']; ?>" 
-                                                        data-pk="<?php echo $data[''] ?>" 
-                                                        data-url="<?php print_link("prescriptions/editfield/" . urlencode($data['prescriptions_id'])); ?>" 
                                                         data-name="days_prescribe" 
                                                         data-title="Enter Days Prescribe" 
                                                         data-placement="left" 
@@ -283,8 +262,6 @@ $show_pagination = $this->show_pagination;
                                                 </td>
                                                 <td class="td-instructions">
                                                     <span <?php if($can_edit){ ?> data-value="<?php echo $data['instructions']; ?>" 
-                                                        data-pk="<?php echo $data[''] ?>" 
-                                                        data-url="<?php print_link("prescriptions/editfield/" . urlencode($data['prescriptions_id'])); ?>" 
                                                         data-name="instructions" 
                                                         data-title="Enter Instructions" 
                                                         data-placement="left" 

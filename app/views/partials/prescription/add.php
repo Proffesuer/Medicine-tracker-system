@@ -15,7 +15,7 @@ $redirect_to = $this->redirect_to;
         <div class="container">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">Add New Prescriptions</h4>
+                    <h4 class="record-title">Add New Prescription</h4>
                 </div>
             </div>
         </div>
@@ -28,8 +28,8 @@ $redirect_to = $this->redirect_to;
             <div class="row ">
                 <div class="col-md-7 comp-grid">
                     <?php $this :: display_page_errors(); ?>
-                    <div  class="bg-light p-3 animated tada page-content">
-                        <form id="prescriptions-add-form" role="form" novalidate enctype="multipart/form-data" class="form page-form form-horizontal needs-validation" action="<?php print_link("prescriptions/add?csrf_token=$csrf_token") ?>" method="post">
+                    <div  class="bg-light p-3 animated fadeIn page-content">
+                        <form id="prescription-add-form" role="form" novalidate enctype="multipart/form-data" class="form page-form form-horizontal needs-validation" action="<?php print_link("prescription/add?csrf_token=$csrf_token") ?>" method="post">
                             <div>
                                 <div class="form-group ">
                                     <div class="row">
@@ -41,7 +41,7 @@ $redirect_to = $this->redirect_to;
                                                 <select required=""  id="ctrl-medicine_id" name="medicine_id"  placeholder="Select a value ..."    class="custom-select" >
                                                     <option value="">Select a value ...</option>
                                                     <?php 
-                                                    $medicine_id_options = $comp_model -> prescriptions_medicine_id_option_list();
+                                                    $medicine_id_options = $comp_model -> prescription_medicine_id_option_list();
                                                     if(!empty($medicine_id_options)){
                                                     foreach($medicine_id_options as $option){
                                                     $value = (!empty($option['value']) ? $option['value'] : null);
@@ -67,7 +67,7 @@ $redirect_to = $this->redirect_to;
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="input-group">
-                                                <input id="ctrl-date_issue" class="form-control datepicker  datepicker" required="" value="<?php  echo $this->set_field_value('date_issue',""); ?>" type="datetime"  name="date_issue" placeholder="Enter Date Issue" data-enable-time="true" data-min-date="" data-max-date="" data-date-format="Y-m-d H:i:S" data-alt-format="F j, Y - H:i" data-inline="false" data-no-calendar="false" data-mode="single" /> 
+                                                <input id="ctrl-date_issue" class="form-control datepicker  datepicker" required="" value="<?php  echo $this->set_field_value('date_issue',""); ?>" type="datetime"  name="date_issue" placeholder="Enter Date Issue" data-enable-time="true" data-min-date="<?php echo datetime_now(); ?>" data-max-date="<?php echo datetime_now(); ?>" data-date-format="Y-m-d H:i:S" data-alt-format="F j, Y - H:i" data-inline="false" data-no-calendar="false" data-mode="single" /> 
                                                     <div class="input-group-append">
                                                         <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                     </div>
@@ -97,7 +97,7 @@ $redirect_to = $this->redirect_to;
                                                         <select required=""  id="ctrl-patient_id" name="patient_id"  placeholder="Select a value ..."    class="custom-select" >
                                                             <option value="">Select a value ...</option>
                                                             <?php 
-                                                            $patient_id_options = $comp_model -> prescriptions_patient_id_option_list();
+                                                            $patient_id_options = $comp_model -> prescription_patient_id_option_list();
                                                             if(!empty($patient_id_options)){
                                                             foreach($patient_id_options as $option){
                                                             $value = (!empty($option['value']) ? $option['value'] : null);
@@ -126,7 +126,7 @@ $redirect_to = $this->redirect_to;
                                                         <select required=""  id="ctrl-doctor_id" name="doctor_id"  placeholder="Select a value ..."    class="custom-select" >
                                                             <option value="">Select a value ...</option>
                                                             <?php 
-                                                            $doctor_id_options = $comp_model -> prescriptions_doctor_id_option_list();
+                                                            $doctor_id_options = $comp_model -> prescription_doctor_id_option_list();
                                                             if(!empty($doctor_id_options)){
                                                             foreach($doctor_id_options as $option){
                                                             $value = (!empty($option['value']) ? $option['value'] : null);
@@ -203,7 +203,20 @@ $redirect_to = $this->redirect_to;
                                                                 </div>
                                                                 <div class="col-sm-8">
                                                                     <div class="">
-                                                                        <input id="ctrl-instructions"  value="<?php  echo $this->set_field_value('instructions',""); ?>" type="text" placeholder="Enter Instructions"  required="" name="instructions"  class="form-control " />
+                                                                        <textarea placeholder="Enter Instructions" id="ctrl-instructions"  required="" rows="5" name="instructions" class=" form-control"><?php  echo $this->set_field_value('instructions',""); ?></textarea>
+                                                                        <!--<div class="invalid-feedback animated bounceIn text-center">Please enter text</div>-->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <div class="row">
+                                                                <div class="col-sm-4">
+                                                                    <label class="control-label" for="prescription_id">Prescription Id <span class="text-danger">*</span></label>
+                                                                </div>
+                                                                <div class="col-sm-8">
+                                                                    <div class="">
+                                                                        <input id="ctrl-prescription_id"  value="<?php  echo $this->set_field_value('prescription_id',""); ?>" type="number" placeholder="Enter Prescription Id" step="1"  required="" name="prescription_id"  class="form-control " />
                                                                         </div>
                                                                     </div>
                                                                 </div>

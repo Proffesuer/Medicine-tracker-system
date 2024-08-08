@@ -44,15 +44,15 @@ $current_page = $this->set_current_page_link();
                     </a>
                 </div>
                 <div class="col-md-3 col-sm-4 comp-grid">
-                    <?php $rec_count = $comp_model->getcount_prescriptions();  ?>
-                    <a class="animated zoomIn record-count <?php echo ($rec_count==0 ? 'card bg-primary text-white' : 'card bg-success text-white'); ?>"  href="<?php print_link("prescriptions/") ?>">
+                    <?php $rec_count = $comp_model->getcount_prescription();  ?>
+                    <a class="animated zoomIn record-count <?php echo ($rec_count==0 ? 'card bg-primary text-white' : 'card bg-primary text-white'); ?>"  href="<?php print_link("prescription/") ?>">
                         <div class="row">
                             <div class="col-2">
                                 <i class="fa fa-globe"></i>
                             </div>
                             <div class="col-10">
                                 <div class="flex-column justify-content align-center">
-                                    <div class="title">Prescriptions</div>
+                                    <div class="title">Prescription</div>
                                     <div class="progress mt-2">
                                         <?php 
                                         $perc = ($rec_count / 1000) * 100 ;
