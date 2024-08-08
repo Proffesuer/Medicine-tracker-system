@@ -80,7 +80,7 @@ $redirect_to = $this->redirect_to;
                                                 <div class="form-group ">
                                                     <label class="control-label" for="DOB">Dob <span class="text-danger">*</span></label>
                                                     <div id="ctrl-DOB-holder" class="input-group"> 
-                                                        <input id="ctrl-DOB" class="form-control datepicker  datepicker"  required="" value="<?php  echo $this->set_field_value('DOB',""); ?>" type="datetime" name="DOB" placeholder="Enter Dob" data-enable-time="false" data-min-date="" data-max-date="" data-date-format="Y-m-d" data-alt-format="F j, Y" data-inline="false" data-no-calendar="false" data-mode="single" />
+                                                        <input id="ctrl-DOB" class="form-control datepicker  datepicker"  required="" value="<?php  echo $this->set_field_value('DOB',""); ?>" type="datetime" name="DOB" placeholder="Enter Dob" data-enable-time="false" data-min-date="" data-max-date="<?php echo date('Y-m-d', strtotime('-15years')); ?>" data-date-format="Y-m-d" data-alt-format="F j, Y" data-inline="false" data-no-calendar="false" data-mode="single" />
                                                             <div class="input-group-append">
                                                                 <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                             </div>

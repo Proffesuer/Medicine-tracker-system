@@ -157,14 +157,15 @@ $show_pagination = $this->show_pagination;
                                                     <th class="td-sno"><?php echo $counter; ?></th>
                                                     <td class="td-review_id"><a href="<?php print_link("reviews/view/$data[review_id]") ?>"><?php echo $data['review_id']; ?></a></td>
                                                     <td class="td-patient_id">
-                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['patient_id']; ?>" 
+                                                        <span <?php if($can_edit){ ?> data-source='<?php print_link('api/json/reviews_patient_id_option_list'); ?>' 
+                                                            data-value="<?php echo $data['patient_id']; ?>" 
                                                             data-pk="<?php echo $data['review_id'] ?>" 
                                                             data-url="<?php print_link("reviews/editfield/" . urlencode($data['review_id'])); ?>" 
                                                             data-name="patient_id" 
-                                                            data-title="Enter Patient Id" 
+                                                            data-title="Select a value ..." 
                                                             data-placement="left" 
                                                             data-toggle="click" 
-                                                            data-type="text" 
+                                                            data-type="select" 
                                                             data-mode="popover" 
                                                             data-showbuttons="left" 
                                                             class="is-editable" <?php } ?>>
@@ -202,14 +203,15 @@ $show_pagination = $this->show_pagination;
                                                         </span>
                                                     </td>
                                                     <td class="td-doctor_id">
-                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['doctor_id']; ?>" 
+                                                        <span <?php if($can_edit){ ?> data-source='<?php print_link('api/json/reviews_doctor_id_option_list'); ?>' 
+                                                            data-value="<?php echo $data['doctor_id']; ?>" 
                                                             data-pk="<?php echo $data['review_id'] ?>" 
                                                             data-url="<?php print_link("reviews/editfield/" . urlencode($data['review_id'])); ?>" 
                                                             data-name="doctor_id" 
-                                                            data-title="Enter Doctor Id" 
+                                                            data-title="Select a value ..." 
                                                             data-placement="left" 
                                                             data-toggle="click" 
-                                                            data-type="text" 
+                                                            data-type="select" 
                                                             data-mode="popover" 
                                                             data-showbuttons="left" 
                                                             class="is-editable" <?php } ?>>
@@ -217,7 +219,7 @@ $show_pagination = $this->show_pagination;
                                                         </span>
                                                     </td>
                                                     <td class="td-date">
-                                                        <span <?php if($can_edit){ ?> data-flatpickr="{ minDate: '', maxDate: ''}" 
+                                                        <span <?php if($can_edit){ ?> data-flatpickr="{ minDate: '<?php echo datetime_now(); ?>', maxDate: '<?php echo datetime_now(); ?>'}" 
                                                             data-value="<?php echo $data['date']; ?>" 
                                                             data-pk="<?php echo $data['review_id'] ?>" 
                                                             data-url="<?php print_link("reviews/editfield/" . urlencode($data['review_id'])); ?>" 

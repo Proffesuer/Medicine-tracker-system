@@ -41,7 +41,37 @@ $redirect_to = $this->redirect_to;
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <input id="ctrl-patient_id"  value="<?php  echo $data['patient_id']; ?>" type="text" placeholder="Enter Patient Id"  required="" name="patient_id"  class="form-control " />
+                                                <select required=""  id="ctrl-patient_id" name="patient_id"  placeholder="Select a value ..."    class="custom-select" >
+                                                    <option value="">Select a value ...</option>
+                                                    <?php
+                                                    $rec = $data['patient_id'];
+                                                    $patient_id_options = $comp_model -> reviews_patient_id_option_list();
+                                                    if(!empty($patient_id_options)){
+                                                    foreach($patient_id_options as $option){
+                                                    $value = (!empty($option['value']) ? $option['value'] : null);
+                                                    $label = (!empty($option['label']) ? $option['label'] : $value);
+                                                    $selected = ( $value == $rec ? 'selected' : null );
+                                                    ?>
+                                                    <option 
+                                                        <?php echo $selected; ?> value="<?php echo $value; ?>"><?php echo $label; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="control-label" for="tittle">Tittle <span class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="">
+                                                <input id="ctrl-tittle"  value="<?php  echo $data['tittle']; ?>" type="text" placeholder="Enter Tittle"  required="" name="tittle"  class="form-control " />
                                                 </div>
                                             </div>
                                         </div>
@@ -49,11 +79,11 @@ $redirect_to = $this->redirect_to;
                                     <div class="form-group ">
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <label class="control-label" for="tittle">Tittle <span class="text-danger">*</span></label>
+                                                <label class="control-label" for="message">Message <span class="text-danger">*</span></label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="">
-                                                    <input id="ctrl-tittle"  value="<?php  echo $data['tittle']; ?>" type="text" placeholder="Enter Tittle"  required="" name="tittle"  class="form-control " />
+                                                    <input id="ctrl-message"  value="<?php  echo $data['message']; ?>" type="text" placeholder="Enter Message"  required="" name="message"  class="form-control " />
                                                     </div>
                                                 </div>
                                             </div>
@@ -61,54 +91,60 @@ $redirect_to = $this->redirect_to;
                                         <div class="form-group ">
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label class="control-label" for="message">Message <span class="text-danger">*</span></label>
+                                                    <label class="control-label" for="doctor_id">Doctor Id <span class="text-danger">*</span></label>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="">
-                                                        <input id="ctrl-message"  value="<?php  echo $data['message']; ?>" type="text" placeholder="Enter Message"  required="" name="message"  class="form-control " />
+                                                        <select required=""  id="ctrl-doctor_id" name="doctor_id"  placeholder="Select a value ..."    class="custom-select" >
+                                                            <option value="">Select a value ...</option>
+                                                            <?php
+                                                            $rec = $data['doctor_id'];
+                                                            $doctor_id_options = $comp_model -> reviews_doctor_id_option_list();
+                                                            if(!empty($doctor_id_options)){
+                                                            foreach($doctor_id_options as $option){
+                                                            $value = (!empty($option['value']) ? $option['value'] : null);
+                                                            $label = (!empty($option['label']) ? $option['label'] : $value);
+                                                            $selected = ( $value == $rec ? 'selected' : null );
+                                                            ?>
+                                                            <option 
+                                                                <?php echo $selected; ?> value="<?php echo $value; ?>"><?php echo $label; ?>
+                                                            </option>
+                                                            <?php
+                                                            }
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label class="control-label" for="date">Date <span class="text-danger">*</span></label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group">
+                                                        <input id="ctrl-date" class="form-control datepicker  datepicker" required="" value="<?php  echo $data['date']; ?>" type="datetime"  name="date" placeholder="Enter Date" data-enable-time="true" data-min-date="<?php echo datetime_now(); ?>" data-max-date="<?php echo datetime_now(); ?>" data-date-format="Y-m-d H:i:S" data-alt-format="F j, Y - H:i" data-inline="false" data-no-calendar="false" data-mode="single" /> 
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group ">
-                                                <div class="row">
-                                                    <div class="col-sm-4">
-                                                        <label class="control-label" for="doctor_id">Doctor Id <span class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-sm-8">
-                                                        <div class="">
-                                                            <input id="ctrl-doctor_id"  value="<?php  echo $data['doctor_id']; ?>" type="text" placeholder="Enter Doctor Id"  required="" name="doctor_id"  class="form-control " />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <label class="control-label" for="date">Date <span class="text-danger">*</span></label>
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <div class="input-group">
-                                                                <input id="ctrl-date" class="form-control datepicker  datepicker" required="" value="<?php  echo $data['date']; ?>" type="datetime"  name="date" placeholder="Enter Date" data-enable-time="true" data-min-date="" data-max-date="" data-date-format="Y-m-d H:i:S" data-alt-format="F j, Y - H:i" data-inline="false" data-no-calendar="false" data-mode="single" /> 
-                                                                    <div class="input-group-append">
-                                                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-ajax-status"></div>
-                                                <div class="form-group text-center">
-                                                    <button class="btn btn-primary" type="submit">
-                                                        Update
-                                                        <i class="fa fa-send"></i>
-                                                    </button>
-                                                </div>
-                                            </form>
                                         </div>
-                                    </div>
+                                        <div class="form-ajax-status"></div>
+                                        <div class="form-group text-center">
+                                            <button class="btn btn-primary" type="submit">
+                                                Update
+                                                <i class="fa fa-send"></i>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
+                </div>
+            </section>

@@ -191,7 +191,7 @@ $show_pagination = $this->show_pagination;
                                                     </td>
                                                     <td class="td-image"><?php Html :: page_img($data['image'],50,50,1); ?></td>
                                                     <td class="td-DOB">
-                                                        <span <?php if($can_edit){ ?> data-flatpickr="{ enableTime: false, minDate: '', maxDate: ''}" 
+                                                        <span <?php if($can_edit){ ?> data-flatpickr="{ enableTime: false, minDate: '', maxDate: '<?php echo date('Y-m-d', strtotime('-15years')); ?>'}" 
                                                             data-value="<?php echo $data['DOB']; ?>" 
                                                             data-pk="<?php echo $data['id'] ?>" 
                                                             data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 

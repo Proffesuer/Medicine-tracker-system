@@ -7,6 +7,30 @@
 class SharedController extends BaseController{
 	
 	/**
+     * reviews_patient_id_option_list Model Action
+     * @return array
+     */
+	function reviews_patient_id_option_list(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT  DISTINCT name AS value FROM user where role='patient'";
+		$queryparams = null;
+		$arr = $db->rawQuery($sqltext, $queryparams);
+		return $arr;
+	}
+
+	/**
+     * reviews_doctor_id_option_list Model Action
+     * @return array
+     */
+	function reviews_doctor_id_option_list(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT  DISTINCT name AS value,id AS label FROM user where role='Doctor'";
+		$queryparams = null;
+		$arr = $db->rawQuery($sqltext, $queryparams);
+		return $arr;
+	}
+
+	/**
      * user_name_value_exist Model Action
      * @return array
      */
