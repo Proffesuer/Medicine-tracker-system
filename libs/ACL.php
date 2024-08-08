@@ -28,7 +28,8 @@ class ACL
 							'medicine' => array('list','view'),
 							'reviews' => array('list','view','add','edit', 'editfield'),
 							'user' => array('userregister','accountedit','accountview'),
-							'reminder' => array('list','view','add','edit', 'editfield')
+							'reminder' => array('list','view','add','edit', 'editfield'),
+							'prescription' => array('list','view','add','edit', 'editfield')
 						),
 		
 			'doctor' =>
@@ -36,7 +37,8 @@ class ACL
 							'medicine' => array('list','view','add','edit', 'editfield','import_data'),
 							'reviews' => array('list','view','add','edit', 'editfield','import_data'),
 							'user' => array('list','view','userregister','add','edit', 'editfield'),
-							'reminder' => array('list','view','add','edit', 'editfield','delete')
+							'reminder' => array('list','view','add','edit', 'editfield','delete'),
+							'prescription' => array('list','view','add','edit', 'editfield')
 						)
 		);
 
