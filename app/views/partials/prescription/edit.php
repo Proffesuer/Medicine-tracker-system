@@ -160,30 +160,18 @@ $redirect_to = $this->redirect_to;
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="form-group ">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-4">
-                                                                                    <label class="control-label" for="prescription_id">Prescription Id <span class="text-danger">*</span></label>
-                                                                                </div>
-                                                                                <div class="col-sm-8">
-                                                                                    <div class="">
-                                                                                        <input id="ctrl-prescription_id"  value="<?php  echo $data['prescription_id']; ?>" type="number" placeholder="Enter Prescription Id" step="1"  required="" name="prescription_id"  class="form-control " />
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-ajax-status"></div>
-                                                                        <div class="form-group text-center">
-                                                                            <button class="btn btn-primary" type="submit">
-                                                                                Update
-                                                                                <i class="fa fa-send"></i>
-                                                                            </button>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
+                                                                    </div>
+                                                                    <div class="form-ajax-status"></div>
+                                                                    <div class="form-group text-center">
+                                                                        <button class="btn btn-primary" type="submit">
+                                                                            Update
+                                                                            <i class="fa fa-send"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </section>
+                                            </div>
+                                        </section>

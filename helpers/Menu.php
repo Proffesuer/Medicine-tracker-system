@@ -8,79 +8,41 @@
 class Menu{
 	
 	
-			public static $navbartopleft = array(
-		array(
-			'path' => 'home', 
-			'label' => 'Home', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'medicine', 
-			'label' => 'Medicine', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'prescription', 
-			'label' => 'Prescription', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'reminder', 
-			'label' => 'Reminder', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'reviews', 
-			'label' => 'Reviews', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'user', 
-			'label' => 'User', 
-			'icon' => ''
-		)
-	);
-		
 			public static $navbarsideleft = array(
 		array(
 			'path' => 'home', 
-			'label' => 'Home', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'medicine', 
-			'label' => 'Medicine', 
-			'icon' => ''
+			'label' => 'Dashboard', 
+			'icon' => '<i class="fa fa-home "></i>'
 		),
 		
 		array(
 			'path' => 'prescription', 
 			'label' => 'Prescription', 
-			'icon' => ''
+			'icon' => '<i class="fa fa-user-md "></i>'
 		),
 		
 		array(
 			'path' => 'reminder', 
 			'label' => 'Reminder', 
-			'icon' => ''
+			'icon' => '<i class="fa fa-comments "></i>'
 		),
 		
 		array(
 			'path' => 'reviews', 
 			'label' => 'Reviews', 
-			'icon' => ''
+			'icon' => '<i class="fa fa-commenting "></i>'
+		),
+		
+		array(
+			'path' => 'medicine', 
+			'label' => 'Medicine', 
+			'icon' => '<i class="fa fa-medkit "></i>'
 		),
 		
 		array(
 			'path' => 'user', 
 			'label' => 'User', 
-			'icon' => ''
+			'icon' => '<i class="fa fa-user "></i>'
 		)
 	);
 		
@@ -94,6 +56,20 @@ class Menu{
 		array(
 			"value" => "Female", 
 			"label" => "Female", 
+		),);
+		
+			public static $role = array(
+		array(
+			"value" => "Administrator", 
+			"label" => "Administrator", 
+		),
+		array(
+			"value" => "patient", 
+			"label" => "patient", 
+		),
+		array(
+			"value" => "Doctor", 
+			"label" => "Doctor", 
 		),);
 		
 }

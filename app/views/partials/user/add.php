@@ -38,7 +38,8 @@ $redirect_to = $this->redirect_to;
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <input id="ctrl-name"  value="<?php  echo $this->set_field_value('name',""); ?>" type="text" placeholder="Enter Name"  required="" name="name"  class="form-control " />
+                                                <input id="ctrl-name"  value="<?php  echo $this->set_field_value('name',""); ?>" type="text" placeholder="Enter Name"  required="" name="name"  data-url="api/json/user_name_value_exist/" data-loading-msg="Checking availability ..." data-available-msg="Available" data-unavailable-msg="Not available" class="form-control  ctrl-check-duplicate" />
+                                                    <div class="check-status"></div> 
                                                 </div>
                                             </div>
                                         </div>
@@ -50,7 +51,8 @@ $redirect_to = $this->redirect_to;
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="">
-                                                    <input id="ctrl-email"  value="<?php  echo $this->set_field_value('email',""); ?>" type="email" placeholder="Enter Email"  required="" name="email"  class="form-control " />
+                                                    <input id="ctrl-email"  value="<?php  echo $this->set_field_value('email',""); ?>" type="email" placeholder="Enter Email"  required="" name="email"  data-url="api/json/user_email_value_exist/" data-loading-msg="Checking availability ..." data-available-msg="Available" data-unavailable-msg="Not available" class="form-control  ctrl-check-duplicate" />
+                                                        <div class="check-status"></div> 
                                                     </div>
                                                 </div>
                                             </div>
@@ -121,7 +123,7 @@ $redirect_to = $this->redirect_to;
                                                             </div>
                                                             <div class="col-sm-8">
                                                                 <div class="input-group">
-                                                                    <input id="ctrl-password"  value="<?php  echo $this->set_field_value('password',""); ?>" type="password" placeholder="Enter Password"  required="" name="password"  class="form-control  password password-strength" />
+                                                                    <input id="ctrl-password"  value="<?php  echo $this->set_field_value('password',""); ?>" type="password" placeholder="Enter Password" maxlength="255"  required="" name="password"  class="form-control  password password-strength" />
                                                                         <div class="input-group-append cursor-pointer btn-toggle-password">
                                                                             <span class="input-group-text"><i class="fa fa-eye"></i></span>
                                                                         </div>
@@ -161,7 +163,36 @@ $redirect_to = $this->redirect_to;
                                                                 </div>
                                                                 <div class="col-sm-8">
                                                                     <div class="">
-                                                                        <input id="ctrl-role"  value="<?php  echo $this->set_field_value('role',""); ?>" type="text" placeholder="Enter Role"  required="" name="role"  class="form-control " />
+                                                                        <select required=""  id="ctrl-role" name="role"  placeholder="Select a value ..."    class="custom-select" >
+                                                                            <option value="">Select a value ...</option>
+                                                                            <?php
+                                                                            $role_options = Menu :: $role;
+                                                                            if(!empty($role_options)){
+                                                                            foreach($role_options as $option){
+                                                                            $value = $option['value'];
+                                                                            $label = $option['label'];
+                                                                            $selected = $this->set_field_selected('role', $value, "");
+                                                                            ?>
+                                                                            <option <?php echo $selected ?> value="<?php echo $value ?>">
+                                                                                <?php echo $label ?>
+                                                                            </option>                                   
+                                                                            <?php
+                                                                            }
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <div class="row">
+                                                                <div class="col-sm-4">
+                                                                    <label class="control-label" for="phone">Phone <span class="text-danger">*</span></label>
+                                                                </div>
+                                                                <div class="col-sm-8">
+                                                                    <div class="">
+                                                                        <input id="ctrl-phone"  value="<?php  echo $this->set_field_value('phone',""); ?>" type="text" placeholder="Enter Phone"  required="" name="phone"  class="form-control " />
                                                                         </div>
                                                                     </div>
                                                                 </div>

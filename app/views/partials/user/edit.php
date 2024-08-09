@@ -41,7 +41,8 @@ $redirect_to = $this->redirect_to;
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <input id="ctrl-name"  value="<?php  echo $data['name']; ?>" type="text" placeholder="Enter Name"  required="" name="name"  class="form-control " />
+                                                <input id="ctrl-name"  value="<?php  echo $data['name']; ?>" type="text" placeholder="Enter Name"  required="" name="name"  data-url="api/json/user_name_value_exist/" data-loading-msg="Checking availability ..." data-available-msg="Available" data-unavailable-msg="Not available" class="form-control  ctrl-check-duplicate" />
+                                                    <div class="check-status"></div> 
                                                 </div>
                                             </div>
                                         </div>
@@ -49,11 +50,28 @@ $redirect_to = $this->redirect_to;
                                     <div class="form-group ">
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <label class="control-label" for="email">Email <span class="text-danger">*</span></label>
+                                                <label class="control-label" for="gender">Gender <span class="text-danger">*</span></label>
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="">
-                                                    <input id="ctrl-email"  value="<?php  echo $data['email']; ?>" type="email" placeholder="Enter Email"  required="" name="email"  class="form-control " />
+                                                    <?php
+                                                    $gender_options = Menu :: $gender;
+                                                    $field_value = $data['gender'];
+                                                    if(!empty($gender_options)){
+                                                    foreach($gender_options as $option){
+                                                    $value = $option['value'];
+                                                    $label = $option['label'];
+                                                    //check if value is among checked options
+                                                    $checked = $this->check_form_field_checked($field_value, $value);
+                                                    ?>
+                                                    <label class="custom-control custom-radio custom-control-inline">
+                                                        <input id="ctrl-gender" class="custom-control-input" <?php echo $checked ?>  value="<?php echo $value ?>" type="radio" required=""   name="gender" />
+                                                            <span class="custom-control-label"><?php echo $label ?></span>
+                                                        </label>
+                                                        <?php
+                                                        }
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -61,128 +79,89 @@ $redirect_to = $this->redirect_to;
                                         <div class="form-group ">
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label class="control-label" for="gender">Gender <span class="text-danger">*</span></label>
+                                                    <label class="control-label" for="image">Image <span class="text-danger">*</span></label>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="">
-                                                        <?php
-                                                        $gender_options = Menu :: $gender;
-                                                        $field_value = $data['gender'];
-                                                        if(!empty($gender_options)){
-                                                        foreach($gender_options as $option){
-                                                        $value = $option['value'];
-                                                        $label = $option['label'];
-                                                        //check if value is among checked options
-                                                        $checked = $this->check_form_field_checked($field_value, $value);
-                                                        ?>
-                                                        <label class="custom-control custom-radio custom-control-inline">
-                                                            <input id="ctrl-gender" class="custom-control-input" <?php echo $checked ?>  value="<?php echo $value ?>" type="radio" required=""   name="gender" />
-                                                                <span class="custom-control-label"><?php echo $label ?></span>
-                                                            </label>
-                                                            <?php
-                                                            }
-                                                            }
-                                                            ?>
+                                                        <div class="dropzone required" input="#ctrl-image" fieldname="image"    data-multiple="false" dropmsg="Choose files or drag and drop files to upload"    btntext="Browse" extensions=".jpg,.png,.gif,.jpeg" filesize="3" maximum="1">
+                                                            <input name="image" id="ctrl-image" required="" class="dropzone-input form-control" value="<?php  echo $data['image']; ?>" type="text"  />
+                                                                <!--<div class="invalid-feedback animated bounceIn text-center">Please a choose file</div>-->
+                                                                <div class="dz-file-limit animated bounceIn text-center text-danger"></div>
+                                                            </div>
                                                         </div>
+                                                        <?php Html :: uploaded_files_list($data['image'], '#ctrl-image'); ?>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group ">
                                                 <div class="row">
                                                     <div class="col-sm-4">
-                                                        <label class="control-label" for="image">Image <span class="text-danger">*</span></label>
+                                                        <label class="control-label" for="DOB">Dob <span class="text-danger">*</span></label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <div class="">
-                                                            <div class="dropzone required" input="#ctrl-image" fieldname="image"    data-multiple="false" dropmsg="Choose files or drag and drop files to upload"    btntext="Browse" extensions=".jpg,.png,.gif,.jpeg" filesize="3" maximum="1">
-                                                                <input name="image" id="ctrl-image" required="" class="dropzone-input form-control" value="<?php  echo $data['image']; ?>" type="text"  />
-                                                                    <!--<div class="invalid-feedback animated bounceIn text-center">Please a choose file</div>-->
-                                                                    <div class="dz-file-limit animated bounceIn text-center text-danger"></div>
+                                                        <div class="input-group">
+                                                            <input id="ctrl-DOB" class="form-control datepicker  datepicker"  required="" value="<?php  echo $data['DOB']; ?>" type="datetime" name="DOB" placeholder="Enter Dob" data-enable-time="false" data-min-date="" data-max-date="" data-date-format="Y-m-d" data-alt-format="F j, Y" data-inline="false" data-no-calendar="false" data-mode="single" />
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                                 </div>
                                                             </div>
-                                                            <?php Html :: uploaded_files_list($data['image'], '#ctrl-image'); ?>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
                                                     <div class="row">
                                                         <div class="col-sm-4">
-                                                            <label class="control-label" for="DOB">Dob <span class="text-danger">*</span></label>
+                                                            <label class="control-label" for="role">Role <span class="text-danger">*</span></label>
                                                         </div>
                                                         <div class="col-sm-8">
-                                                            <div class="input-group">
-                                                                <input id="ctrl-DOB" class="form-control datepicker  datepicker"  required="" value="<?php  echo $data['DOB']; ?>" type="datetime" name="DOB" placeholder="Enter Dob" data-enable-time="false" data-min-date="" data-max-date="" data-date-format="Y-m-d" data-alt-format="F j, Y" data-inline="false" data-no-calendar="false" data-mode="single" />
-                                                                    <div class="input-group-append">
-                                                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                                                                    </div>
+                                                            <div class="">
+                                                                <select required=""  id="ctrl-role" name="role"  placeholder="Select a value ..."    class="custom-select" >
+                                                                    <option value="">Select a value ...</option>
+                                                                    <?php
+                                                                    $role_options = Menu :: $role;
+                                                                    $field_value = $data['role'];
+                                                                    if(!empty($role_options)){
+                                                                    foreach($role_options as $option){
+                                                                    $value = $option['value'];
+                                                                    $label = $option['label'];
+                                                                    $selected = ( $value == $field_value ? 'selected' : null );
+                                                                    ?>
+                                                                    <option <?php echo $selected ?> value="<?php echo $value ?>">
+                                                                        <?php echo $label ?>
+                                                                    </option>                                   
+                                                                    <?php
+                                                                    }
+                                                                    }
+                                                                    ?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <label class="control-label" for="phone">Phone <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <div class="">
+                                                                <input id="ctrl-phone"  value="<?php  echo $data['phone']; ?>" type="text" placeholder="Enter Phone"  required="" name="phone"  class="form-control " />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group ">
-                                                        <div class="row">
-                                                            <div class="col-sm-4">
-                                                                <label class="control-label" for="password">Password <span class="text-danger">*</span></label>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <div class="input-group">
-                                                                    <input id="ctrl-password"  value="<?php  echo $data['password']; ?>" type="password" placeholder="Enter Password"  required="" name="password"  class="form-control  password password-strength" />
-                                                                        <div class="input-group-append cursor-pointer btn-toggle-password">
-                                                                            <span class="input-group-text"><i class="fa fa-eye"></i></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="password-strength-msg">
-                                                                        <small class="font-weight-bold">Should contain</small>
-                                                                        <small class="length chip">6 Characters minimum</small>
-                                                                        <small class="caps chip">Capital Letter</small>
-                                                                        <small class="number chip">Number</small>
-                                                                        <small class="special chip">Symbol</small>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group ">
-                                                            <div class="row">
-                                                                <div class="col-sm-4">
-                                                                    <label class="control-label" for="confirm_password">Confirm Password <span class="text-danger">*</span></label>
-                                                                </div>
-                                                                <div class="col-sm-8">
-                                                                    <div class="input-group">
-                                                                        <input id="ctrl-password-confirm" data-match="#ctrl-password"  class="form-control password-confirm " type="password" name="confirm_password" required placeholder="Confirm Password" />
-                                                                        <div class="input-group-append cursor-pointer btn-toggle-password">
-                                                                            <span class="input-group-text"><i class="fa fa-eye"></i></span>
-                                                                        </div>
-                                                                        <div class="invalid-feedback">
-                                                                            Password does not match
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group ">
-                                                            <div class="row">
-                                                                <div class="col-sm-4">
-                                                                    <label class="control-label" for="role">Role <span class="text-danger">*</span></label>
-                                                                </div>
-                                                                <div class="col-sm-8">
-                                                                    <div class="">
-                                                                        <input id="ctrl-role"  value="<?php  echo $data['role']; ?>" type="text" placeholder="Enter Role"  required="" name="role"  class="form-control " />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-ajax-status"></div>
-                                                        <div class="form-group text-center">
-                                                            <button class="btn btn-primary" type="submit">
-                                                                Update
-                                                                <i class="fa fa-send"></i>
-                                                            </button>
-                                                        </div>
-                                                    </form>
                                                 </div>
-                                            </div>
+                                                <div class="form-ajax-status"></div>
+                                                <div class="form-group text-center">
+                                                    <button class="btn btn-primary" type="submit">
+                                                        Update
+                                                        <i class="fa fa-send"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
-                            </section>
+                            </div>
+                        </div>
+                    </section>
