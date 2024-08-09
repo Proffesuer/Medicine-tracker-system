@@ -6,9 +6,10 @@
             <?php 
             if(user_login_status() == true ){ 
             ?>
-            <button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-            </button>
             <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-responsive-collapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse navbar-responsive-collapse">
