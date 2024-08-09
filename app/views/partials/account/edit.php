@@ -115,7 +115,37 @@ $redirect_to = $this->redirect_to;
                                                         </div>
                                                         <div class="col-sm-8">
                                                             <div class="">
-                                                                <input id="ctrl-role"  value="<?php  echo $data['role']; ?>" type="text" placeholder="Enter Role"  required="" name="role"  class="form-control " />
+                                                                <select required=""  id="ctrl-role" name="role"  placeholder="Select a value ..."    class="custom-select" >
+                                                                    <option value="">Select a value ...</option>
+                                                                    <?php
+                                                                    $role_options = Menu :: $role;
+                                                                    $field_value = $data['role'];
+                                                                    if(!empty($role_options)){
+                                                                    foreach($role_options as $option){
+                                                                    $value = $option['value'];
+                                                                    $label = $option['label'];
+                                                                    $selected = ( $value == $field_value ? 'selected' : null );
+                                                                    ?>
+                                                                    <option <?php echo $selected ?> value="<?php echo $value ?>">
+                                                                        <?php echo $label ?>
+                                                                    </option>                                   
+                                                                    <?php
+                                                                    }
+                                                                    }
+                                                                    ?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <label class="control-label" for="user_id">User Id <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <div class="">
+                                                                <input id="ctrl-user_id"  value="<?php  echo $data['user_id']; ?>" type="number" placeholder="Enter User Id" step="1"  required="" name="user_id"  class="form-control " />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -123,40 +153,28 @@ $redirect_to = $this->redirect_to;
                                                     <div class="form-group ">
                                                         <div class="row">
                                                             <div class="col-sm-4">
-                                                                <label class="control-label" for="user_id">User Id <span class="text-danger">*</span></label>
+                                                                <label class="control-label" for="phone">Phone <span class="text-danger">*</span></label>
                                                             </div>
                                                             <div class="col-sm-8">
                                                                 <div class="">
-                                                                    <input id="ctrl-user_id"  value="<?php  echo $data['user_id']; ?>" type="number" placeholder="Enter User Id" step="1"  required="" name="user_id"  class="form-control " />
+                                                                    <input id="ctrl-phone"  value="<?php  echo $data['phone']; ?>" type="text" placeholder="Enter Phone"  required="" name="phone"  class="form-control " />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group ">
-                                                            <div class="row">
-                                                                <div class="col-sm-4">
-                                                                    <label class="control-label" for="phone">Phone <span class="text-danger">*</span></label>
-                                                                </div>
-                                                                <div class="col-sm-8">
-                                                                    <div class="">
-                                                                        <input id="ctrl-phone"  value="<?php  echo $data['phone']; ?>" type="text" placeholder="Enter Phone"  required="" name="phone"  class="form-control " />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-ajax-status"></div>
-                                                        <div class="form-group text-center">
-                                                            <button class="btn btn-primary" type="submit">
-                                                                Update
-                                                                <i class="fa fa-send"></i>
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                                    </div>
+                                                    <div class="form-ajax-status"></div>
+                                                    <div class="form-group text-center">
+                                                        <button class="btn btn-primary" type="submit">
+                                                            Update
+                                                            <i class="fa fa-send"></i>
+                                                        </button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </section>
-                            
+                            </div>
+                        </section>
+                        

@@ -96,4 +96,18 @@ class Menu{
 			"label" => "Female", 
 		),);
 		
+			public static $role = array(
+		array(
+			"value" => "Administrator", 
+			"label" => "Administrator", 
+		),
+		array(
+			"value" => "patient", 
+			"label" => "patient", 
+		),
+		array(
+			"value" => "Doctor", 
+			"label" => "Doctor", 
+		),);
+		
 }

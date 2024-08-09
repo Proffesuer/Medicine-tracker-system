@@ -18,33 +18,33 @@ class PrescriptionController extends SecureController{
 		$request = $this->request;
 		$db = $this->GetModel();
 		$tablename = $this->tablename;
-		$fields = array("medicine_id", 
+		$fields = array("prescription_id", 
+			"medicine_id", 
+			"patient_id", 
 			"date_issue", 
 			"patient_address", 
-			"patient_id", 
 			"doctor_id", 
 			"quantity_prescribe", 
 			"time_prescribe", 
 			"number_refil", 
 			"days_prescribe", 
-			"instructions", 
-			"prescription_id");
+			"instructions");
 		$pagination = $this->get_pagination(MAX_RECORD_COUNT); // get current pagination e.g array(page_number, page_limit)
 		//search table record
 		if(!empty($request->search)){
 			$text = trim($request->search); 
 			$search_condition = "(
+				prescription.prescription_id LIKE ? OR 
 				prescription.medicine_id LIKE ? OR 
+				prescription.patient_id LIKE ? OR 
 				prescription.date_issue LIKE ? OR 
 				prescription.patient_address LIKE ? OR 
-				prescription.patient_id LIKE ? OR 
 				prescription.doctor_id LIKE ? OR 
 				prescription.quantity_prescribe LIKE ? OR 
 				prescription.time_prescribe LIKE ? OR 
 				prescription.number_refil LIKE ? OR 
 				prescription.days_prescribe LIKE ? OR 
-				prescription.instructions LIKE ? OR 
-				prescription.prescription_id LIKE ?
+				prescription.instructions LIKE ?
 			)";
 			$search_params = array(
 				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
@@ -145,7 +145,7 @@ class PrescriptionController extends SecureController{
 			$tablename = $this->tablename;
 			$request = $this->request;
 			//fillable fields
-			$fields = $this->fields = array("medicine_id","date_issue","patient_address","patient_id","doctor_id","quantity_prescribe","time_prescribe","number_refil","days_prescribe","instructions","prescription_id");
+			$fields = $this->fields = array("medicine_id","date_issue","patient_address","patient_id","doctor_id","quantity_prescribe","time_prescribe","number_refil","days_prescribe","instructions");
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
 				'medicine_id' => 'required',
@@ -158,7 +158,6 @@ class PrescriptionController extends SecureController{
 				'number_refil' => 'required',
 				'days_prescribe' => 'required',
 				'instructions' => 'required',
-				'prescription_id' => 'required|numeric',
 			);
 			$this->sanitize_array = array(
 				'medicine_id' => 'sanitize_string',
@@ -171,7 +170,6 @@ class PrescriptionController extends SecureController{
 				'number_refil' => 'sanitize_string',
 				'days_prescribe' => 'sanitize_string',
 				'instructions' => 'sanitize_string',
-				'prescription_id' => 'sanitize_string',
 			);
 			$this->filter_vals = true; //set whether to remove empty fields
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
@@ -201,7 +199,7 @@ class PrescriptionController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		 //editable fields
-		$fields = $this->fields = array("medicine_id","date_issue","patient_address","patient_id","doctor_id","quantity_prescribe","time_prescribe","number_refil","days_prescribe","instructions","prescription_id");
+		$fields = $this->fields = array("prescription_id","medicine_id","date_issue","patient_address","patient_id","doctor_id","quantity_prescribe","time_prescribe","number_refil","days_prescribe","instructions");
 		if($formdata){
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
@@ -215,7 +213,6 @@ class PrescriptionController extends SecureController{
 				'number_refil' => 'required',
 				'days_prescribe' => 'required',
 				'instructions' => 'required',
-				'prescription_id' => 'required|numeric',
 			);
 			$this->sanitize_array = array(
 				'medicine_id' => 'sanitize_string',
@@ -228,7 +225,6 @@ class PrescriptionController extends SecureController{
 				'number_refil' => 'sanitize_string',
 				'days_prescribe' => 'sanitize_string',
 				'instructions' => 'sanitize_string',
-				'prescription_id' => 'sanitize_string',
 			);
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
 			if($this->validated()){
@@ -272,7 +268,7 @@ class PrescriptionController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		//editable fields
-		$fields = $this->fields = array("medicine_id","date_issue","patient_address","patient_id","doctor_id","quantity_prescribe","time_prescribe","number_refil","days_prescribe","instructions","prescription_id");
+		$fields = $this->fields = array("prescription_id","medicine_id","date_issue","patient_address","patient_id","doctor_id","quantity_prescribe","time_prescribe","number_refil","days_prescribe","instructions");
 		$page_error = null;
 		if($formdata){
 			$postdata = array();
@@ -291,7 +287,6 @@ class PrescriptionController extends SecureController{
 				'number_refil' => 'required',
 				'days_prescribe' => 'required',
 				'instructions' => 'required',
-				'prescription_id' => 'required|numeric',
 			);
 			$this->sanitize_array = array(
 				'medicine_id' => 'sanitize_string',
@@ -304,7 +299,6 @@ class PrescriptionController extends SecureController{
 				'number_refil' => 'sanitize_string',
 				'days_prescribe' => 'sanitize_string',
 				'instructions' => 'sanitize_string',
-				'prescription_id' => 'sanitize_string',
 			);
 			$this->filter_rules = true; //filter validation rules by excluding fields not in the formdata
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
