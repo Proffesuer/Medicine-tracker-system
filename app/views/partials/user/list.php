@@ -114,14 +114,14 @@ $show_pagination = $this->show_pagination;
                                                     </label>
                                                 </th>
                                                 <th class="td-sno">#</th>
-                                                <th  class="td-id"> Id</th>
                                                 <th  class="td-name"> Name</th>
                                                 <th  class="td-email"> Email</th>
                                                 <th  class="td-gender"> Gender</th>
                                                 <th  class="td-image"> Image</th>
                                                 <th  class="td-DOB"> Dob</th>
-                                                <th  class="td-password"> Password</th>
                                                 <th  class="td-role"> Role</th>
+                                                <th  class="td-user_id"> User Id</th>
+                                                <th  class="td-phone"> Phone</th>
                                                 <th class="td-btn"></th>
                                             </tr>
                                         </thead>
@@ -133,21 +133,20 @@ $show_pagination = $this->show_pagination;
                                             <?php
                                             $counter = 0;
                                             foreach($records as $data){
-                                            $rec_id = (!empty($data['id']) ? urlencode($data['id']) : null);
+                                            $rec_id = (!empty($data['user_id']) ? urlencode($data['user_id']) : null);
                                             $counter++;
                                             ?>
                                             <tr>
                                                 <th class=" td-checkbox">
                                                     <label class="custom-control custom-checkbox custom-control-inline">
-                                                        <input class="optioncheck custom-control-input" name="optioncheck[]" value="<?php echo $data['id'] ?>" type="checkbox" />
+                                                        <input class="optioncheck custom-control-input" name="optioncheck[]" value="<?php echo $data['user_id'] ?>" type="checkbox" />
                                                             <span class="custom-control-label"></span>
                                                         </label>
                                                     </th>
                                                     <th class="td-sno"><?php echo $counter; ?></th>
-                                                    <td class="td-id"><a href="<?php print_link("user/view/$data[id]") ?>"><?php echo $data['id']; ?></a></td>
                                                     <td class="td-name">
                                                         <span  data-value="<?php echo $data['name']; ?>" 
-                                                            data-pk="<?php echo $data['id'] ?>" 
+                                                            data-pk="<?php echo $data['user_id'] ?>" 
                                                             data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
                                                             data-name="name" 
                                                             data-title="Enter Name" 
@@ -164,7 +163,7 @@ $show_pagination = $this->show_pagination;
                                                     <td class="td-gender">
                                                         <span  data-source='<?php echo json_encode_quote(Menu :: $gender); ?>' 
                                                             data-value="<?php echo $data['gender']; ?>" 
-                                                            data-pk="<?php echo $data['id'] ?>" 
+                                                            data-pk="<?php echo $data['user_id'] ?>" 
                                                             data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
                                                             data-name="gender" 
                                                             data-title="Enter Gender" 
@@ -177,25 +176,11 @@ $show_pagination = $this->show_pagination;
                                                             <?php echo $data['gender']; ?> 
                                                         </span>
                                                     </td>
-                                                    <td class="td-image">
-                                                        <span  data-value="<?php echo $data['image']; ?>" 
-                                                            data-pk="<?php echo $data['id'] ?>" 
-                                                            data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
-                                                            data-name="image" 
-                                                            data-title="Browse..." 
-                                                            data-placement="left" 
-                                                            data-toggle="click" 
-                                                            data-type="text" 
-                                                            data-mode="popover" 
-                                                            data-showbuttons="left" 
-                                                            class="is-editable" >
-                                                            <?php echo $data['image']; ?> 
-                                                        </span>
-                                                    </td>
+                                                    <td class="td-image"><?php Html :: page_img($data['image'],50,50,1); ?></td>
                                                     <td class="td-DOB">
                                                         <span  data-flatpickr="{ enableTime: false, minDate: '', maxDate: ''}" 
                                                             data-value="<?php echo $data['DOB']; ?>" 
-                                                            data-pk="<?php echo $data['id'] ?>" 
+                                                            data-pk="<?php echo $data['user_id'] ?>" 
                                                             data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
                                                             data-name="DOB" 
                                                             data-title="Enter Dob" 
@@ -208,24 +193,9 @@ $show_pagination = $this->show_pagination;
                                                             <?php echo $data['DOB']; ?> 
                                                         </span>
                                                     </td>
-                                                    <td class="td-password">
-                                                        <span  data-value="<?php echo $data['password']; ?>" 
-                                                            data-pk="<?php echo $data['id'] ?>" 
-                                                            data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
-                                                            data-name="password" 
-                                                            data-title="Enter Password" 
-                                                            data-placement="left" 
-                                                            data-toggle="click" 
-                                                            data-type="password" 
-                                                            data-mode="popover" 
-                                                            data-showbuttons="left" 
-                                                            class="is-editable" >
-                                                            <?php echo $data['password']; ?> 
-                                                        </span>
-                                                    </td>
                                                     <td class="td-role">
                                                         <span  data-value="<?php echo $data['role']; ?>" 
-                                                            data-pk="<?php echo $data['id'] ?>" 
+                                                            data-pk="<?php echo $data['user_id'] ?>" 
                                                             data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
                                                             data-name="role" 
                                                             data-title="Enter Role" 
@@ -238,6 +208,22 @@ $show_pagination = $this->show_pagination;
                                                             <?php echo $data['role']; ?> 
                                                         </span>
                                                     </td>
+                                                    <td class="td-user_id">
+                                                        <span  data-value="<?php echo $data['user_id']; ?>" 
+                                                            data-pk="<?php echo $data['user_id'] ?>" 
+                                                            data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
+                                                            data-name="user_id" 
+                                                            data-title="Enter User Id" 
+                                                            data-placement="left" 
+                                                            data-toggle="click" 
+                                                            data-type="number" 
+                                                            data-mode="popover" 
+                                                            data-showbuttons="left" 
+                                                            class="is-editable" >
+                                                            <?php echo $data['user_id']; ?> 
+                                                        </span>
+                                                    </td>
+                                                    <td class="td-phone"><a href="<?php print_link("tel:$data[phone]") ?>"><?php echo $data['phone']; ?></a></td>
                                                     <th class="td-btn">
                                                         <a class="btn btn-sm btn-success has-tooltip" title="View Record" href="<?php print_link("user/view/$rec_id"); ?>">
                                                             <i class="fa fa-eye"></i> View
