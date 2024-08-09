@@ -222,21 +222,7 @@ $show_pagination = $this->show_pagination;
                                                             <?php echo $data['role']; ?> 
                                                         </span>
                                                     </td>
-                                                    <td class="td-user_id">
-                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['user_id']; ?>" 
-                                                            data-pk="<?php echo $data['user_id'] ?>" 
-                                                            data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
-                                                            data-name="user_id" 
-                                                            data-title="Enter User Id" 
-                                                            data-placement="left" 
-                                                            data-toggle="click" 
-                                                            data-type="number" 
-                                                            data-mode="popover" 
-                                                            data-showbuttons="left" 
-                                                            class="is-editable" <?php } ?>>
-                                                            <?php echo $data['user_id']; ?> 
-                                                        </span>
-                                                    </td>
+                                                    <td class="td-user_id"> <?php echo $data['user_id']; ?></td>
                                                     <td class="td-phone"><a href="<?php print_link("tel:$data[phone]") ?>"><?php echo $data['phone']; ?></a></td>
                                                     <th class="td-btn">
                                                         <?php if($can_view){ ?>

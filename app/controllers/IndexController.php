@@ -102,7 +102,7 @@ class IndexController extends BaseController{
 			$request = $this->request;
 			$db = $this->GetModel();
 			$tablename = $this->tablename;
-			$fields = $this->fields = array("name","email","gender","image","DOB","password","role","user_id","phone"); //registration fields
+			$fields = $this->fields = array("name","email","gender","image","DOB","password","role","phone"); //registration fields
 			$postdata = $this->format_request_data($formdata);
 			$cpassword = $postdata['confirm_password'];
 			$password = $postdata['password'];
@@ -117,7 +117,6 @@ class IndexController extends BaseController{
 				'DOB' => 'required',
 				'password' => 'required',
 				'role' => 'required',
-				'user_id' => 'required|numeric',
 				'phone' => 'required',
 			);
 			$this->sanitize_array = array(
@@ -127,7 +126,6 @@ class IndexController extends BaseController{
 				'image' => 'sanitize_string',
 				'DOB' => 'sanitize_string',
 				'role' => 'sanitize_string',
-				'user_id' => 'sanitize_string',
 				'phone' => 'sanitize_string',
 			);
 			$this->filter_vals = true; //set whether to remove empty fields

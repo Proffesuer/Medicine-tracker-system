@@ -136,7 +136,7 @@ class UserController extends SecureController{
 			$tablename = $this->tablename;
 			$request = $this->request;
 			//fillable fields
-			$fields = $this->fields = array("name","email","gender","image","DOB","password","role","user_id","phone");
+			$fields = $this->fields = array("name","email","gender","image","DOB","password","role","phone");
 			$postdata = $this->format_request_data($formdata);
 			$cpassword = $postdata['confirm_password'];
 			$password = $postdata['password'];
@@ -151,7 +151,6 @@ class UserController extends SecureController{
 				'DOB' => 'required',
 				'password' => 'required',
 				'role' => 'required',
-				'user_id' => 'required|numeric',
 				'phone' => 'required',
 			);
 			$this->sanitize_array = array(
@@ -161,7 +160,6 @@ class UserController extends SecureController{
 				'image' => 'sanitize_string',
 				'DOB' => 'sanitize_string',
 				'role' => 'sanitize_string',
-				'user_id' => 'sanitize_string',
 				'phone' => 'sanitize_string',
 			);
 			$this->filter_vals = true; //set whether to remove empty fields
@@ -205,7 +203,7 @@ class UserController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		 //editable fields
-		$fields = $this->fields = array("name","gender","image","DOB","role","user_id","phone");
+		$fields = $this->fields = array("name","gender","image","DOB","role","phone");
 		if($formdata){
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
@@ -214,7 +212,6 @@ class UserController extends SecureController{
 				'image' => 'required',
 				'DOB' => 'required',
 				'role' => 'required',
-				'user_id' => 'required|numeric',
 				'phone' => 'required',
 			);
 			$this->sanitize_array = array(
@@ -223,7 +220,6 @@ class UserController extends SecureController{
 				'image' => 'sanitize_string',
 				'DOB' => 'sanitize_string',
 				'role' => 'sanitize_string',
-				'user_id' => 'sanitize_string',
 				'phone' => 'sanitize_string',
 			);
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
@@ -275,7 +271,7 @@ class UserController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		//editable fields
-		$fields = $this->fields = array("name","gender","image","DOB","role","user_id","phone");
+		$fields = $this->fields = array("name","gender","image","DOB","role","phone");
 		$page_error = null;
 		if($formdata){
 			$postdata = array();
@@ -289,7 +285,6 @@ class UserController extends SecureController{
 				'image' => 'required',
 				'DOB' => 'required',
 				'role' => 'required',
-				'user_id' => 'required|numeric',
 				'phone' => 'required',
 			);
 			$this->sanitize_array = array(
@@ -298,7 +293,6 @@ class UserController extends SecureController{
 				'image' => 'sanitize_string',
 				'DOB' => 'sanitize_string',
 				'role' => 'sanitize_string',
-				'user_id' => 'sanitize_string',
 				'phone' => 'sanitize_string',
 			);
 			$this->filter_rules = true; //filter validation rules by excluding fields not in the formdata

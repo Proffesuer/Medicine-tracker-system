@@ -16,21 +16,27 @@ class ACL
 	public static $role_pages = array(
 			'administrator' =>
 						array(
-							'medicine' => array('list','view','add','edit', 'editfield','delete','import_data'),
-							'prescription' => array('list','view','add','edit', 'editfield','delete','import_data'),
-							'reminder' => array('list','view','add','edit', 'editfield','delete','import_data'),
+							'medicine' => array('list','view'),
+							'prescription' => array('list','view'),
+							'reminder' => array('list','view'),
 							'reviews' => array('list','view','add','edit', 'editfield','delete','import_data'),
 							'user' => array('list','view','add','edit', 'editfield','delete','import_data','userregister','accountedit','accountview')
 						),
 		
 			'patient' =>
 						array(
+							'prescription' => array('list','view'),
+							'reminder' => array('list','view'),
+							'reviews' => array('list','view','add','edit', 'editfield'),
 							'user' => array('userregister','accountedit','accountview')
 						),
 		
 			'doctor' =>
 						array(
-							
+							'medicine' => array('list','view','add','edit', 'editfield','delete','import_data'),
+							'prescription' => array('list','view','add','edit', 'editfield'),
+							'reminder' => array('list','view','add','edit', 'editfield'),
+							'reviews' => array('list','view','add','edit', 'editfield')
 						)
 		);
 

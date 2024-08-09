@@ -45,7 +45,7 @@ class AccountController extends SecureController{
 		$rec_id = $this->rec_id = USER_ID;
 		$tablename = $this->tablename;
 		 //editable fields
-		$fields = $this->fields = array("name","gender","image","DOB","role","user_id","phone");
+		$fields = $this->fields = array("name","gender","image","DOB","role","phone");
 		if($formdata){
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
@@ -54,7 +54,6 @@ class AccountController extends SecureController{
 				'image' => 'required',
 				'DOB' => 'required',
 				'role' => 'required',
-				'user_id' => 'required|numeric',
 				'phone' => 'required',
 			);
 			$this->sanitize_array = array(
@@ -63,7 +62,6 @@ class AccountController extends SecureController{
 				'image' => 'sanitize_string',
 				'DOB' => 'sanitize_string',
 				'role' => 'sanitize_string',
-				'user_id' => 'sanitize_string',
 				'phone' => 'sanitize_string',
 			);
 			$modeldata = $this->modeldata = $this->validate_form($postdata);

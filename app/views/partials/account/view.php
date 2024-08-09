@@ -174,21 +174,7 @@ $show_export_btn = $this->show_export_btn;
                                                     </tr>
                                                     <tr  class="td-user_id">
                                                         <th class="title"> User Id: </th>
-                                                        <td class="value">
-                                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['user_id']; ?>" 
-                                                                data-pk="<?php echo $data['user_id'] ?>" 
-                                                                data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
-                                                                data-name="user_id" 
-                                                                data-title="Enter User Id" 
-                                                                data-placement="left" 
-                                                                data-toggle="click" 
-                                                                data-type="number" 
-                                                                data-mode="popover" 
-                                                                data-showbuttons="left" 
-                                                                class="is-editable" <?php } ?>>
-                                                                <?php echo $data['user_id']; ?> 
-                                                            </span>
-                                                        </td>
+                                                        <td class="value"> <?php echo $data['user_id']; ?></td>
                                                     </tr>
                                                     <tr  class="td-phone">
                                                         <th class="title"> Phone: </th>
