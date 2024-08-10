@@ -15,7 +15,14 @@ $redirect_to = $this->redirect_to;
         <div class="container">
             <div class="row ">
                 <div class="col ">
-                    <h4 class="record-title">Add New User</h4>
+                    <h4 class="record-title">User registration</h4>
+                </div>
+                <div class="col-sm-6 comp-grid">
+                    <div class="">
+                        <div class="text-center">
+                            Already have an account?  <a class="btn btn-primary" href="<?php print_link('') ?>"> Login</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -29,7 +36,8 @@ $redirect_to = $this->redirect_to;
                 <div class="col-md-7 comp-grid">
                     <?php $this :: display_page_errors(); ?>
                     <div  class="bg-light p-3 animated fadeIn page-content">
-                        <form id="user-add-form" role="form" novalidate enctype="multipart/form-data" class="form page-form form-horizontal needs-validation" action="<?php print_link("user/add?csrf_token=$csrf_token") ?>" method="post">
+                        <form id="user-userregister-form" role="form" novalidate enctype="multipart/form-data" class="form page-form form-horizontal needs-validation" action="<?php print_link("index/register?csrf_token=$csrf_token") ?>" method="post">
+                            <!--[main-form-start]-->
                             <div>
                                 <div class="form-group ">
                                     <div class="row">
@@ -161,7 +169,7 @@ $redirect_to = $this->redirect_to;
                                                                 </div>
                                                                 <div class="col-sm-8">
                                                                     <div class="input-group">
-                                                                        <input id="ctrl-password"  value="<?php  echo $this->set_field_value('password',""); ?>" type="password" placeholder="Enter Password" maxlength="255"  required="" name="password"  class="form-control  password password-strength" />
+                                                                        <input id="ctrl-password"  value="<?php  echo $this->set_field_value('password',""); ?>" type="password" placeholder="Enter Password"  required="" name="password"  class="form-control  password password-strength" />
                                                                             <div class="input-group-append cursor-pointer btn-toggle-password">
                                                                                 <span class="input-group-text"><i class="material-icons">visibility</i></span>
                                                                             </div>
@@ -195,8 +203,8 @@ $redirect_to = $this->redirect_to;
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <!--[main-form-end]-->
                                                         <div class="form-group form-submit-btn-holder text-center mt-3">
-                                                            <div class="form-ajax-status"></div>
                                                             <button class="btn btn-primary" type="submit">
                                                                 Submit
                                                                 <i class="material-icons">send</i>
@@ -209,3 +217,4 @@ $redirect_to = $this->redirect_to;
                                     </div>
                                 </div>
                             </section>
+                            

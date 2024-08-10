@@ -3,7 +3,7 @@
  * Reminder Page Controller
  * @category  Controller
  */
-class ReminderController extends BaseController{
+class ReminderController extends SecureController{
 	function __construct(){
 		parent::__construct();
 		$this->tablename = "reminder";

@@ -1,3 +1,10 @@
+<?php 
+//check if current user role is allowed access to the pages
+$can_add = ACL::is_allowed("prescription/add");
+$can_edit = ACL::is_allowed("prescription/edit");
+$can_view = ACL::is_allowed("prescription/view");
+$can_delete = ACL::is_allowed("prescription/delete");
+?>
 <?php
 $comp_model = new SharedController;
 $page_element_id = "view-page-" . random_str();
@@ -52,7 +59,7 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-medicine">
                                         <th class="title"> Medicine: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['medicine']; ?>" 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['medicine']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("prescription/editfield/" . urlencode($data['id'])); ?>" 
                                                 data-name="medicine" 
@@ -62,7 +69,7 @@ $show_export_btn = $this->show_export_btn;
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
-                                                class="is-editable" >
+                                                class="is-editable" <?php } ?>>
                                                 <?php echo $data['medicine']; ?> 
                                             </span>
                                         </td>
@@ -70,7 +77,7 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-quantity">
                                         <th class="title"> Quantity: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['quantity']; ?>" 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['quantity']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("prescription/editfield/" . urlencode($data['id'])); ?>" 
                                                 data-name="quantity" 
@@ -80,7 +87,7 @@ $show_export_btn = $this->show_export_btn;
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
-                                                class="is-editable" >
+                                                class="is-editable" <?php } ?>>
                                                 <?php echo $data['quantity']; ?> 
                                             </span>
                                         </td>
@@ -88,7 +95,7 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-times">
                                         <th class="title"> Times: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['times']; ?>" 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['times']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("prescription/editfield/" . urlencode($data['id'])); ?>" 
                                                 data-name="times" 
@@ -98,7 +105,7 @@ $show_export_btn = $this->show_export_btn;
                                                 data-type="time" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
-                                                class="is-editable" >
+                                                class="is-editable" <?php } ?>>
                                                 <?php echo $data['times']; ?> 
                                             </span>
                                         </td>
@@ -106,7 +113,7 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-days_prescribed">
                                         <th class="title"> Days Prescribed: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['days_prescribed']; ?>" 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['days_prescribed']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("prescription/editfield/" . urlencode($data['id'])); ?>" 
                                                 data-name="days_prescribed" 
@@ -116,7 +123,7 @@ $show_export_btn = $this->show_export_btn;
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
-                                                class="is-editable" >
+                                                class="is-editable" <?php } ?>>
                                                 <?php echo $data['days_prescribed']; ?> 
                                             </span>
                                         </td>
@@ -124,7 +131,7 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-number_refils">
                                         <th class="title"> Number Refils: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['number_refils']; ?>" 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['number_refils']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("prescription/editfield/" . urlencode($data['id'])); ?>" 
                                                 data-name="number_refils" 
@@ -134,7 +141,7 @@ $show_export_btn = $this->show_export_btn;
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
-                                                class="is-editable" >
+                                                class="is-editable" <?php } ?>>
                                                 <?php echo $data['number_refils']; ?> 
                                             </span>
                                         </td>
@@ -142,7 +149,7 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-instructions">
                                         <th class="title"> Instructions: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['instructions']; ?>" 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['instructions']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("prescription/editfield/" . urlencode($data['id'])); ?>" 
                                                 data-name="instructions" 
@@ -152,7 +159,7 @@ $show_export_btn = $this->show_export_btn;
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
-                                                class="is-editable" >
+                                                class="is-editable" <?php } ?>>
                                                 <?php echo $data['instructions']; ?> 
                                             </span>
                                         </td>
@@ -160,7 +167,7 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-patient">
                                         <th class="title"> Patient: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['patient']; ?>" 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['patient']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("prescription/editfield/" . urlencode($data['id'])); ?>" 
                                                 data-name="patient" 
@@ -170,7 +177,7 @@ $show_export_btn = $this->show_export_btn;
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
-                                                class="is-editable" >
+                                                class="is-editable" <?php } ?>>
                                                 <?php echo $data['patient']; ?> 
                                             </span>
                                         </td>
@@ -178,7 +185,7 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-doctor">
                                         <th class="title"> Doctor: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['doctor']; ?>" 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['doctor']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("prescription/editfield/" . urlencode($data['id'])); ?>" 
                                                 data-name="doctor" 
@@ -188,7 +195,7 @@ $show_export_btn = $this->show_export_btn;
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
-                                                class="is-editable" >
+                                                class="is-editable" <?php } ?>>
                                                 <?php echo $data['doctor']; ?> 
                                             </span>
                                         </td>
@@ -196,7 +203,7 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-date">
                                         <th class="title"> Date: </th>
                                         <td class="value">
-                                            <span  data-flatpickr="{ minDate: '', maxDate: ''}" 
+                                            <span <?php if($can_edit){ ?> data-flatpickr="{ minDate: '', maxDate: ''}" 
                                                 data-value="<?php echo $data['date']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("prescription/editfield/" . urlencode($data['id'])); ?>" 
@@ -207,7 +214,7 @@ $show_export_btn = $this->show_export_btn;
                                                 data-type="flatdatetimepicker" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
-                                                class="is-editable" >
+                                                class="is-editable" <?php } ?>>
                                                 <?php echo $data['date']; ?> 
                                             </span>
                                         </td>
@@ -244,12 +251,16 @@ $show_export_btn = $this->show_export_btn;
                                                         </a>
                                                     </div>
                                                 </div>
+                                                <?php if($can_edit){ ?>
                                                 <a class="btn btn-sm btn-info"  href="<?php print_link("prescription/edit/$rec_id"); ?>">
                                                     <i class="material-icons">edit</i> Edit
                                                 </a>
+                                                <?php } ?>
+                                                <?php if($can_delete){ ?>
                                                 <a class="btn btn-sm btn-danger record-delete-btn mx-1"  href="<?php print_link("prescription/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
                                                     <i class="material-icons">clear</i> Delete
                                                 </a>
+                                                <?php } ?>
                                             </div>
                                             <?php
                                             }

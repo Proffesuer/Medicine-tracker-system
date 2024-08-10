@@ -46,44 +46,6 @@ class Menu{
 		)
 	);
 		
-			public static $navbarsideleft = array(
-		array(
-			'path' => 'home', 
-			'label' => 'Home', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'user', 
-			'label' => 'User', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'medicine', 
-			'label' => 'Medicine', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'prescription', 
-			'label' => 'Prescription', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'reminder', 
-			'label' => 'Reminder', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'reviews', 
-			'label' => 'Reviews', 
-			'icon' => ''
-		)
-	);
-		
 	
 	
 			public static $gender = array(
@@ -94,6 +56,20 @@ class Menu{
 		array(
 			"value" => "Female", 
 			"label" => "Female", 
+		),);
+		
+			public static $role = array(
+		array(
+			"value" => "Administrator", 
+			"label" => "Administrator", 
+		),
+		array(
+			"value" => "patient", 
+			"label" => "patient", 
+		),
+		array(
+			"value" => "Doctor", 
+			"label" => "Doctor", 
 		),);
 		
 }

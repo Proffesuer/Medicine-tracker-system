@@ -902,10 +902,7 @@ $('.ajax-page.infinite-scroll').bind('scroll', function(){
 		appendPageData(ajaxPage);
 	}
 });
-$(document).ready(function () {
-	$('#sidebarCollapse').on('click', function () {
-		$('#sidebar, #main-content').toggleClass('active');
-	});
+$(function(){
 	var navTopHeight = $('#topbar').outerHeight();
 	document.body.style.paddingTop = navTopHeight + 'px';
 });

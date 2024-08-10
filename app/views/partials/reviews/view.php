@@ -1,3 +1,10 @@
+<?php 
+//check if current user role is allowed access to the pages
+$can_add = ACL::is_allowed("reviews/add");
+$can_edit = ACL::is_allowed("reviews/edit");
+$can_view = ACL::is_allowed("reviews/view");
+$can_delete = ACL::is_allowed("reviews/delete");
+?>
 <?php
 $comp_model = new SharedController;
 $page_element_id = "view-page-" . random_str();
@@ -52,7 +59,7 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-patient">
                                         <th class="title"> Patient: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['patient']; ?>" 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['patient']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("reviews/editfield/" . urlencode($data['id'])); ?>" 
                                                 data-name="patient" 
@@ -62,7 +69,7 @@ $show_export_btn = $this->show_export_btn;
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
-                                                class="is-editable" >
+                                                class="is-editable" <?php } ?>>
                                                 <?php echo $data['patient']; ?> 
                                             </span>
                                         </td>
@@ -70,7 +77,7 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-dcotor">
                                         <th class="title"> Dcotor: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['dcotor']; ?>" 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['dcotor']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("reviews/editfield/" . urlencode($data['id'])); ?>" 
                                                 data-name="dcotor" 
@@ -80,7 +87,7 @@ $show_export_btn = $this->show_export_btn;
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
-                                                class="is-editable" >
+                                                class="is-editable" <?php } ?>>
                                                 <?php echo $data['dcotor']; ?> 
                                             </span>
                                         </td>
@@ -88,7 +95,7 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-doctor_message">
                                         <th class="title"> Doctor Message: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['doctor_message']; ?>" 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['doctor_message']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("reviews/editfield/" . urlencode($data['id'])); ?>" 
                                                 data-name="doctor_message" 
@@ -98,7 +105,7 @@ $show_export_btn = $this->show_export_btn;
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
-                                                class="is-editable" >
+                                                class="is-editable" <?php } ?>>
                                                 <?php echo $data['doctor_message']; ?> 
                                             </span>
                                         </td>
@@ -106,7 +113,7 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-patient_message">
                                         <th class="title"> Patient Message: </th>
                                         <td class="value">
-                                            <span  data-value="<?php echo $data['patient_message']; ?>" 
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['patient_message']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("reviews/editfield/" . urlencode($data['id'])); ?>" 
                                                 data-name="patient_message" 
@@ -116,7 +123,7 @@ $show_export_btn = $this->show_export_btn;
                                                 data-type="text" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
-                                                class="is-editable" >
+                                                class="is-editable" <?php } ?>>
                                                 <?php echo $data['patient_message']; ?> 
                                             </span>
                                         </td>
@@ -124,7 +131,7 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-date">
                                         <th class="title"> Date: </th>
                                         <td class="value">
-                                            <span  data-flatpickr="{ minDate: '', maxDate: ''}" 
+                                            <span <?php if($can_edit){ ?> data-flatpickr="{ minDate: '', maxDate: ''}" 
                                                 data-value="<?php echo $data['date']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("reviews/editfield/" . urlencode($data['id'])); ?>" 
@@ -135,7 +142,7 @@ $show_export_btn = $this->show_export_btn;
                                                 data-type="flatdatetimepicker" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
-                                                class="is-editable" >
+                                                class="is-editable" <?php } ?>>
                                                 <?php echo $data['date']; ?> 
                                             </span>
                                         </td>
@@ -172,12 +179,16 @@ $show_export_btn = $this->show_export_btn;
                                                         </a>
                                                     </div>
                                                 </div>
+                                                <?php if($can_edit){ ?>
                                                 <a class="btn btn-sm btn-info"  href="<?php print_link("reviews/edit/$rec_id"); ?>">
                                                     <i class="material-icons">edit</i> Edit
                                                 </a>
+                                                <?php } ?>
+                                                <?php if($can_delete){ ?>
                                                 <a class="btn btn-sm btn-danger record-delete-btn mx-1"  href="<?php print_link("reviews/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
                                                     <i class="material-icons">clear</i> Delete
                                                 </a>
+                                                <?php } ?>
                                             </div>
                                             <?php
                                             }
