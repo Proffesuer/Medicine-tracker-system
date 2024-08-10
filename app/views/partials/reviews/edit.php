@@ -127,7 +127,7 @@ $redirect_to = $this->redirect_to;
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="input-group">
-                                                <input id="ctrl-date" class="form-control datepicker  datepicker" required="" value="<?php  echo $data['date']; ?>" type="datetime"  name="date" placeholder="Enter Date" data-enable-time="true" data-min-date="<?php echo datetime_now(); ?>" data-max-date="<?php echo datetime_now(); ?>" data-date-format="Y-m-d H:i:S" data-alt-format="F j, Y - H:i" data-inline="false" data-no-calendar="false" data-mode="single" /> 
+                                                <input id="ctrl-date" class="form-control datepicker  datepicker"  required="" value="<?php  echo $data['date']; ?>" type="datetime" name="date" placeholder="Enter Date" data-enable-time="false" data-min-date="<?php echo datetime_now(); ?>" data-max-date="<?php echo datetime_now(); ?>" data-date-format="Y-m-d" data-alt-format="F j, Y" data-inline="false" data-no-calendar="false" data-mode="single" />
                                                     <div class="input-group-append">
                                                         <span class="input-group-text"><i class="material-icons">date_range</i></span>
                                                     </div>

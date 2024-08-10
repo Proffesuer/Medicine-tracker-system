@@ -217,7 +217,7 @@ $show_pagination = $this->show_pagination;
                                                         </span>
                                                     </td>
                                                     <td class="td-date">
-                                                        <span <?php if($can_edit){ ?> data-flatpickr="{ minDate: '<?php echo datetime_now(); ?>', maxDate: '<?php echo datetime_now(); ?>'}" 
+                                                        <span <?php if($can_edit){ ?> data-flatpickr="{ enableTime: false, minDate: '<?php echo datetime_now(); ?>', maxDate: '<?php echo datetime_now(); ?>'}" 
                                                             data-value="<?php echo $data['date']; ?>" 
                                                             data-pk="<?php echo $data['id'] ?>" 
                                                             data-url="<?php print_link("reviews/editfield/" . urlencode($data['id'])); ?>" 
