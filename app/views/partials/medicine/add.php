@@ -62,7 +62,20 @@ $redirect_to = $this->redirect_to;
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="">
-                                                        <input id="ctrl-precautions"  value="<?php  echo $this->set_field_value('precautions',""); ?>" type="text" placeholder="Enter Precautions"  required="" name="precautions"  class="form-control " />
+                                                        <textarea placeholder="Enter Precautions" id="ctrl-precautions"  required="" rows="5" name="precautions" class=" form-control"><?php  echo $this->set_field_value('precautions',""); ?></textarea>
+                                                        <!--<div class="invalid-feedback animated bounceIn text-center">Please enter text</div>-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label class="control-label" for="storage">Storage <span class="text-danger">*</span></label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div class="">
+                                                        <input id="ctrl-storage"  value="<?php  echo $this->set_field_value('storage',"Store in a Cool Dry Place"); ?>" type="text" placeholder="Enter Storage"  required="" name="storage"  class="form-control " />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -70,42 +83,30 @@ $redirect_to = $this->redirect_to;
                                             <div class="form-group ">
                                                 <div class="row">
                                                     <div class="col-sm-4">
-                                                        <label class="control-label" for="storage">Storage <span class="text-danger">*</span></label>
+                                                        <label class="control-label" for="Date">Date <span class="text-danger">*</span></label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <div class="">
-                                                            <input id="ctrl-storage"  value="<?php  echo $this->set_field_value('storage',""); ?>" type="text" placeholder="Enter Storage"  required="" name="storage"  class="form-control " />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <label class="control-label" for="Date">Date <span class="text-danger">*</span></label>
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <div class="input-group">
-                                                                <input id="ctrl-Date" class="form-control datepicker  datepicker" required="" value="<?php  echo $this->set_field_value('Date',""); ?>" type="datetime"  name="Date" placeholder="Enter Date" data-enable-time="true" data-min-date="" data-max-date="" data-date-format="Y-m-d H:i:S" data-alt-format="F j, Y - H:i" data-inline="false" data-no-calendar="false" data-mode="single" /> 
-                                                                    <div class="input-group-append">
-                                                                        <span class="input-group-text"><i class="material-icons">date_range</i></span>
-                                                                    </div>
+                                                        <div class="input-group">
+                                                            <input id="ctrl-Date" class="form-control datepicker  datepicker"  required="" value="<?php  echo $this->set_field_value('Date',date_now()); ?>" type="datetime" name="Date" placeholder="Enter Date" data-enable-time="false" data-min-date="<?php echo datetime_now(); ?>" data-max-date="<?php echo datetime_now(); ?>" data-date-format="Y-m-d" data-alt-format="F j, Y" data-inline="false" data-no-calendar="false" data-mode="single" />
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text"><i class="material-icons">date_range</i></span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group form-submit-btn-holder text-center mt-3">
-                                                    <div class="form-ajax-status"></div>
-                                                    <button class="btn btn-primary" type="submit">
-                                                        Submit
-                                                        <i class="material-icons">send</i>
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                            </div>
+                                            <div class="form-group form-submit-btn-holder text-center mt-3">
+                                                <div class="form-ajax-status"></div>
+                                                <button class="btn btn-primary" type="submit">
+                                                    Submit
+                                                    <i class="material-icons">send</i>
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
+                </section>

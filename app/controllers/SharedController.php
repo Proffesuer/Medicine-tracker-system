@@ -29,6 +29,90 @@ class SharedController extends BaseController{
 	}
 
 	/**
+     * prescription_medicine_option_list Model Action
+     * @return array
+     */
+	function prescription_medicine_option_list(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT  DISTINCT medicine_name AS value,medicine_name AS label FROM medicine ORDER BY id ASC";
+		$queryparams = null;
+		$arr = $db->rawQuery($sqltext, $queryparams);
+		return $arr;
+	}
+
+	/**
+     * prescription_patient_option_list Model Action
+     * @return array
+     */
+	function prescription_patient_option_list(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT  DISTINCT id AS value,name AS label FROM user where role='patient'";
+		$queryparams = null;
+		$arr = $db->rawQuery($sqltext, $queryparams);
+		return $arr;
+	}
+
+	/**
+     * prescription_doctor_option_list Model Action
+     * @return array
+     */
+	function prescription_doctor_option_list(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT  DISTINCT id AS value,name AS label FROM user where role='Doctor'";
+		$queryparams = null;
+		$arr = $db->rawQuery($sqltext, $queryparams);
+		return $arr;
+	}
+
+	/**
+     * reminder_prescription_id_option_list Model Action
+     * @return array
+     */
+	function reminder_prescription_id_option_list(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT  DISTINCT id AS value,patient AS label FROM prescription ORDER BY id ASC";
+		$queryparams = null;
+		$arr = $db->rawQuery($sqltext, $queryparams);
+		return $arr;
+	}
+
+	/**
+     * reminder_Doctor_option_list Model Action
+     * @return array
+     */
+	function reminder_Doctor_option_list(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT  DISTINCT id AS value,name AS label FROM user where role='Doctor'";
+		$queryparams = null;
+		$arr = $db->rawQuery($sqltext, $queryparams);
+		return $arr;
+	}
+
+	/**
+     * reviews_patient_option_list Model Action
+     * @return array
+     */
+	function reviews_patient_option_list(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT  DISTINCT id AS value,name AS label FROM user where role='patient'";
+		$queryparams = null;
+		$arr = $db->rawQuery($sqltext, $queryparams);
+		return $arr;
+	}
+
+	/**
+     * reviews_dcotor_option_list Model Action
+     * @return array
+     */
+	function reviews_dcotor_option_list(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT  DISTINCT id AS value,name AS label FROM user where role='Doctor'";
+		$queryparams = null;
+		$arr = $db->rawQuery($sqltext, $queryparams);
+		return $arr;
+	}
+
+	/**
      * getcount_user Model Action
      * @return Value
      */

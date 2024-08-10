@@ -157,14 +157,15 @@ $show_pagination = $this->show_pagination;
                                                     <th class="td-sno"><?php echo $counter; ?></th>
                                                     <td class="td-id"><a href="<?php print_link("reminder/view/$data[id]") ?>"><?php echo $data['id']; ?></a></td>
                                                     <td class="td-prescription_id">
-                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['prescription_id']; ?>" 
+                                                        <span <?php if($can_edit){ ?> data-source='<?php print_link('api/json/reminder_prescription_id_option_list'); ?>' 
+                                                            data-value="<?php echo $data['prescription_id']; ?>" 
                                                             data-pk="<?php echo $data['id'] ?>" 
                                                             data-url="<?php print_link("reminder/editfield/" . urlencode($data['id'])); ?>" 
                                                             data-name="prescription_id" 
-                                                            data-title="Enter Prescription Id" 
+                                                            data-title="Select a value ..." 
                                                             data-placement="left" 
                                                             data-toggle="click" 
-                                                            data-type="text" 
+                                                            data-type="select" 
                                                             data-mode="popover" 
                                                             data-showbuttons="left" 
                                                             class="is-editable" <?php } ?>>
@@ -173,14 +174,15 @@ $show_pagination = $this->show_pagination;
                                                     </td>
                                                     <td class="td-phone"><a href="<?php print_link("tel:$data[phone]") ?>"><?php echo $data['phone']; ?></a></td>
                                                     <td class="td-mode">
-                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['mode']; ?>" 
+                                                        <span <?php if($can_edit){ ?> data-source='<?php echo json_encode_quote(Menu :: $mode); ?>' 
+                                                            data-value="<?php echo $data['mode']; ?>" 
                                                             data-pk="<?php echo $data['id'] ?>" 
                                                             data-url="<?php print_link("reminder/editfield/" . urlencode($data['id'])); ?>" 
                                                             data-name="mode" 
-                                                            data-title="Enter Mode" 
+                                                            data-title="Select a value ..." 
                                                             data-placement="left" 
                                                             data-toggle="click" 
-                                                            data-type="text" 
+                                                            data-type="select" 
                                                             data-mode="popover" 
                                                             data-showbuttons="left" 
                                                             class="is-editable" <?php } ?>>
@@ -188,14 +190,15 @@ $show_pagination = $this->show_pagination;
                                                         </span>
                                                     </td>
                                                     <td class="td-status">
-                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['status']; ?>" 
+                                                        <span <?php if($can_edit){ ?> data-source='<?php echo json_encode_quote(Menu :: $status); ?>' 
+                                                            data-value="<?php echo $data['status']; ?>" 
                                                             data-pk="<?php echo $data['id'] ?>" 
                                                             data-url="<?php print_link("reminder/editfield/" . urlencode($data['id'])); ?>" 
                                                             data-name="status" 
-                                                            data-title="Enter Status" 
+                                                            data-title="Select a value ..." 
                                                             data-placement="left" 
                                                             data-toggle="click" 
-                                                            data-type="text" 
+                                                            data-type="select" 
                                                             data-mode="popover" 
                                                             data-showbuttons="left" 
                                                             class="is-editable" <?php } ?>>
@@ -203,14 +206,15 @@ $show_pagination = $this->show_pagination;
                                                         </span>
                                                     </td>
                                                     <td class="td-Doctor">
-                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['Doctor']; ?>" 
+                                                        <span <?php if($can_edit){ ?> data-source='<?php print_link('api/json/reminder_Doctor_option_list'); ?>' 
+                                                            data-value="<?php echo $data['Doctor']; ?>" 
                                                             data-pk="<?php echo $data['id'] ?>" 
                                                             data-url="<?php print_link("reminder/editfield/" . urlencode($data['id'])); ?>" 
                                                             data-name="Doctor" 
-                                                            data-title="Enter Doctor" 
+                                                            data-title="Select a value ..." 
                                                             data-placement="left" 
                                                             data-toggle="click" 
-                                                            data-type="text" 
+                                                            data-type="select" 
                                                             data-mode="popover" 
                                                             data-showbuttons="left" 
                                                             class="is-editable" <?php } ?>>

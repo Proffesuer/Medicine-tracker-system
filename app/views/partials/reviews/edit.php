@@ -41,74 +41,112 @@ $redirect_to = $this->redirect_to;
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <input id="ctrl-patient"  value="<?php  echo $data['patient']; ?>" type="text" placeholder="Enter Patient"  required="" name="patient"  class="form-control " />
-                                                </div>
+                                                <select required=""  id="ctrl-patient" name="patient"  placeholder="Select a value ..."    class="custom-select" >
+                                                    <option value="">Select a value ...</option>
+                                                    <?php
+                                                    $rec = $data['patient'];
+                                                    $patient_options = $comp_model -> reviews_patient_option_list();
+                                                    if(!empty($patient_options)){
+                                                    foreach($patient_options as $option){
+                                                    $value = (!empty($option['value']) ? $option['value'] : null);
+                                                    $label = (!empty($option['label']) ? $option['label'] : $value);
+                                                    $selected = ( $value == $rec ? 'selected' : null );
+                                                    ?>
+                                                    <option 
+                                                        <?php echo $selected; ?> value="<?php echo $value; ?>"><?php echo $label; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                    }
+                                                    ?>
+                                                </select>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <label class="control-label" for="dcotor">Dcotor <span class="text-danger">*</span></label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <div class="">
-                                                    <input id="ctrl-dcotor"  value="<?php  echo $data['dcotor']; ?>" type="text" placeholder="Enter Dcotor"  required="" name="dcotor"  class="form-control " />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group ">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label class="control-label" for="doctor_message">Doctor Message <span class="text-danger">*</span></label>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <div class="">
-                                                        <input id="ctrl-doctor_message"  value="<?php  echo $data['doctor_message']; ?>" type="text" placeholder="Enter Doctor Message"  required="" name="doctor_message"  class="form-control " />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group ">
-                                                <div class="row">
-                                                    <div class="col-sm-4">
-                                                        <label class="control-label" for="patient_message">Patient Message <span class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-sm-8">
-                                                        <div class="">
-                                                            <input id="ctrl-patient_message"  value="<?php  echo $data['patient_message']; ?>" type="text" placeholder="Enter Patient Message"  required="" name="patient_message"  class="form-control " />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <label class="control-label" for="date">Date <span class="text-danger">*</span></label>
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <div class="input-group">
-                                                                <input id="ctrl-date" class="form-control datepicker  datepicker" required="" value="<?php  echo $data['date']; ?>" type="datetime"  name="date" placeholder="Enter Date" data-enable-time="true" data-min-date="" data-max-date="" data-date-format="Y-m-d H:i:S" data-alt-format="F j, Y - H:i" data-inline="false" data-no-calendar="false" data-mode="single" /> 
-                                                                    <div class="input-group-append">
-                                                                        <span class="input-group-text"><i class="material-icons">date_range</i></span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-ajax-status"></div>
-                                                <div class="form-group text-center">
-                                                    <button class="btn btn-primary" type="submit">
-                                                        Update
-                                                        <i class="material-icons">send</i>
-                                                    </button>
-                                                </div>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="form-group ">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="control-label" for="dcotor">Dcotor <span class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="">
+                                                <select required=""  id="ctrl-dcotor" name="dcotor"  placeholder="Select a value ..."    class="custom-select" >
+                                                    <option value="">Select a value ...</option>
+                                                    <?php
+                                                    $rec = $data['dcotor'];
+                                                    $dcotor_options = $comp_model -> reviews_dcotor_option_list();
+                                                    if(!empty($dcotor_options)){
+                                                    foreach($dcotor_options as $option){
+                                                    $value = (!empty($option['value']) ? $option['value'] : null);
+                                                    $label = (!empty($option['label']) ? $option['label'] : $value);
+                                                    $selected = ( $value == $rec ? 'selected' : null );
+                                                    ?>
+                                                    <option 
+                                                        <?php echo $selected; ?> value="<?php echo $value; ?>"><?php echo $label; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="control-label" for="doctor_message">Doctor Message <span class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="">
+                                                <textarea placeholder="Enter Doctor Message" id="ctrl-doctor_message"  required="" rows="5" name="doctor_message" class=" form-control"><?php  echo $data['doctor_message']; ?></textarea>
+                                                <!--<div class="invalid-feedback animated bounceIn text-center">Please enter text</div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="control-label" for="patient_message">Patient Message <span class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="">
+                                                <textarea placeholder="Enter Patient Message" id="ctrl-patient_message"  required="" rows="5" name="patient_message" class=" form-control"><?php  echo $data['patient_message']; ?></textarea>
+                                                <!--<div class="invalid-feedback animated bounceIn text-center">Please enter text</div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="control-label" for="date">Date <span class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <input id="ctrl-date" class="form-control datepicker  datepicker" required="" value="<?php  echo $data['date']; ?>" type="datetime"  name="date" placeholder="Enter Date" data-enable-time="true" data-min-date="<?php echo datetime_now(); ?>" data-max-date="<?php echo datetime_now(); ?>" data-date-format="Y-m-d H:i:S" data-alt-format="F j, Y - H:i" data-inline="false" data-no-calendar="false" data-mode="single" /> 
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text"><i class="material-icons">date_range</i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-ajax-status"></div>
+                                <div class="form-group text-center">
+                                    <button class="btn btn-primary" type="submit">
+                                        Update
+                                        <i class="material-icons">send</i>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                    </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

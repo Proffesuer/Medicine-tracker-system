@@ -187,14 +187,13 @@ $show_pagination = $this->show_pagination;
                                                         </span>
                                                     </td>
                                                     <td class="td-precautions">
-                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['precautions']; ?>" 
-                                                            data-pk="<?php echo $data['id'] ?>" 
+                                                        <span <?php if($can_edit){ ?> data-pk="<?php echo $data['id'] ?>" 
                                                             data-url="<?php print_link("medicine/editfield/" . urlencode($data['id'])); ?>" 
                                                             data-name="precautions" 
                                                             data-title="Enter Precautions" 
                                                             data-placement="left" 
                                                             data-toggle="click" 
-                                                            data-type="text" 
+                                                            data-type="textarea" 
                                                             data-mode="popover" 
                                                             data-showbuttons="left" 
                                                             class="is-editable" <?php } ?>>
@@ -217,7 +216,7 @@ $show_pagination = $this->show_pagination;
                                                         </span>
                                                     </td>
                                                     <td class="td-Date">
-                                                        <span <?php if($can_edit){ ?> data-flatpickr="{ minDate: '', maxDate: ''}" 
+                                                        <span <?php if($can_edit){ ?> data-flatpickr="{ enableTime: false, minDate: '<?php echo datetime_now(); ?>', maxDate: '<?php echo datetime_now(); ?>'}" 
                                                             data-value="<?php echo $data['Date']; ?>" 
                                                             data-pk="<?php echo $data['id'] ?>" 
                                                             data-url="<?php print_link("medicine/editfield/" . urlencode($data['id'])); ?>" 

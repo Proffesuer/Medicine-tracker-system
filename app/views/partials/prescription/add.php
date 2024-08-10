@@ -38,7 +38,36 @@ $redirect_to = $this->redirect_to;
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <input id="ctrl-medicine"  value="<?php  echo $this->set_field_value('medicine',""); ?>" type="text" placeholder="Enter Medicine"  required="" name="medicine"  class="form-control " />
+                                                <select required=""  id="ctrl-medicine" name="medicine"  placeholder="Select a value ..."    class="custom-select" >
+                                                    <option value="">Select a value ...</option>
+                                                    <?php 
+                                                    $medicine_options = $comp_model -> prescription_medicine_option_list();
+                                                    if(!empty($medicine_options)){
+                                                    foreach($medicine_options as $option){
+                                                    $value = (!empty($option['value']) ? $option['value'] : null);
+                                                    $label = (!empty($option['label']) ? $option['label'] : $value);
+                                                    $selected = $this->set_field_selected('medicine',$value, "");
+                                                    ?>
+                                                    <option <?php echo $selected; ?> value="<?php echo $value; ?>">
+                                                        <?php echo $label; ?>
+                                                    </option>
+                                                    <?php
+                                                    }
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="control-label" for="quantity">Quantity <span class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="">
+                                                <input id="ctrl-quantity"  value="<?php  echo $this->set_field_value('quantity',""); ?>" type="text" placeholder="Enter Quantity"  required="" name="quantity"  class="form-control " />
                                                 </div>
                                             </div>
                                         </div>
@@ -46,11 +75,14 @@ $redirect_to = $this->redirect_to;
                                     <div class="form-group ">
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <label class="control-label" for="quantity">Quantity <span class="text-danger">*</span></label>
+                                                <label class="control-label" for="times">Times <span class="text-danger">*</span></label>
                                             </div>
                                             <div class="col-sm-8">
-                                                <div class="">
-                                                    <input id="ctrl-quantity"  value="<?php  echo $this->set_field_value('quantity',""); ?>" type="text" placeholder="Enter Quantity"  required="" name="quantity"  class="form-control " />
+                                                <div class="input-group">
+                                                    <input id="ctrl-times"  value="<?php  echo $this->set_field_value('times',""); ?>" type="number" placeholder="Enter Times" step="1"  required="" name="times"  class="form-control " />
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text"><i class="material-icons">access_time</i></span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -58,14 +90,11 @@ $redirect_to = $this->redirect_to;
                                         <div class="form-group ">
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label class="control-label" for="times">Times <span class="text-danger">*</span></label>
+                                                    <label class="control-label" for="days_prescribed">Days Prescribed <span class="text-danger">*</span></label>
                                                 </div>
                                                 <div class="col-sm-8">
-                                                    <div class="input-group">
-                                                        <input id="ctrl-times" class="form-control datepicker  datepicker"  required="" value="<?php  echo $this->set_field_value('times',""); ?>" type="time" name="times" placeholder="Enter Times" data-enable-time="true" data-min-date="" data-max-date=""  data-alt-format="H:i" data-date-format="H:i:S" data-inline="false" data-no-calendar="true" data-mode="single" /> 
-                                                            <div class="input-group-append">
-                                                                <span class="input-group-text"><i class="material-icons">access_time</i></span>
-                                                            </div>
+                                                    <div class="">
+                                                        <input id="ctrl-days_prescribed"  value="<?php  echo $this->set_field_value('days_prescribed',""); ?>" type="text" placeholder="Enter Days Prescribed"  required="" name="days_prescribed"  class="form-control " />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -73,90 +102,130 @@ $redirect_to = $this->redirect_to;
                                             <div class="form-group ">
                                                 <div class="row">
                                                     <div class="col-sm-4">
-                                                        <label class="control-label" for="days_prescribed">Days Prescribed <span class="text-danger">*</span></label>
+                                                        <label class="control-label" for="number_refils">Number Refils <span class="text-danger">*</span></label>
                                                     </div>
                                                     <div class="col-sm-8">
                                                         <div class="">
-                                                            <input id="ctrl-days_prescribed"  value="<?php  echo $this->set_field_value('days_prescribed',""); ?>" type="text" placeholder="Enter Days Prescribed"  required="" name="days_prescribed"  class="form-control " />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <label class="control-label" for="number_refils">Number Refils <span class="text-danger">*</span></label>
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <div class="">
-                                                                <input id="ctrl-number_refils"  value="<?php  echo $this->set_field_value('number_refils',""); ?>" type="text" placeholder="Enter Number Refils"  required="" name="number_refils"  class="form-control " />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group ">
-                                                        <div class="row">
-                                                            <div class="col-sm-4">
-                                                                <label class="control-label" for="instructions">Instructions <span class="text-danger">*</span></label>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <div class="">
-                                                                    <input id="ctrl-instructions"  value="<?php  echo $this->set_field_value('instructions',""); ?>" type="text" placeholder="Enter Instructions"  required="" name="instructions"  class="form-control " />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group ">
-                                                            <div class="row">
-                                                                <div class="col-sm-4">
-                                                                    <label class="control-label" for="patient">Patient <span class="text-danger">*</span></label>
-                                                                </div>
-                                                                <div class="col-sm-8">
-                                                                    <div class="">
-                                                                        <input id="ctrl-patient"  value="<?php  echo $this->set_field_value('patient',""); ?>" type="text" placeholder="Enter Patient"  required="" name="patient"  class="form-control " />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group ">
-                                                                <div class="row">
-                                                                    <div class="col-sm-4">
-                                                                        <label class="control-label" for="doctor">Doctor <span class="text-danger">*</span></label>
-                                                                    </div>
-                                                                    <div class="col-sm-8">
-                                                                        <div class="">
-                                                                            <input id="ctrl-doctor"  value="<?php  echo $this->set_field_value('doctor',""); ?>" type="text" placeholder="Enter Doctor"  required="" name="doctor"  class="form-control " />
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group ">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-4">
-                                                                            <label class="control-label" for="date">Date <span class="text-danger">*</span></label>
-                                                                        </div>
-                                                                        <div class="col-sm-8">
-                                                                            <div class="input-group">
-                                                                                <input id="ctrl-date" class="form-control datepicker  datepicker" required="" value="<?php  echo $this->set_field_value('date',""); ?>" type="datetime"  name="date" placeholder="Enter Date" data-enable-time="true" data-min-date="" data-max-date="" data-date-format="Y-m-d H:i:S" data-alt-format="F j, Y - H:i" data-inline="false" data-no-calendar="false" data-mode="single" /> 
-                                                                                    <div class="input-group-append">
-                                                                                        <span class="input-group-text"><i class="material-icons">date_range</i></span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group form-submit-btn-holder text-center mt-3">
-                                                                    <div class="form-ajax-status"></div>
-                                                                    <button class="btn btn-primary" type="submit">
-                                                                        Submit
-                                                                        <i class="material-icons">send</i>
-                                                                    </button>
-                                                                </div>
-                                                            </form>
+                                                            <select required=""  id="ctrl-number_refils" name="number_refils"  placeholder="Select a value ..."    class="custom-select" >
+                                                                <option value="">Select a value ...</option>
+                                                                <?php
+                                                                $number_refils_options = Menu :: $number_refils;
+                                                                if(!empty($number_refils_options)){
+                                                                foreach($number_refils_options as $option){
+                                                                $value = $option['value'];
+                                                                $label = $option['label'];
+                                                                $selected = $this->set_field_selected('number_refils', $value, "");
+                                                                ?>
+                                                                <option <?php echo $selected ?> value="<?php echo $value ?>">
+                                                                    <?php echo $label ?>
+                                                                </option>                                   
+                                                                <?php
+                                                                }
+                                                                }
+                                                                ?>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </section>
+                                            <div class="form-group ">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <label class="control-label" for="instructions">Instructions <span class="text-danger">*</span></label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <div class="">
+                                                            <textarea placeholder="Enter Instructions" id="ctrl-instructions"  required="" rows="5" name="instructions" class=" form-control"><?php  echo $this->set_field_value('instructions',""); ?></textarea>
+                                                            <!--<div class="invalid-feedback animated bounceIn text-center">Please enter text</div>-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <label class="control-label" for="patient">Patient <span class="text-danger">*</span></label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <div class="">
+                                                            <select required=""  id="ctrl-patient" name="patient"  placeholder="Select a value ..."    class="custom-select" >
+                                                                <option value="">Select a value ...</option>
+                                                                <?php 
+                                                                $patient_options = $comp_model -> prescription_patient_option_list();
+                                                                if(!empty($patient_options)){
+                                                                foreach($patient_options as $option){
+                                                                $value = (!empty($option['value']) ? $option['value'] : null);
+                                                                $label = (!empty($option['label']) ? $option['label'] : $value);
+                                                                $selected = $this->set_field_selected('patient',$value, "");
+                                                                ?>
+                                                                <option <?php echo $selected; ?> value="<?php echo $value; ?>">
+                                                                    <?php echo $label; ?>
+                                                                </option>
+                                                                <?php
+                                                                }
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <label class="control-label" for="doctor">Doctor <span class="text-danger">*</span></label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <div class="">
+                                                            <select required=""  id="ctrl-doctor" name="doctor"  placeholder="Select a value ..."    class="custom-select" >
+                                                                <option value="">Select a value ...</option>
+                                                                <?php 
+                                                                $doctor_options = $comp_model -> prescription_doctor_option_list();
+                                                                if(!empty($doctor_options)){
+                                                                foreach($doctor_options as $option){
+                                                                $value = (!empty($option['value']) ? $option['value'] : null);
+                                                                $label = (!empty($option['label']) ? $option['label'] : $value);
+                                                                $selected = $this->set_field_selected('doctor',$value, "");
+                                                                ?>
+                                                                <option <?php echo $selected; ?> value="<?php echo $value; ?>">
+                                                                    <?php echo $label; ?>
+                                                                </option>
+                                                                <?php
+                                                                }
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <label class="control-label" for="date">Date <span class="text-danger">*</span></label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group">
+                                                            <input id="ctrl-date" class="form-control datepicker  datepicker"  required="" value="<?php  echo $this->set_field_value('date',""); ?>" type="datetime" name="date" placeholder="Enter Date" data-enable-time="false" data-min-date="<?php echo date_now(); ?>" data-max-date="<?php echo date_now(); ?>" data-date-format="Y-m-d" data-alt-format="F j, Y" data-inline="false" data-no-calendar="false" data-mode="single" />
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text"><i class="material-icons">date_range</i></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group form-submit-btn-holder text-center mt-3">
+                                                <div class="form-ajax-status"></div>
+                                                <button class="btn btn-primary" type="submit">
+                                                    Submit
+                                                    <i class="material-icons">send</i>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>

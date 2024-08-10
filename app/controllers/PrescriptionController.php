@@ -147,7 +147,7 @@ class PrescriptionController extends SecureController{
 			$this->rules_array = array(
 				'medicine' => 'required',
 				'quantity' => 'required',
-				'times' => 'required',
+				'times' => 'required|numeric',
 				'days_prescribed' => 'required',
 				'number_refils' => 'required',
 				'instructions' => 'required',
@@ -200,7 +200,7 @@ class PrescriptionController extends SecureController{
 			$this->rules_array = array(
 				'medicine' => 'required',
 				'quantity' => 'required',
-				'times' => 'required',
+				'times' => 'required|numeric',
 				'days_prescribed' => 'required',
 				'number_refils' => 'required',
 				'instructions' => 'required',
@@ -272,7 +272,7 @@ class PrescriptionController extends SecureController{
 			$this->rules_array = array(
 				'medicine' => 'required',
 				'quantity' => 'required',
-				'times' => 'required',
+				'times' => 'required|numeric',
 				'days_prescribed' => 'required',
 				'number_refils' => 'required',
 				'instructions' => 'required',
