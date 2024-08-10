@@ -19,6 +19,30 @@ class Menu{
 			'path' => 'user', 
 			'label' => 'User', 
 			'icon' => ''
+		),
+		
+		array(
+			'path' => 'medicine', 
+			'label' => 'Medicine', 
+			'icon' => ''
+		),
+		
+		array(
+			'path' => 'prescription', 
+			'label' => 'Prescription', 
+			'icon' => ''
+		),
+		
+		array(
+			'path' => 'reminder', 
+			'label' => 'Reminder', 
+			'icon' => ''
+		),
+		
+		array(
+			'path' => 'reviews', 
+			'label' => 'Reviews', 
+			'icon' => ''
 		)
 	);
 		
@@ -32,6 +56,30 @@ class Menu{
 		array(
 			'path' => 'user', 
 			'label' => 'User', 
+			'icon' => ''
+		),
+		
+		array(
+			'path' => 'medicine', 
+			'label' => 'Medicine', 
+			'icon' => ''
+		),
+		
+		array(
+			'path' => 'prescription', 
+			'label' => 'Prescription', 
+			'icon' => ''
+		),
+		
+		array(
+			'path' => 'reminder', 
+			'label' => 'Reminder', 
+			'icon' => ''
+		),
+		
+		array(
+			'path' => 'reviews', 
+			'label' => 'Reviews', 
 			'icon' => ''
 		)
 	);
