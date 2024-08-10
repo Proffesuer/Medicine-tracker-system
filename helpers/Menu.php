@@ -8,41 +8,41 @@
 class Menu{
 	
 	
-			public static $navbartopleft = array(
+			public static $navbarsideleft = array(
 		array(
 			'path' => 'home', 
-			'label' => 'Home', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'user', 
-			'label' => 'User', 
-			'icon' => ''
-		),
-		
-		array(
-			'path' => 'medicine', 
-			'label' => 'Medicine', 
-			'icon' => ''
+			'label' => 'Dashboard', 
+			'icon' => '<i class="material-icons ">home</i>'
 		),
 		
 		array(
 			'path' => 'prescription', 
 			'label' => 'Prescription', 
-			'icon' => ''
+			'icon' => '<i class="material-icons ">add_box</i>'
 		),
 		
 		array(
 			'path' => 'reminder', 
 			'label' => 'Reminder', 
-			'icon' => ''
+			'icon' => '<i class="material-icons ">add_alert</i>'
 		),
 		
 		array(
 			'path' => 'reviews', 
 			'label' => 'Reviews', 
-			'icon' => ''
+			'icon' => '<i class="material-icons ">mode_comment</i>'
+		),
+		
+		array(
+			'path' => 'medicine', 
+			'label' => 'Medicine', 
+			'icon' => '<i class="material-icons ">local_hospital</i>'
+		),
+		
+		array(
+			'path' => 'user', 
+			'label' => 'User', 
+			'icon' => '<i class="material-icons ">person_add</i>'
 		)
 	);
 		

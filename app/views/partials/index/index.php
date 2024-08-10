@@ -2,7 +2,7 @@
         $page_id = null;
         $comp_model = new SharedController;
         ?>
-        <div  class=" py-5">
+        <div  class="my-1">
             <div class="container-fluid">
                 <div class="row ">
                     <div class="col-md-12 comp-grid">
