@@ -120,46 +120,56 @@ $redirect_to = $this->redirect_to;
                                                     <div class="form-group ">
                                                         <div class="row">
                                                             <div class="col-sm-4">
-                                                                <label class="control-label" for="role">Role <span class="text-danger">*</span></label>
+                                                                <label class="control-label" for="password">Password <span class="text-danger">*</span></label>
                                                             </div>
                                                             <div class="col-sm-8">
-                                                                <div class="">
-                                                                    <select required=""  id="ctrl-role" name="role"  placeholder="Select a value ..."    class="custom-select" >
-                                                                        <option value="">Select a value ...</option>
-                                                                        <?php
-                                                                        $role_options = Menu :: $role;
-                                                                        $field_value = $data['role'];
-                                                                        if(!empty($role_options)){
-                                                                        foreach($role_options as $option){
-                                                                        $value = $option['value'];
-                                                                        $label = $option['label'];
-                                                                        $selected = ( $value == $field_value ? 'selected' : null );
-                                                                        ?>
-                                                                        <option <?php echo $selected ?> value="<?php echo $value ?>">
-                                                                            <?php echo $label ?>
-                                                                        </option>                                   
-                                                                        <?php
-                                                                        }
-                                                                        }
-                                                                        ?>
-                                                                    </select>
+                                                                <div class="input-group">
+                                                                    <input id="ctrl-password"  value="<?php  echo $data['password']; ?>" type="password" placeholder="Enter Password" maxlength="255"  required="" name="password"  class="form-control  password password-strength" />
+                                                                        <div class="input-group-append cursor-pointer btn-toggle-password">
+                                                                            <span class="input-group-text"><i class="material-icons">visibility</i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="password-strength-msg">
+                                                                        <small class="font-weight-bold">Should contain</small>
+                                                                        <small class="length chip">6 Characters minimum</small>
+                                                                        <small class="caps chip">Capital Letter</small>
+                                                                        <small class="number chip">Number</small>
+                                                                        <small class="special chip">Symbol</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <div class="row">
+                                                                <div class="col-sm-4">
+                                                                    <label class="control-label" for="confirm_password">Confirm Password <span class="text-danger">*</span></label>
+                                                                </div>
+                                                                <div class="col-sm-8">
+                                                                    <div class="input-group">
+                                                                        <input id="ctrl-password-confirm" data-match="#ctrl-password"  class="form-control password-confirm " type="password" name="confirm_password" required placeholder="Confirm Password" />
+                                                                        <div class="input-group-append cursor-pointer btn-toggle-password">
+                                                                            <span class="input-group-text"><i class="material-icons">visibility</i></span>
+                                                                        </div>
+                                                                        <div class="invalid-feedback">
+                                                                            Password does not match
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-ajax-status"></div>
-                                                <div class="form-group text-center">
-                                                    <button class="btn btn-primary" type="submit">
-                                                        Update
-                                                        <i class="material-icons">send</i>
-                                                    </button>
-                                                </div>
-                                            </form>
+                                                    <div class="form-ajax-status"></div>
+                                                    <div class="form-group text-center">
+                                                        <button class="btn btn-primary" type="submit">
+                                                            Update
+                                                            <i class="material-icons">send</i>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                    
+                        </section>
+                        

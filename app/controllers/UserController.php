@@ -203,16 +203,21 @@ class UserController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		 //editable fields
-		$fields = $this->fields = array("id","name","phone","gender","DOB","image","role");
+		$fields = $this->fields = array("id","name","phone","gender","DOB","image","password");
 		if($formdata){
 			$postdata = $this->format_request_data($formdata);
+			$cpassword = $postdata['confirm_password'];
+			$password = $postdata['password'];
+			if($cpassword != $password){
+				$this->view->page_error[] = "Your password confirmation is not consistent";
+			}
 			$this->rules_array = array(
 				'name' => 'required',
 				'phone' => 'required',
 				'gender' => 'required',
 				'DOB' => 'required',
 				'image' => 'required',
-				'role' => 'required',
+				'password' => 'required',
 			);
 			$this->sanitize_array = array(
 				'name' => 'sanitize_string',
@@ -220,9 +225,11 @@ class UserController extends SecureController{
 				'gender' => 'sanitize_string',
 				'DOB' => 'sanitize_string',
 				'image' => 'sanitize_string',
-				'role' => 'sanitize_string',
 			);
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
+			$password_text = $modeldata['password'];
+			//update modeldata with the password hash
+			$modeldata['password'] = $this->modeldata['password'] = password_hash($password_text , PASSWORD_DEFAULT);
 			//Check if Duplicate Record Already Exit In The Database
 			if(isset($modeldata['name'])){
 				$db->where("name", $modeldata['name'])->where("id", $rec_id, "!=");
@@ -271,7 +278,7 @@ class UserController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		//editable fields
-		$fields = $this->fields = array("id","name","phone","gender","DOB","image","role");
+		$fields = $this->fields = array("id","name","phone","gender","DOB","image","password");
 		$page_error = null;
 		if($formdata){
 			$postdata = array();
@@ -285,7 +292,7 @@ class UserController extends SecureController{
 				'gender' => 'required',
 				'DOB' => 'required',
 				'image' => 'required',
-				'role' => 'required',
+				'password' => 'required',
 			);
 			$this->sanitize_array = array(
 				'name' => 'sanitize_string',
@@ -293,7 +300,6 @@ class UserController extends SecureController{
 				'gender' => 'sanitize_string',
 				'DOB' => 'sanitize_string',
 				'image' => 'sanitize_string',
-				'role' => 'sanitize_string',
 			);
 			$this->filter_rules = true; //filter validation rules by excluding fields not in the formdata
 			$modeldata = $this->modeldata = $this->validate_form($postdata);

@@ -135,7 +135,7 @@ $redirect_to = $this->redirect_to;
                                                                         <select required=""  id="ctrl-role" name="role"  placeholder="Select a value ..."    class="custom-select" >
                                                                             <option value="">Select a value ...</option>
                                                                             <?php
-                                                                            $role_options = Menu :: $role;
+                                                                            $role_options = Menu :: $role2;
                                                                             if(!empty($role_options)){
                                                                             foreach($role_options as $option){
                                                                             $value = $option['value'];
