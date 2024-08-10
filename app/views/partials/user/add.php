@@ -38,7 +38,8 @@ $redirect_to = $this->redirect_to;
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <input id="ctrl-name"  value="<?php  echo $this->set_field_value('name',""); ?>" type="text" placeholder="Enter Name"  required="" name="name"  class="form-control " />
+                                                <input id="ctrl-name"  value="<?php  echo $this->set_field_value('name',""); ?>" type="text" placeholder="Enter Name"  required="" name="name"  data-url="api/json/user_name_value_exist/" data-loading-msg="Checking availability ..." data-available-msg="Available" data-unavailable-msg="Not available" class="form-control  ctrl-check-duplicate" />
+                                                    <div class="check-status"></div> 
                                                 </div>
                                             </div>
                                         </div>
@@ -50,7 +51,8 @@ $redirect_to = $this->redirect_to;
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="">
-                                                    <input id="ctrl-email"  value="<?php  echo $this->set_field_value('email',""); ?>" type="email" placeholder="Enter Email"  required="" name="email"  class="form-control " />
+                                                    <input id="ctrl-email"  value="<?php  echo $this->set_field_value('email',""); ?>" type="email" placeholder="Enter Email"  required="" name="email"  data-url="api/json/user_email_value_exist/" data-loading-msg="Checking availability ..." data-available-msg="Available" data-unavailable-msg="Not available" class="form-control  ctrl-check-duplicate" />
+                                                        <div class="check-status"></div> 
                                                     </div>
                                                 </div>
                                             </div>
@@ -130,7 +132,46 @@ $redirect_to = $this->redirect_to;
                                                                 </div>
                                                                 <div class="col-sm-8">
                                                                     <div class="">
-                                                                        <input id="ctrl-role"  value="<?php  echo $this->set_field_value('role',""); ?>" type="text" placeholder="Enter Role"  required="" name="role"  class="form-control " />
+                                                                        <select required=""  id="ctrl-role" name="role"  placeholder="Select a value ..."    class="custom-select" >
+                                                                            <option value="">Select a value ...</option>
+                                                                            <?php
+                                                                            $role_options = Menu :: $role;
+                                                                            if(!empty($role_options)){
+                                                                            foreach($role_options as $option){
+                                                                            $value = $option['value'];
+                                                                            $label = $option['label'];
+                                                                            $selected = $this->set_field_selected('role', $value, "");
+                                                                            ?>
+                                                                            <option <?php echo $selected ?> value="<?php echo $value ?>">
+                                                                                <?php echo $label ?>
+                                                                            </option>                                   
+                                                                            <?php
+                                                                            }
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <div class="row">
+                                                                <div class="col-sm-4">
+                                                                    <label class="control-label" for="password">Password <span class="text-danger">*</span></label>
+                                                                </div>
+                                                                <div class="col-sm-8">
+                                                                    <div class="input-group">
+                                                                        <input id="ctrl-password"  value="<?php  echo $this->set_field_value('password',""); ?>" type="password" placeholder="Enter Password" maxlength="255"  required="" name="password"  class="form-control  password password-strength" />
+                                                                            <div class="input-group-append cursor-pointer btn-toggle-password">
+                                                                                <span class="input-group-text"><i class="material-icons">visibility</i></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="password-strength-msg">
+                                                                            <small class="font-weight-bold">Should contain</small>
+                                                                            <small class="length chip">6 Characters minimum</small>
+                                                                            <small class="caps chip">Capital Letter</small>
+                                                                            <small class="number chip">Number</small>
+                                                                            <small class="special chip">Symbol</small>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -138,55 +179,33 @@ $redirect_to = $this->redirect_to;
                                                             <div class="form-group ">
                                                                 <div class="row">
                                                                     <div class="col-sm-4">
-                                                                        <label class="control-label" for="password">Password <span class="text-danger">*</span></label>
+                                                                        <label class="control-label" for="confirm_password">Confirm Password <span class="text-danger">*</span></label>
                                                                     </div>
                                                                     <div class="col-sm-8">
                                                                         <div class="input-group">
-                                                                            <input id="ctrl-password"  value="<?php  echo $this->set_field_value('password',""); ?>" type="password" placeholder="Enter Password"  required="" name="password"  class="form-control  password password-strength" />
-                                                                                <div class="input-group-append cursor-pointer btn-toggle-password">
-                                                                                    <span class="input-group-text"><i class="material-icons">visibility</i></span>
-                                                                                </div>
+                                                                            <input id="ctrl-password-confirm" data-match="#ctrl-password"  class="form-control password-confirm " type="password" name="confirm_password" required placeholder="Confirm Password" />
+                                                                            <div class="input-group-append cursor-pointer btn-toggle-password">
+                                                                                <span class="input-group-text"><i class="material-icons">visibility</i></span>
                                                                             </div>
-                                                                            <div class="password-strength-msg">
-                                                                                <small class="font-weight-bold">Should contain</small>
-                                                                                <small class="length chip">6 Characters minimum</small>
-                                                                                <small class="caps chip">Capital Letter</small>
-                                                                                <small class="number chip">Number</small>
-                                                                                <small class="special chip">Symbol</small>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group ">
-                                                                    <div class="row">
-                                                                        <div class="col-sm-4">
-                                                                            <label class="control-label" for="confirm_password">Confirm Password <span class="text-danger">*</span></label>
-                                                                        </div>
-                                                                        <div class="col-sm-8">
-                                                                            <div class="input-group">
-                                                                                <input id="ctrl-password-confirm" data-match="#ctrl-password"  class="form-control password-confirm " type="password" name="confirm_password" required placeholder="Confirm Password" />
-                                                                                <div class="input-group-append cursor-pointer btn-toggle-password">
-                                                                                    <span class="input-group-text"><i class="material-icons">visibility</i></span>
-                                                                                </div>
-                                                                                <div class="invalid-feedback">
-                                                                                    Password does not match
-                                                                                </div>
+                                                                            <div class="invalid-feedback">
+                                                                                Password does not match
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group form-submit-btn-holder text-center mt-3">
-                                                                <div class="form-ajax-status"></div>
-                                                                <button class="btn btn-primary" type="submit">
-                                                                    Submit
-                                                                    <i class="material-icons">send</i>
-                                                                </button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
+                                                        </div>
+                                                        <div class="form-group form-submit-btn-holder text-center mt-3">
+                                                            <div class="form-ajax-status"></div>
+                                                            <button class="btn btn-primary" type="submit">
+                                                                Submit
+                                                                <i class="material-icons">send</i>
+                                                            </button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </section>
+                                </div>
+                            </section>
