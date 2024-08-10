@@ -135,8 +135,6 @@ class ReviewsController extends SecureController{
 			$this->rules_array = array(
 				'patient' => 'required',
 				'dcotor' => 'required',
-				'doctor_message' => 'required',
-				'patient_message' => 'required',
 				'date' => 'required',
 			);
 			$this->sanitize_array = array(
@@ -180,8 +178,6 @@ class ReviewsController extends SecureController{
 			$this->rules_array = array(
 				'patient' => 'required',
 				'dcotor' => 'required',
-				'doctor_message' => 'required',
-				'patient_message' => 'required',
 				'date' => 'required',
 			);
 			$this->sanitize_array = array(
@@ -244,8 +240,6 @@ class ReviewsController extends SecureController{
 			$this->rules_array = array(
 				'patient' => 'required',
 				'dcotor' => 'required',
-				'doctor_message' => 'required',
-				'patient_message' => 'required',
 				'date' => 'required',
 			);
 			$this->sanitize_array = array(

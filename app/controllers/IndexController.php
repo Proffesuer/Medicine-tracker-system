@@ -115,7 +115,6 @@ class IndexController extends BaseController{
 				'phone' => 'required',
 				'gender' => 'required',
 				'DOB' => 'required',
-				'image' => 'required',
 				'role' => 'required',
 				'password' => 'required',
 			);

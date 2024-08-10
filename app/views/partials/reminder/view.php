@@ -78,14 +78,18 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-phone">
                                         <th class="title"> Phone: </th>
                                         <td class="value">
-                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['phone']; ?>" 
+                                            <span <?php if($can_edit){ ?> data-source='<?php 
+                                                $dependent_field = (!empty($data['prescription_id']) ? urlencode($data['prescription_id']) : null);
+                                                print_link('api/json/reminder_phone_option_list/'.$dependent_field); 
+                                                ?>' 
+                                                data-value="<?php echo $data['phone']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("reminder/editfield/" . urlencode($data['id'])); ?>" 
                                                 data-name="phone" 
                                                 data-title="Enter Phone" 
                                                 data-placement="left" 
                                                 data-toggle="click" 
-                                                data-type="text" 
+                                                data-type="number" 
                                                 data-mode="popover" 
                                                 data-showbuttons="left" 
                                                 class="is-editable" <?php } ?>>

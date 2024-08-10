@@ -97,11 +97,11 @@ $redirect_to = $this->redirect_to;
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="doctor_message">Doctor Message <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="doctor_message">Doctor Message </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <textarea placeholder="Enter Doctor Message" id="ctrl-doctor_message"  required="" rows="5" name="doctor_message" class=" form-control"><?php  echo $data['doctor_message']; ?></textarea>
+                                                <textarea placeholder="Enter Doctor Message" id="ctrl-doctor_message"  rows="5" name="doctor_message" class=" form-control"><?php  echo $data['doctor_message']; ?></textarea>
                                                 <!--<div class="invalid-feedback animated bounceIn text-center">Please enter text</div>-->
                                             </div>
                                         </div>
@@ -110,11 +110,11 @@ $redirect_to = $this->redirect_to;
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="patient_message">Patient Message <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="patient_message">Patient Message </label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <textarea placeholder="Enter Patient Message" id="ctrl-patient_message"  required="" rows="5" name="patient_message" class=" form-control"><?php  echo $data['patient_message']; ?></textarea>
+                                                <textarea placeholder="Enter Patient Message" id="ctrl-patient_message"  rows="5" name="patient_message" class=" form-control"><?php  echo $data['patient_message']; ?></textarea>
                                                 <!--<div class="invalid-feedback animated bounceIn text-center">Please enter text</div>-->
                                             </div>
                                         </div>

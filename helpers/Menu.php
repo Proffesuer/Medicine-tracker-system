@@ -60,12 +60,6 @@ class Menu{
 		
 			public static $role = array(
 		array(
-			"value" => "patient", 
-			"label" => "patient", 
-		),);
-		
-			public static $role2 = array(
-		array(
 			"value" => "Administrator", 
 			"label" => "Administrator", 
 		),

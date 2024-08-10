@@ -134,7 +134,7 @@ class ReminderController extends SecureController{
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
 				'prescription_id' => 'required',
-				'phone' => 'required',
+				'phone' => 'required|numeric',
 				'mode' => 'required',
 				'status' => 'required',
 				'Doctor' => 'required',
@@ -179,7 +179,7 @@ class ReminderController extends SecureController{
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
 				'prescription_id' => 'required',
-				'phone' => 'required',
+				'phone' => 'required|numeric',
 				'mode' => 'required',
 				'status' => 'required',
 				'Doctor' => 'required',
@@ -243,7 +243,7 @@ class ReminderController extends SecureController{
 			$postdata = $this->format_request_data($postdata);
 			$this->rules_array = array(
 				'prescription_id' => 'required',
-				'phone' => 'required',
+				'phone' => 'required|numeric',
 				'mode' => 'required',
 				'status' => 'required',
 				'Doctor' => 'required',

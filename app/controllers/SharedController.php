@@ -46,7 +46,7 @@ class SharedController extends BaseController{
      */
 	function prescription_patient_option_list(){
 		$db = $this->GetModel();
-		$sqltext = "SELECT  DISTINCT id AS value,name AS label FROM user where role='patient'";
+		$sqltext = "SELECT  DISTINCT name AS value,name AS label FROM user where role='patient'";
 		$queryparams = null;
 		$arr = $db->rawQuery($sqltext, $queryparams);
 		return $arr;
@@ -58,7 +58,7 @@ class SharedController extends BaseController{
      */
 	function prescription_doctor_option_list(){
 		$db = $this->GetModel();
-		$sqltext = "SELECT  DISTINCT id AS value,name AS label FROM user where role='Doctor'";
+		$sqltext = "SELECT  DISTINCT name AS value,name AS label FROM user where role='Doctor'";
 		$queryparams = null;
 		$arr = $db->rawQuery($sqltext, $queryparams);
 		return $arr;
@@ -70,7 +70,7 @@ class SharedController extends BaseController{
      */
 	function reminder_prescription_id_option_list(){
 		$db = $this->GetModel();
-		$sqltext = "SELECT  DISTINCT id AS value,patient AS label FROM prescription ORDER BY id ASC";
+		$sqltext = "SELECT  DISTINCT id AS value,patient AS label FROM prescription ORDER BY date ASC";
 		$queryparams = null;
 		$arr = $db->rawQuery($sqltext, $queryparams);
 		return $arr;
@@ -84,6 +84,18 @@ class SharedController extends BaseController{
 		$db = $this->GetModel();
 		$sqltext = "SELECT  DISTINCT id AS value,name AS label FROM user where role='Doctor'";
 		$queryparams = null;
+		$arr = $db->rawQuery($sqltext, $queryparams);
+		return $arr;
+	}
+
+	/**
+     * reminder_phone_option_list Model Action
+     * @return array
+     */
+	function reminder_phone_option_list($lookup_prescription_id){
+		$db = $this->GetModel();
+		$sqltext = "SELECT  DISTINCT phone AS value,phone AS label FROM user WHERE name=prescription_id ORDER BY id ASC"  ;
+		$queryparams = array($lookup_prescription_id);
 		$arr = $db->rawQuery($sqltext, $queryparams);
 		return $arr;
 	}

@@ -38,7 +38,7 @@ $redirect_to = $this->redirect_to;
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <select required=""  id="ctrl-prescription_id" name="prescription_id"  placeholder="Select a value ..."    class="custom-select" >
+                                                <select required=""  id="ctrl-prescription_id" data-load-select-options="phone" name="prescription_id"  placeholder="Select a value ..."    class="custom-select" >
                                                     <option value="">Select a value ...</option>
                                                     <?php 
                                                     $prescription_id_options = $comp_model -> reminder_prescription_id_option_list();
@@ -67,7 +67,8 @@ $redirect_to = $this->redirect_to;
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <input id="ctrl-phone"  value="<?php  echo $this->set_field_value('phone',""); ?>" type="text" placeholder="Enter Phone"  required="" name="phone"  class="form-control " />
+                                                <input id="ctrl-phone"  value="<?php  echo $this->set_field_value('phone',""); ?>" type="number" placeholder="Enter Phone" step="1" list="phone-datalist"  required="" data-load-path="<?php print_link('api/json/reminder_phone_option_list') ?>" name="phone"  class="form-control " />
+                                                    <datalist id="phone-datalist"></datalist> 
                                                 </div>
                                             </div>
                                         </div>
