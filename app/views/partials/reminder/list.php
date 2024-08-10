@@ -131,6 +131,7 @@ $show_pagination = $this->show_pagination;
                                                 <th  class="td-mode"> Mode</th>
                                                 <th  class="td-status"> Status</th>
                                                 <th  class="td-Doctor"> Doctor</th>
+                                                <th  class="td-patient"> Patient</th>
                                                 <th class="td-btn"></th>
                                             </tr>
                                         </thead>
@@ -219,6 +220,22 @@ $show_pagination = $this->show_pagination;
                                                             data-showbuttons="left" 
                                                             class="is-editable" <?php } ?>>
                                                             <?php echo $data['Doctor']; ?> 
+                                                        </span>
+                                                    </td>
+                                                    <td class="td-patient">
+                                                        <span <?php if($can_edit){ ?> data-source='<?php print_link('api/json/reminder_patient_option_list'); ?>' 
+                                                            data-value="<?php echo $data['patient']; ?>" 
+                                                            data-pk="<?php echo $data['id'] ?>" 
+                                                            data-url="<?php print_link("reminder/editfield/" . urlencode($data['id'])); ?>" 
+                                                            data-name="patient" 
+                                                            data-title="Select a value ..." 
+                                                            data-placement="left" 
+                                                            data-toggle="click" 
+                                                            data-type="select" 
+                                                            data-mode="popover" 
+                                                            data-showbuttons="left" 
+                                                            class="is-editable" <?php } ?>>
+                                                            <?php echo $data['patient']; ?> 
                                                         </span>
                                                     </td>
                                                     <th class="td-btn">

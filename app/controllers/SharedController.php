@@ -89,6 +89,18 @@ class SharedController extends BaseController{
 	}
 
 	/**
+     * reminder_patient_option_list Model Action
+     * @return array
+     */
+	function reminder_patient_option_list(){
+		$db = $this->GetModel();
+		$sqltext = "SELECT  DISTINCT name AS value,name AS label FROM user where role='patient'";
+		$queryparams = null;
+		$arr = $db->rawQuery($sqltext, $queryparams);
+		return $arr;
+	}
+
+	/**
      * reminder_phone_option_list Model Action
      * @return array
      */

@@ -60,6 +60,10 @@ class PrescriptionController extends SecureController{
 		else{
 			$db->orderBy("prescription.id", ORDER_TYPE);
 		}
+		$allowed_roles = array ('administrator', 'doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("prescription.patient", get_active_user('name') );
+		}
 		if($fieldname){
 			$db->where($fieldname , $fieldvalue); //filter by a single field name
 		}
@@ -106,6 +110,10 @@ class PrescriptionController extends SecureController{
 			"patient", 
 			"doctor", 
 			"date");
+		$allowed_roles = array ('administrator', 'doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("prescription.patient", get_active_user('name') );
+		}
 		if($value){
 			$db->where($rec_id, urldecode($value)); //select record based on field name
 		}
@@ -221,6 +229,10 @@ class PrescriptionController extends SecureController{
 			);
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
 			if($this->validated()){
+		$allowed_roles = array ('administrator', 'doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("prescription.patient", get_active_user('name') );
+		}
 				$db->where("prescription.id", $rec_id);;
 				$bool = $db->update($tablename, $modeldata);
 				$numRows = $db->getRowCount(); //number of affected rows. 0 = no record field updated
@@ -241,6 +253,10 @@ class PrescriptionController extends SecureController{
 					}
 				}
 			}
+		}
+		$allowed_roles = array ('administrator', 'doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("prescription.patient", get_active_user('name') );
 		}
 		$db->where("prescription.id", $rec_id);;
 		$data = $db->getOne($tablename, $fields);
@@ -294,6 +310,10 @@ class PrescriptionController extends SecureController{
 			$this->filter_rules = true; //filter validation rules by excluding fields not in the formdata
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
 			if($this->validated()){
+		$allowed_roles = array ('administrator', 'doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("prescription.patient", get_active_user('name') );
+		}
 				$db->where("prescription.id", $rec_id);;
 				$bool = $db->update($tablename, $modeldata);
 				$numRows = $db->getRowCount();
@@ -335,6 +355,10 @@ class PrescriptionController extends SecureController{
 		//form multiple delete, split record id separated by comma into array
 		$arr_rec_id = array_map('trim', explode(",", $rec_id));
 		$db->where("prescription.id", $arr_rec_id, "in");
+		$allowed_roles = array ('administrator', 'doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("prescription.patient", get_active_user('name') );
+		}
 		$bool = $db->delete($tablename);
 		if($bool){
 			$this->set_flash_msg("Record deleted successfully", "success");

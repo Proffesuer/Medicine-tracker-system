@@ -52,6 +52,10 @@ class ReviewsController extends SecureController{
 		else{
 			$db->orderBy("reviews.id", ORDER_TYPE);
 		}
+		$allowed_roles = array ('administrator', 'doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("reviews.patient", get_active_user('id') );
+		}
 		if($fieldname){
 			$db->where($fieldname , $fieldvalue); //filter by a single field name
 		}
@@ -94,6 +98,10 @@ class ReviewsController extends SecureController{
 			"doctor_message", 
 			"patient_message", 
 			"date");
+		$allowed_roles = array ('administrator', 'doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("reviews.patient", get_active_user('id') );
+		}
 		if($value){
 			$db->where($rec_id, urldecode($value)); //select record based on field name
 		}
@@ -189,6 +197,10 @@ class ReviewsController extends SecureController{
 			);
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
 			if($this->validated()){
+		$allowed_roles = array ('administrator', 'doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("reviews.patient", get_active_user('id') );
+		}
 				$db->where("reviews.id", $rec_id);;
 				$bool = $db->update($tablename, $modeldata);
 				$numRows = $db->getRowCount(); //number of affected rows. 0 = no record field updated
@@ -209,6 +221,10 @@ class ReviewsController extends SecureController{
 					}
 				}
 			}
+		}
+		$allowed_roles = array ('administrator', 'doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("reviews.patient", get_active_user('id') );
 		}
 		$db->where("reviews.id", $rec_id);;
 		$data = $db->getOne($tablename, $fields);
@@ -252,6 +268,10 @@ class ReviewsController extends SecureController{
 			$this->filter_rules = true; //filter validation rules by excluding fields not in the formdata
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
 			if($this->validated()){
+		$allowed_roles = array ('administrator', 'doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("reviews.patient", get_active_user('id') );
+		}
 				$db->where("reviews.id", $rec_id);;
 				$bool = $db->update($tablename, $modeldata);
 				$numRows = $db->getRowCount();
@@ -293,6 +313,10 @@ class ReviewsController extends SecureController{
 		//form multiple delete, split record id separated by comma into array
 		$arr_rec_id = array_map('trim', explode(",", $rec_id));
 		$db->where("reviews.id", $arr_rec_id, "in");
+		$allowed_roles = array ('doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("reviews.patient", get_active_user('id') );
+		}
 		$bool = $db->delete($tablename);
 		if($bool){
 			$this->set_flash_msg("Record deleted successfully", "success");

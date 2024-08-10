@@ -23,7 +23,8 @@ class ReminderController extends SecureController{
 			"phone", 
 			"mode", 
 			"status", 
-			"Doctor");
+			"Doctor", 
+			"patient");
 		$pagination = $this->get_pagination(MAX_RECORD_COUNT); // get current pagination e.g array(page_number, page_limit)
 		//search table record
 		if(!empty($request->search)){
@@ -34,10 +35,11 @@ class ReminderController extends SecureController{
 				reminder.phone LIKE ? OR 
 				reminder.mode LIKE ? OR 
 				reminder.status LIKE ? OR 
-				reminder.Doctor LIKE ?
+				reminder.Doctor LIKE ? OR 
+				reminder.patient LIKE ?
 			)";
 			$search_params = array(
-				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
+				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
 			);
 			//setting search conditions
 			$db->where($search_condition, $search_params);
@@ -51,6 +53,10 @@ class ReminderController extends SecureController{
 		}
 		else{
 			$db->orderBy("reminder.id", ORDER_TYPE);
+		}
+		$allowed_roles = array ('administrator', 'doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("reminder.patient", get_active_user('name') );
 		}
 		if($fieldname){
 			$db->where($fieldname , $fieldvalue); //filter by a single field name
@@ -93,7 +99,12 @@ class ReminderController extends SecureController{
 			"phone", 
 			"mode", 
 			"status", 
-			"Doctor");
+			"Doctor", 
+			"patient");
+		$allowed_roles = array ('administrator', 'doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("reminder.patient", get_active_user('name') );
+		}
 		if($value){
 			$db->where($rec_id, urldecode($value)); //select record based on field name
 		}
@@ -130,7 +141,7 @@ class ReminderController extends SecureController{
 			$tablename = $this->tablename;
 			$request = $this->request;
 			//fillable fields
-			$fields = $this->fields = array("prescription_id","phone","mode","status","Doctor");
+			$fields = $this->fields = array("prescription_id","phone","mode","status","Doctor","patient");
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
 				'prescription_id' => 'required',
@@ -138,6 +149,7 @@ class ReminderController extends SecureController{
 				'mode' => 'required',
 				'status' => 'required',
 				'Doctor' => 'required',
+				'patient' => 'required',
 			);
 			$this->sanitize_array = array(
 				'prescription_id' => 'sanitize_string',
@@ -145,6 +157,7 @@ class ReminderController extends SecureController{
 				'mode' => 'sanitize_string',
 				'status' => 'sanitize_string',
 				'Doctor' => 'sanitize_string',
+				'patient' => 'sanitize_string',
 			);
 			$this->filter_vals = true; //set whether to remove empty fields
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
@@ -174,7 +187,7 @@ class ReminderController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		 //editable fields
-		$fields = $this->fields = array("id","prescription_id","phone","mode","status","Doctor");
+		$fields = $this->fields = array("id","prescription_id","phone","mode","status","Doctor","patient");
 		if($formdata){
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
@@ -183,6 +196,7 @@ class ReminderController extends SecureController{
 				'mode' => 'required',
 				'status' => 'required',
 				'Doctor' => 'required',
+				'patient' => 'required',
 			);
 			$this->sanitize_array = array(
 				'prescription_id' => 'sanitize_string',
@@ -190,9 +204,14 @@ class ReminderController extends SecureController{
 				'mode' => 'sanitize_string',
 				'status' => 'sanitize_string',
 				'Doctor' => 'sanitize_string',
+				'patient' => 'sanitize_string',
 			);
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
 			if($this->validated()){
+		$allowed_roles = array ('administrator', 'doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("reminder.patient", get_active_user('name') );
+		}
 				$db->where("reminder.id", $rec_id);;
 				$bool = $db->update($tablename, $modeldata);
 				$numRows = $db->getRowCount(); //number of affected rows. 0 = no record field updated
@@ -214,6 +233,10 @@ class ReminderController extends SecureController{
 				}
 			}
 		}
+		$allowed_roles = array ('administrator', 'doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("reminder.patient", get_active_user('name') );
+		}
 		$db->where("reminder.id", $rec_id);;
 		$data = $db->getOne($tablename, $fields);
 		$page_title = $this->view->page_title = "Edit  Reminder";
@@ -233,7 +256,7 @@ class ReminderController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		//editable fields
-		$fields = $this->fields = array("id","prescription_id","phone","mode","status","Doctor");
+		$fields = $this->fields = array("id","prescription_id","phone","mode","status","Doctor","patient");
 		$page_error = null;
 		if($formdata){
 			$postdata = array();
@@ -247,6 +270,7 @@ class ReminderController extends SecureController{
 				'mode' => 'required',
 				'status' => 'required',
 				'Doctor' => 'required',
+				'patient' => 'required',
 			);
 			$this->sanitize_array = array(
 				'prescription_id' => 'sanitize_string',
@@ -254,10 +278,15 @@ class ReminderController extends SecureController{
 				'mode' => 'sanitize_string',
 				'status' => 'sanitize_string',
 				'Doctor' => 'sanitize_string',
+				'patient' => 'sanitize_string',
 			);
 			$this->filter_rules = true; //filter validation rules by excluding fields not in the formdata
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
 			if($this->validated()){
+		$allowed_roles = array ('administrator', 'doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("reminder.patient", get_active_user('name') );
+		}
 				$db->where("reminder.id", $rec_id);;
 				$bool = $db->update($tablename, $modeldata);
 				$numRows = $db->getRowCount();
@@ -299,6 +328,10 @@ class ReminderController extends SecureController{
 		//form multiple delete, split record id separated by comma into array
 		$arr_rec_id = array_map('trim', explode(",", $rec_id));
 		$db->where("reminder.id", $arr_rec_id, "in");
+		$allowed_roles = array ('administrator', 'doctor');
+		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
+		$db->where("reminder.patient", get_active_user('name') );
+		}
 		$bool = $db->delete($tablename);
 		if($bool){
 			$this->set_flash_msg("Record deleted successfully", "success");

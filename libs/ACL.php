@@ -35,7 +35,7 @@ class ACL
 						array(
 							'medicine' => array('list','view','add','edit', 'editfield','import_data'),
 							'prescription' => array('list','view','add','edit', 'editfield','delete','import_data'),
-							'reminder' => array('list','view','add','edit', 'editfield'),
+							'reminder' => array('list','view','add','edit', 'editfield','delete'),
 							'reviews' => array('list','view','add','edit', 'editfield')
 						)
 		);

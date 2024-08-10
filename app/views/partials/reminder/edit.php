@@ -179,6 +179,36 @@ $redirect_to = $this->redirect_to;
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label class="control-label" for="patient">Patient <span class="text-danger">*</span></label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <div class="">
+                                                    <select required=""  id="ctrl-patient" name="patient"  placeholder="Select a value ..."    class="custom-select" >
+                                                        <option value="">Select a value ...</option>
+                                                        <?php
+                                                        $rec = $data['patient'];
+                                                        $patient_options = $comp_model -> reminder_patient_option_list();
+                                                        if(!empty($patient_options)){
+                                                        foreach($patient_options as $option){
+                                                        $value = (!empty($option['value']) ? $option['value'] : null);
+                                                        $label = (!empty($option['label']) ? $option['label'] : $value);
+                                                        $selected = ( $value == $rec ? 'selected' : null );
+                                                        ?>
+                                                        <option 
+                                                            <?php echo $selected; ?> value="<?php echo $value; ?>"><?php echo $label; ?>
+                                                        </option>
+                                                        <?php
+                                                        }
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-ajax-status"></div>
                                 <div class="form-group text-center">
