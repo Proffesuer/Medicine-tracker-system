@@ -28,7 +28,7 @@ class ACL
 							'user' => array('userregister','accountedit','accountview'),
 							'prescription' => array('list','view'),
 							'reminder' => array('list','view','edit', 'editfield'),
-							'reviews' => array('list','view','add','edit', 'editfield')
+							'reviews' => array('list','view','add','edit', 'editfield','delete')
 						),
 		
 			'doctor' =>
