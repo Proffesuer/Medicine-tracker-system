@@ -192,14 +192,15 @@ $show_pagination = $this->show_pagination;
                                                         </span>
                                                     </td>
                                                     <td class="td-DOB">
-                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['DOB']; ?>" 
+                                                        <span <?php if($can_edit){ ?> data-flatpickr="{ enableTime: false, minDate: '', maxDate: '<?php echo date('Y-m-d', strtotime('-10years')); ?>'}" 
+                                                            data-value="<?php echo $data['DOB']; ?>" 
                                                             data-pk="<?php echo $data['id'] ?>" 
                                                             data-url="<?php print_link("user/editfield/" . urlencode($data['id'])); ?>" 
                                                             data-name="DOB" 
                                                             data-title="Enter Dob" 
                                                             data-placement="left" 
                                                             data-toggle="click" 
-                                                            data-type="text" 
+                                                            data-type="flatdatetimepicker" 
                                                             data-mode="popover" 
                                                             data-showbuttons="left" 
                                                             class="is-editable" <?php } ?>>

@@ -103,8 +103,11 @@ $redirect_to = $this->redirect_to;
                                                             <label class="control-label" for="DOB">Dob <span class="text-danger">*</span></label>
                                                         </div>
                                                         <div class="col-sm-8">
-                                                            <div class="">
-                                                                <input id="ctrl-DOB"  value="<?php  echo $this->set_field_value('DOB',""); ?>" type="text" placeholder="Enter Dob"  required="" name="DOB"  class="form-control " />
+                                                            <div class="input-group">
+                                                                <input id="ctrl-DOB" class="form-control datepicker  datepicker"  required="" value="<?php  echo $this->set_field_value('DOB',""); ?>" type="datetime" name="DOB" placeholder="Enter Dob" data-enable-time="false" data-min-date="" data-max-date="<?php echo date('Y-m-d', strtotime('-10years')); ?>" data-date-format="Y-m-d" data-alt-format="F j, Y" data-inline="false" data-no-calendar="false" data-mode="single" />
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text"><i class="material-icons">date_range</i></span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
