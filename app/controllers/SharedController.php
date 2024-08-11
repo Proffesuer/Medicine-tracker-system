@@ -118,7 +118,7 @@ class SharedController extends BaseController{
      */
 	function reviews_patient_option_list(){
 		$db = $this->GetModel();
-		$sqltext = "SELECT  DISTINCT id AS value,name AS label FROM user where role='patient'";
+		$sqltext = "SELECT  DISTINCT name AS value,name AS label FROM user";
 		$queryparams = null;
 		$arr = $db->rawQuery($sqltext, $queryparams);
 		return $arr;
@@ -130,7 +130,7 @@ class SharedController extends BaseController{
      */
 	function reviews_dcotor_option_list(){
 		$db = $this->GetModel();
-		$sqltext = "SELECT  DISTINCT id AS value,name AS label FROM user where role='Doctor'";
+		$sqltext = "SELECT  DISTINCT name AS value,name AS label FROM user where role='Doctor'";
 		$queryparams = null;
 		$arr = $db->rawQuery($sqltext, $queryparams);
 		return $arr;
