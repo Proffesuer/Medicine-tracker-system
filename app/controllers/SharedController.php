@@ -70,7 +70,7 @@ class SharedController extends BaseController{
      */
 	function reminder_prescription_id_option_list(){
 		$db = $this->GetModel();
-		$sqltext = "SELECT  DISTINCT id AS value,patient AS label FROM prescription ORDER BY date ASC";
+		$sqltext = "SELECT  DISTINCT id AS value,id AS label FROM prescription ORDER BY date ASC";
 		$queryparams = null;
 		$arr = $db->rawQuery($sqltext, $queryparams);
 		return $arr;
