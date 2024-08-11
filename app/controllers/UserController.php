@@ -149,7 +149,6 @@ class UserController extends SecureController{
 				'phone' => 'required',
 				'gender' => 'required',
 				'DOB' => 'required',
-				'image' => 'required',
 				'role' => 'required',
 				'password' => 'required',
 			);
@@ -216,7 +215,6 @@ class UserController extends SecureController{
 				'phone' => 'required',
 				'gender' => 'required',
 				'DOB' => 'required',
-				'image' => 'required',
 				'password' => 'required',
 			);
 			$this->sanitize_array = array(
@@ -291,7 +289,6 @@ class UserController extends SecureController{
 				'phone' => 'required',
 				'gender' => 'required',
 				'DOB' => 'required',
-				'image' => 'required',
 				'password' => 'required',
 			);
 			$this->sanitize_array = array(
