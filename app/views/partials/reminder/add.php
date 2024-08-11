@@ -38,7 +38,7 @@ $redirect_to = $this->redirect_to;
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <select required=""  id="ctrl-prescription_id" data-load-select-options="phone" name="prescription_id"  placeholder="Select a value ..."    class="custom-select" >
+                                                <select required=""  id="ctrl-prescription_id" data-load-select-options="Doctor,patient" name="prescription_id"  placeholder="Select a value ..."    class="custom-select" >
                                                     <option value="">Select a value ...</option>
                                                     <?php 
                                                     $prescription_id_options = $comp_model -> reminder_prescription_id_option_list();
@@ -67,8 +67,21 @@ $redirect_to = $this->redirect_to;
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <input id="ctrl-phone"  value="<?php  echo $this->set_field_value('phone',""); ?>" type="number" placeholder="Enter Phone" step="1" list="phone-datalist"  required="" data-load-path="<?php print_link('api/json/reminder_phone_option_list') ?>" name="phone"  class="form-control " />
-                                                    <datalist id="phone-datalist"></datalist> 
+                                                <input id="ctrl-phone"  value="<?php  echo $this->set_field_value('phone',""); ?>" type="number" placeholder="Enter Phone" step="1" list="phone_list"  required="" name="phone"  class="form-control " />
+                                                    <datalist id="phone_list">
+                                                        <?php 
+                                                        $phone_options = $comp_model -> reminder_phone_option_list();
+                                                        if(!empty($phone_options)){
+                                                        foreach($phone_options as $option){
+                                                        $value = (!empty($option['value']) ? $option['value'] : null);
+                                                        $label = (!empty($option['label']) ? $option['label'] : $value);
+                                                        ?>
+                                                        <option value="<?php echo $value; ?>"><?php echo $label; ?></option>
+                                                        <?php
+                                                        }
+                                                        }
+                                                        ?>
+                                                    </datalist>
                                                 </div>
                                             </div>
                                         </div>
@@ -138,23 +151,8 @@ $redirect_to = $this->redirect_to;
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="">
-                                                    <select required=""  id="ctrl-Doctor" name="Doctor"  placeholder="Select a value ..."    class="custom-select" >
+                                                    <select required=""  id="ctrl-Doctor" data-load-path="<?php print_link('api/json/reminder_Doctor_option_list') ?>" name="Doctor"  placeholder="Select a value ..."    class="custom-select" >
                                                         <option value="">Select a value ...</option>
-                                                        <?php 
-                                                        $Doctor_options = $comp_model -> reminder_Doctor_option_list();
-                                                        if(!empty($Doctor_options)){
-                                                        foreach($Doctor_options as $option){
-                                                        $value = (!empty($option['value']) ? $option['value'] : null);
-                                                        $label = (!empty($option['label']) ? $option['label'] : $value);
-                                                        $selected = $this->set_field_selected('Doctor',$value, "");
-                                                        ?>
-                                                        <option <?php echo $selected; ?> value="<?php echo $value; ?>">
-                                                            <?php echo $label; ?>
-                                                        </option>
-                                                        <?php
-                                                        }
-                                                        }
-                                                        ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -167,23 +165,8 @@ $redirect_to = $this->redirect_to;
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="">
-                                                    <select required=""  id="ctrl-patient" name="patient"  placeholder="Select a value ..."    class="custom-select" >
+                                                    <select required=""  id="ctrl-patient" data-load-path="<?php print_link('api/json/reminder_patient_option_list') ?>" name="patient"  placeholder="Select a value ..."    class="custom-select" >
                                                         <option value="">Select a value ...</option>
-                                                        <?php 
-                                                        $patient_options = $comp_model -> reminder_patient_option_list();
-                                                        if(!empty($patient_options)){
-                                                        foreach($patient_options as $option){
-                                                        $value = (!empty($option['value']) ? $option['value'] : null);
-                                                        $label = (!empty($option['label']) ? $option['label'] : $value);
-                                                        $selected = $this->set_field_selected('patient',$value, "");
-                                                        ?>
-                                                        <option <?php echo $selected; ?> value="<?php echo $value; ?>">
-                                                            <?php echo $label; ?>
-                                                        </option>
-                                                        <?php
-                                                        }
-                                                        }
-                                                        ?>
                                                     </select>
                                                 </div>
                                             </div>

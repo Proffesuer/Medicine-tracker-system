@@ -80,10 +80,10 @@ class SharedController extends BaseController{
      * reminder_Doctor_option_list Model Action
      * @return array
      */
-	function reminder_Doctor_option_list(){
+	function reminder_Doctor_option_list($lookup_prescription_id){
 		$db = $this->GetModel();
-		$sqltext = "SELECT  DISTINCT id AS value,name AS label FROM user where role='Doctor'";
-		$queryparams = null;
+		$sqltext = "SELECT  DISTINCT doctor AS value,doctor AS label FROM prescription WHERE id= ?" ;
+		$queryparams = array($lookup_prescription_id);
 		$arr = $db->rawQuery($sqltext, $queryparams);
 		return $arr;
 	}
@@ -92,10 +92,10 @@ class SharedController extends BaseController{
      * reminder_patient_option_list Model Action
      * @return array
      */
-	function reminder_patient_option_list(){
+	function reminder_patient_option_list($lookup_prescription_id){
 		$db = $this->GetModel();
-		$sqltext = "SELECT  DISTINCT name AS value,name AS label FROM user where role='patient'";
-		$queryparams = null;
+		$sqltext = "SELECT  DISTINCT patient AS value,patient AS label FROM prescription WHERE id= ?" ;
+		$queryparams = array($lookup_prescription_id);
 		$arr = $db->rawQuery($sqltext, $queryparams);
 		return $arr;
 	}
@@ -104,10 +104,10 @@ class SharedController extends BaseController{
      * reminder_phone_option_list Model Action
      * @return array
      */
-	function reminder_phone_option_list($lookup_prescription_id){
+	function reminder_phone_option_list(){
 		$db = $this->GetModel();
-		$sqltext = "SELECT  DISTINCT phone AS value,phone AS label FROM user WHERE name=prescription_id ORDER BY id ASC"  ;
-		$queryparams = array($lookup_prescription_id);
+		$sqltext = "SELECT  DISTINCT phone AS value,phone AS label FROM user";
+		$queryparams = null;
 		$arr = $db->rawQuery($sqltext, $queryparams);
 		return $arr;
 	}
