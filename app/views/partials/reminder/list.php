@@ -207,7 +207,10 @@ $show_pagination = $this->show_pagination;
                                                         </span>
                                                     </td>
                                                     <td class="td-Doctor">
-                                                        <span <?php if($can_edit){ ?> data-source='<?php print_link('api/json/reminder_Doctor_option_list'); ?>' 
+                                                        <span <?php if($can_edit){ ?> data-source='<?php 
+                                                            $dependent_field = (!empty($data['prescription_id']) ? urlencode($data['prescription_id']) : null);
+                                                            print_link('api/json/reminder_Doctor_option_list/'.$dependent_field); 
+                                                            ?>' 
                                                             data-value="<?php echo $data['Doctor']; ?>" 
                                                             data-pk="<?php echo $data['id'] ?>" 
                                                             data-url="<?php print_link("reminder/editfield/" . urlencode($data['id'])); ?>" 
@@ -223,7 +226,10 @@ $show_pagination = $this->show_pagination;
                                                         </span>
                                                     </td>
                                                     <td class="td-patient">
-                                                        <span <?php if($can_edit){ ?> data-source='<?php print_link('api/json/reminder_patient_option_list'); ?>' 
+                                                        <span <?php if($can_edit){ ?> data-source='<?php 
+                                                            $dependent_field = (!empty($data['prescription_id']) ? urlencode($data['prescription_id']) : null);
+                                                            print_link('api/json/reminder_patient_option_list/'.$dependent_field); 
+                                                            ?>' 
                                                             data-value="<?php echo $data['patient']; ?>" 
                                                             data-pk="<?php echo $data['id'] ?>" 
                                                             data-url="<?php print_link("reminder/editfield/" . urlencode($data['id'])); ?>" 

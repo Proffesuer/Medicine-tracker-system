@@ -78,10 +78,7 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-phone">
                                         <th class="title"> Phone: </th>
                                         <td class="value">
-                                            <span <?php if($can_edit){ ?> data-source='<?php 
-                                                $dependent_field = (!empty($data['prescription_id']) ? urlencode($data['prescription_id']) : null);
-                                                print_link('api/json/reminder_phone_option_list/'.$dependent_field); 
-                                                ?>' 
+                                            <span <?php if($can_edit){ ?> data-source='<?php print_link('api/json/reminder_phone_option_list'); ?>' 
                                                 data-value="<?php echo $data['phone']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("reminder/editfield/" . urlencode($data['id'])); ?>" 
@@ -138,7 +135,10 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-Doctor">
                                         <th class="title"> Doctor: </th>
                                         <td class="value">
-                                            <span <?php if($can_edit){ ?> data-source='<?php print_link('api/json/reminder_Doctor_option_list'); ?>' 
+                                            <span <?php if($can_edit){ ?> data-source='<?php 
+                                                $dependent_field = (!empty($data['prescription_id']) ? urlencode($data['prescription_id']) : null);
+                                                print_link('api/json/reminder_Doctor_option_list/'.$dependent_field); 
+                                                ?>' 
                                                 data-value="<?php echo $data['Doctor']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("reminder/editfield/" . urlencode($data['id'])); ?>" 
@@ -157,7 +157,10 @@ $show_export_btn = $this->show_export_btn;
                                     <tr  class="td-patient">
                                         <th class="title"> Patient: </th>
                                         <td class="value">
-                                            <span <?php if($can_edit){ ?> data-source='<?php print_link('api/json/reminder_patient_option_list'); ?>' 
+                                            <span <?php if($can_edit){ ?> data-source='<?php 
+                                                $dependent_field = (!empty($data['prescription_id']) ? urlencode($data['prescription_id']) : null);
+                                                print_link('api/json/reminder_patient_option_list/'.$dependent_field); 
+                                                ?>' 
                                                 data-value="<?php echo $data['patient']; ?>" 
                                                 data-pk="<?php echo $data['id'] ?>" 
                                                 data-url="<?php print_link("reminder/editfield/" . urlencode($data['id'])); ?>" 
