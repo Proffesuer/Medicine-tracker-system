@@ -122,3 +122,4 @@ $current_page = $this->set_current_page_link();
         </div>
     </div>
 </div>
+

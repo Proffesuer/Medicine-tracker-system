@@ -41,7 +41,7 @@ $redirect_to = $this->redirect_to;
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <select required=""  id="ctrl-prescription_id" data-load-select-options="Doctor,patient" name="prescription_id"  placeholder="Select a value ..."    class="custom-select" >
+                                                <select required=""  id="ctrl-prescription_id" data-load-select-options="patient" name="prescription_id"  placeholder="Select a value ..."    class="custom-select" >
                                                     <option value="">Select a value ...</option>
                                                     <?php
                                                     $rec = $data['prescription_id'];
@@ -153,35 +153,6 @@ $redirect_to = $this->redirect_to;
                                     <div class="form-group ">
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <label class="control-label" for="Doctor">Doctor <span class="text-danger">*</span></label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <div class="">
-                                                    <select required=""  id="ctrl-Doctor" data-load-path="<?php print_link('api/json/reminder_Doctor_option_list') ?>" name="Doctor"  placeholder="Select a value ..."    class="custom-select" >
-                                                        <?php
-                                                        $rec = $data['Doctor'];
-                                                        $Doctor_options = $comp_model -> reminder_Doctor_option_list($data['prescription_id']);
-                                                        if(!empty($Doctor_options)){
-                                                        foreach($Doctor_options as $option){
-                                                        $value = (!empty($option['value']) ? $option['value'] : null);
-                                                        $label = (!empty($option['label']) ? $option['label'] : $value);
-                                                        $selected = ( $value == $rec ? 'selected' : null );
-                                                        ?>
-                                                        <option 
-                                                            <?php echo $selected; ?> value="<?php echo $value; ?>"><?php echo $label; ?>
-                                                        </option>
-                                                        <?php
-                                                        }
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <div class="row">
-                                            <div class="col-sm-4">
                                                 <label class="control-label" for="patient">Patient <span class="text-danger">*</span></label>
                                             </div>
                                             <div class="col-sm-8">
@@ -208,18 +179,33 @@ $redirect_to = $this->redirect_to;
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-ajax-status"></div>
-                                <div class="form-group text-center">
-                                    <button class="btn btn-primary" type="submit">
-                                        Update
-                                        <i class="material-icons">send</i>
-                                    </button>
-                                </div>
-                            </form>
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label class="control-label" for="time">Time <span class="text-danger">*</span></label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <div class="input-group">
+                                                    <input id="ctrl-time" class="form-control datepicker  datepicker"  required="" value="<?php  echo $data['time']; ?>" type="time" name="time" placeholder="Enter Time" data-enable-time="true" data-min-date="" data-max-date=""  data-alt-format="H:i" data-date-format="H:i:S" data-inline="false" data-no-calendar="true" data-mode="single" /> 
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text"><i class="material-icons">access_time</i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-ajax-status"></div>
+                                    <div class="form-group text-center">
+                                        <button class="btn btn-primary" type="submit">
+                                            Update
+                                            <i class="material-icons">send</i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>

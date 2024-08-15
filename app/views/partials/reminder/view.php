@@ -132,28 +132,6 @@ $show_export_btn = $this->show_export_btn;
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr  class="td-Doctor">
-                                        <th class="title"> Doctor: </th>
-                                        <td class="value">
-                                            <span <?php if($can_edit){ ?> data-source='<?php 
-                                                $dependent_field = (!empty($data['prescription_id']) ? urlencode($data['prescription_id']) : null);
-                                                print_link('api/json/reminder_Doctor_option_list/'.$dependent_field); 
-                                                ?>' 
-                                                data-value="<?php echo $data['Doctor']; ?>" 
-                                                data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("reminder/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="Doctor" 
-                                                data-title="Select a value ..." 
-                                                data-placement="left" 
-                                                data-toggle="click" 
-                                                data-type="select" 
-                                                data-mode="popover" 
-                                                data-showbuttons="left" 
-                                                class="is-editable" <?php } ?>>
-                                                <?php echo $data['Doctor']; ?> 
-                                            </span>
-                                        </td>
-                                    </tr>
                                     <tr  class="td-patient">
                                         <th class="title"> Patient: </th>
                                         <td class="value">
@@ -173,6 +151,24 @@ $show_export_btn = $this->show_export_btn;
                                                 data-showbuttons="left" 
                                                 class="is-editable" <?php } ?>>
                                                 <?php echo $data['patient']; ?> 
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr  class="td-time">
+                                        <th class="title"> Time: </th>
+                                        <td class="value">
+                                            <span <?php if($can_edit){ ?> data-value="<?php echo $data['time']; ?>" 
+                                                data-pk="<?php echo $data['id'] ?>" 
+                                                data-url="<?php print_link("reminder/editfield/" . urlencode($data['id'])); ?>" 
+                                                data-name="time" 
+                                                data-title="Enter Time" 
+                                                data-placement="left" 
+                                                data-toggle="click" 
+                                                data-type="time" 
+                                                data-mode="popover" 
+                                                data-showbuttons="left" 
+                                                class="is-editable" <?php } ?>>
+                                                <?php echo $data['time']; ?> 
                                             </span>
                                         </td>
                                     </tr>

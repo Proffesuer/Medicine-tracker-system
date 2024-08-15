@@ -97,32 +97,6 @@ $redirect_to = $this->redirect_to;
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="doctor_message">Doctor Message </label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div class="">
-                                                <textarea placeholder="Enter Doctor Message" id="ctrl-doctor_message"  rows="5" name="doctor_message" class=" form-control"><?php  echo $data['doctor_message']; ?></textarea>
-                                                <!--<div class="invalid-feedback animated bounceIn text-center">Please enter text</div>-->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="control-label" for="patient_message">Patient Message </label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div class="">
-                                                <textarea placeholder="Enter Patient Message" id="ctrl-patient_message"  rows="5" name="patient_message" class=" form-control"><?php  echo $data['patient_message']; ?></textarea>
-                                                <!--<div class="invalid-feedback animated bounceIn text-center">Please enter text</div>-->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-sm-4">
                                             <label class="control-label" for="date">Date <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
@@ -131,6 +105,19 @@ $redirect_to = $this->redirect_to;
                                                     <div class="input-group-append">
                                                         <span class="input-group-text"><i class="material-icons">date_range</i></span>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label class="control-label" for="message">Message <span class="text-danger">*</span></label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <div class="">
+                                                    <textarea placeholder="Enter Message" id="ctrl-message"  required="" rows="5" name="message" class=" form-control"><?php  echo $data['message']; ?></textarea>
+                                                    <!--<div class="invalid-feedback animated bounceIn text-center">Please enter text</div>-->
                                                 </div>
                                             </div>
                                         </div>

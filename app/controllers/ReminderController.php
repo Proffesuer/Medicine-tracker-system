@@ -23,8 +23,8 @@ class ReminderController extends SecureController{
 			"phone", 
 			"mode", 
 			"status", 
-			"Doctor", 
-			"patient");
+			"patient", 
+			"time");
 		$pagination = $this->get_pagination(MAX_RECORD_COUNT); // get current pagination e.g array(page_number, page_limit)
 		//search table record
 		if(!empty($request->search)){
@@ -35,8 +35,8 @@ class ReminderController extends SecureController{
 				reminder.phone LIKE ? OR 
 				reminder.mode LIKE ? OR 
 				reminder.status LIKE ? OR 
-				reminder.Doctor LIKE ? OR 
-				reminder.patient LIKE ?
+				reminder.patient LIKE ? OR 
+				reminder.time LIKE ?
 			)";
 			$search_params = array(
 				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
@@ -99,8 +99,8 @@ class ReminderController extends SecureController{
 			"phone", 
 			"mode", 
 			"status", 
-			"Doctor", 
-			"patient");
+			"patient", 
+			"time");
 		$allowed_roles = array ('administrator', 'doctor');
 		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
 		$db->where("reminder.patient", get_active_user('name') );
@@ -141,23 +141,23 @@ class ReminderController extends SecureController{
 			$tablename = $this->tablename;
 			$request = $this->request;
 			//fillable fields
-			$fields = $this->fields = array("prescription_id","phone","mode","status","Doctor","patient");
+			$fields = $this->fields = array("prescription_id","phone","mode","status","patient","time");
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
 				'prescription_id' => 'required',
 				'phone' => 'required|numeric',
 				'mode' => 'required',
 				'status' => 'required',
-				'Doctor' => 'required',
 				'patient' => 'required',
+				'time' => 'required',
 			);
 			$this->sanitize_array = array(
 				'prescription_id' => 'sanitize_string',
 				'phone' => 'sanitize_string',
 				'mode' => 'sanitize_string',
 				'status' => 'sanitize_string',
-				'Doctor' => 'sanitize_string',
 				'patient' => 'sanitize_string',
+				'time' => 'sanitize_string',
 			);
 			$this->filter_vals = true; //set whether to remove empty fields
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
@@ -187,7 +187,7 @@ class ReminderController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		 //editable fields
-		$fields = $this->fields = array("id","prescription_id","phone","mode","status","Doctor","patient");
+		$fields = $this->fields = array("id","prescription_id","phone","mode","status","patient","time");
 		if($formdata){
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
@@ -195,16 +195,16 @@ class ReminderController extends SecureController{
 				'phone' => 'required|numeric',
 				'mode' => 'required',
 				'status' => 'required',
-				'Doctor' => 'required',
 				'patient' => 'required',
+				'time' => 'required',
 			);
 			$this->sanitize_array = array(
 				'prescription_id' => 'sanitize_string',
 				'phone' => 'sanitize_string',
 				'mode' => 'sanitize_string',
 				'status' => 'sanitize_string',
-				'Doctor' => 'sanitize_string',
 				'patient' => 'sanitize_string',
+				'time' => 'sanitize_string',
 			);
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
 			if($this->validated()){
@@ -256,7 +256,7 @@ class ReminderController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		//editable fields
-		$fields = $this->fields = array("id","prescription_id","phone","mode","status","Doctor","patient");
+		$fields = $this->fields = array("id","prescription_id","phone","mode","status","patient","time");
 		$page_error = null;
 		if($formdata){
 			$postdata = array();
@@ -269,16 +269,16 @@ class ReminderController extends SecureController{
 				'phone' => 'required|numeric',
 				'mode' => 'required',
 				'status' => 'required',
-				'Doctor' => 'required',
 				'patient' => 'required',
+				'time' => 'required',
 			);
 			$this->sanitize_array = array(
 				'prescription_id' => 'sanitize_string',
 				'phone' => 'sanitize_string',
 				'mode' => 'sanitize_string',
 				'status' => 'sanitize_string',
-				'Doctor' => 'sanitize_string',
 				'patient' => 'sanitize_string',
+				'time' => 'sanitize_string',
 			);
 			$this->filter_rules = true; //filter validation rules by excluding fields not in the formdata
 			$modeldata = $this->modeldata = $this->validate_form($postdata);

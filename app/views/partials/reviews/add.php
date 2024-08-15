@@ -78,26 +78,19 @@ $redirect_to = $this->redirect_to;
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <label class="control-label" for="doctor_message">Doctor Message </label>
-                                    <div id="ctrl-doctor_message-holder" class=""> 
-                                        <textarea placeholder="Enter Doctor Message" id="ctrl-doctor_message"  rows="5" name="doctor_message" class=" form-control"><?php  echo $this->set_field_value('doctor_message',""); ?></textarea>
-                                        <!--<div class="invalid-feedback animated bounceIn text-center">Please enter text</div>-->
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <label class="control-label" for="patient_message">Patient Message </label>
-                                    <div id="ctrl-patient_message-holder" class=""> 
-                                        <textarea placeholder="Enter Patient Message" id="ctrl-patient_message"  rows="5" name="patient_message" class=" form-control"><?php  echo $this->set_field_value('patient_message',""); ?></textarea>
-                                        <!--<div class="invalid-feedback animated bounceIn text-center">Please enter text</div>-->
-                                    </div>
-                                </div>
-                                <div class="form-group ">
                                     <label class="control-label" for="date">Date <span class="text-danger">*</span></label>
                                     <div id="ctrl-date-holder" class="input-group"> 
                                         <input id="ctrl-date" class="form-control datepicker  datepicker"  required="" value="<?php  echo $this->set_field_value('date',date_now()); ?>" type="datetime" name="date" placeholder="Enter Date" data-enable-time="false" data-min-date="<?php echo datetime_now(); ?>" data-max-date="<?php echo datetime_now(); ?>" data-date-format="Y-m-d" data-alt-format="F j, Y" data-inline="false" data-no-calendar="false" data-mode="single" />
                                             <div class="input-group-append">
                                                 <span class="input-group-text"><i class="material-icons">date_range</i></span>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label class="control-label" for="message">Message <span class="text-danger">*</span></label>
+                                        <div id="ctrl-message-holder" class=""> 
+                                            <textarea placeholder="Enter Message" id="ctrl-message"  required="" rows="5" name="message" class=" form-control"><?php  echo $this->set_field_value('message',""); ?></textarea>
+                                            <!--<div class="invalid-feedback animated bounceIn text-center">Please enter text</div>-->
                                         </div>
                                     </div>
                                 </div>

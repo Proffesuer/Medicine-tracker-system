@@ -60,12 +60,6 @@ class Menu{
 		
 			public static $role = array(
 		array(
-			"value" => "patient", 
-			"label" => "patient", 
-		),);
-		
-			public static $role2 = array(
-		array(
 			"value" => "Administrator", 
 			"label" => "Administrator", 
 		),
@@ -188,6 +182,10 @@ class Menu{
 		array(
 			"value" => "Yearly", 
 			"label" => "Yearly", 
+		),
+		array(
+			"value" => "Once", 
+			"label" => "Once", 
 		),);
 		
 			public static $status = array(

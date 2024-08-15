@@ -21,9 +21,8 @@ class ReviewsController extends SecureController{
 		$fields = array("id", 
 			"patient", 
 			"dcotor", 
-			"doctor_message", 
-			"patient_message", 
-			"date");
+			"date", 
+			"message");
 		$pagination = $this->get_pagination(MAX_RECORD_COUNT); // get current pagination e.g array(page_number, page_limit)
 		//search table record
 		if(!empty($request->search)){
@@ -32,12 +31,11 @@ class ReviewsController extends SecureController{
 				reviews.id LIKE ? OR 
 				reviews.patient LIKE ? OR 
 				reviews.dcotor LIKE ? OR 
-				reviews.doctor_message LIKE ? OR 
-				reviews.patient_message LIKE ? OR 
-				reviews.date LIKE ?
+				reviews.date LIKE ? OR 
+				reviews.message LIKE ?
 			)";
 			$search_params = array(
-				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
+				"%$text%","%$text%","%$text%","%$text%","%$text%"
 			);
 			//setting search conditions
 			$db->where($search_condition, $search_params);
@@ -54,7 +52,7 @@ class ReviewsController extends SecureController{
 		}
 		$allowed_roles = array ('administrator', 'doctor');
 		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
-		$db->where("reviews.patient", get_active_user('id') );
+		$db->where("reviews.patient", get_active_user('name') );
 		}
 		if($fieldname){
 			$db->where($fieldname , $fieldvalue); //filter by a single field name
@@ -95,12 +93,11 @@ class ReviewsController extends SecureController{
 		$fields = array("id", 
 			"patient", 
 			"dcotor", 
-			"doctor_message", 
-			"patient_message", 
-			"date");
+			"date", 
+			"message");
 		$allowed_roles = array ('administrator', 'doctor');
 		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
-		$db->where("reviews.patient", get_active_user('id') );
+		$db->where("reviews.patient", get_active_user('name') );
 		}
 		if($value){
 			$db->where($rec_id, urldecode($value)); //select record based on field name
@@ -138,19 +135,19 @@ class ReviewsController extends SecureController{
 			$tablename = $this->tablename;
 			$request = $this->request;
 			//fillable fields
-			$fields = $this->fields = array("patient","dcotor","doctor_message","patient_message","date");
+			$fields = $this->fields = array("patient","dcotor","date","message");
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
 				'patient' => 'required',
 				'dcotor' => 'required',
 				'date' => 'required',
+				'message' => 'required',
 			);
 			$this->sanitize_array = array(
 				'patient' => 'sanitize_string',
 				'dcotor' => 'sanitize_string',
-				'doctor_message' => 'sanitize_string',
-				'patient_message' => 'sanitize_string',
 				'date' => 'sanitize_string',
+				'message' => 'sanitize_string',
 			);
 			$this->filter_vals = true; //set whether to remove empty fields
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
@@ -180,26 +177,26 @@ class ReviewsController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		 //editable fields
-		$fields = $this->fields = array("id","patient","dcotor","doctor_message","patient_message","date");
+		$fields = $this->fields = array("id","patient","dcotor","date","message");
 		if($formdata){
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
 				'patient' => 'required',
 				'dcotor' => 'required',
 				'date' => 'required',
+				'message' => 'required',
 			);
 			$this->sanitize_array = array(
 				'patient' => 'sanitize_string',
 				'dcotor' => 'sanitize_string',
-				'doctor_message' => 'sanitize_string',
-				'patient_message' => 'sanitize_string',
 				'date' => 'sanitize_string',
+				'message' => 'sanitize_string',
 			);
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
 			if($this->validated()){
 		$allowed_roles = array ('administrator', 'doctor');
 		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
-		$db->where("reviews.patient", get_active_user('id') );
+		$db->where("reviews.patient", get_active_user('name') );
 		}
 				$db->where("reviews.id", $rec_id);;
 				$bool = $db->update($tablename, $modeldata);
@@ -224,7 +221,7 @@ class ReviewsController extends SecureController{
 		}
 		$allowed_roles = array ('administrator', 'doctor');
 		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
-		$db->where("reviews.patient", get_active_user('id') );
+		$db->where("reviews.patient", get_active_user('name') );
 		}
 		$db->where("reviews.id", $rec_id);;
 		$data = $db->getOne($tablename, $fields);
@@ -245,7 +242,7 @@ class ReviewsController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		//editable fields
-		$fields = $this->fields = array("id","patient","dcotor","doctor_message","patient_message","date");
+		$fields = $this->fields = array("id","patient","dcotor","date","message");
 		$page_error = null;
 		if($formdata){
 			$postdata = array();
@@ -257,20 +254,20 @@ class ReviewsController extends SecureController{
 				'patient' => 'required',
 				'dcotor' => 'required',
 				'date' => 'required',
+				'message' => 'required',
 			);
 			$this->sanitize_array = array(
 				'patient' => 'sanitize_string',
 				'dcotor' => 'sanitize_string',
-				'doctor_message' => 'sanitize_string',
-				'patient_message' => 'sanitize_string',
 				'date' => 'sanitize_string',
+				'message' => 'sanitize_string',
 			);
 			$this->filter_rules = true; //filter validation rules by excluding fields not in the formdata
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
 			if($this->validated()){
 		$allowed_roles = array ('administrator', 'doctor');
 		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
-		$db->where("reviews.patient", get_active_user('id') );
+		$db->where("reviews.patient", get_active_user('name') );
 		}
 				$db->where("reviews.id", $rec_id);;
 				$bool = $db->update($tablename, $modeldata);
@@ -315,7 +312,7 @@ class ReviewsController extends SecureController{
 		$db->where("reviews.id", $arr_rec_id, "in");
 		$allowed_roles = array ('doctor');
 		if(!in_array(strtolower(USER_ROLE), $allowed_roles)){
-		$db->where("reviews.patient", get_active_user('id') );
+		$db->where("reviews.patient", get_active_user('name') );
 		}
 		$bool = $db->delete($tablename);
 		if($bool){

@@ -77,18 +77,6 @@ class SharedController extends BaseController{
 	}
 
 	/**
-     * reminder_Doctor_option_list Model Action
-     * @return array
-     */
-	function reminder_Doctor_option_list($lookup_prescription_id){
-		$db = $this->GetModel();
-		$sqltext = "SELECT  DISTINCT doctor AS value,doctor AS label FROM prescription WHERE id= ?" ;
-		$queryparams = array($lookup_prescription_id);
-		$arr = $db->rawQuery($sqltext, $queryparams);
-		return $arr;
-	}
-
-	/**
      * reminder_patient_option_list Model Action
      * @return array
      */
@@ -118,7 +106,7 @@ class SharedController extends BaseController{
      */
 	function reviews_patient_option_list(){
 		$db = $this->GetModel();
-		$sqltext = "SELECT  DISTINCT name AS value,name AS label FROM user";
+		$sqltext = "SELECT  DISTINCT name AS value,name AS label FROM user where role='patient'";
 		$queryparams = null;
 		$arr = $db->rawQuery($sqltext, $queryparams);
 		return $arr;

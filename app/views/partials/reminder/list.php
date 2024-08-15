@@ -130,8 +130,8 @@ $show_pagination = $this->show_pagination;
                                                 <th  class="td-phone"> Phone</th>
                                                 <th  class="td-mode"> Mode</th>
                                                 <th  class="td-status"> Status</th>
-                                                <th  class="td-Doctor"> Doctor</th>
                                                 <th  class="td-patient"> Patient</th>
+                                                <th  class="td-time"> Time</th>
                                                 <th class="td-btn"></th>
                                             </tr>
                                         </thead>
@@ -206,25 +206,6 @@ $show_pagination = $this->show_pagination;
                                                             <?php echo $data['status']; ?> 
                                                         </span>
                                                     </td>
-                                                    <td class="td-Doctor">
-                                                        <span <?php if($can_edit){ ?> data-source='<?php 
-                                                            $dependent_field = (!empty($data['prescription_id']) ? urlencode($data['prescription_id']) : null);
-                                                            print_link('api/json/reminder_Doctor_option_list/'.$dependent_field); 
-                                                            ?>' 
-                                                            data-value="<?php echo $data['Doctor']; ?>" 
-                                                            data-pk="<?php echo $data['id'] ?>" 
-                                                            data-url="<?php print_link("reminder/editfield/" . urlencode($data['id'])); ?>" 
-                                                            data-name="Doctor" 
-                                                            data-title="Select a value ..." 
-                                                            data-placement="left" 
-                                                            data-toggle="click" 
-                                                            data-type="select" 
-                                                            data-mode="popover" 
-                                                            data-showbuttons="left" 
-                                                            class="is-editable" <?php } ?>>
-                                                            <?php echo $data['Doctor']; ?> 
-                                                        </span>
-                                                    </td>
                                                     <td class="td-patient">
                                                         <span <?php if($can_edit){ ?> data-source='<?php 
                                                             $dependent_field = (!empty($data['prescription_id']) ? urlencode($data['prescription_id']) : null);
@@ -242,6 +223,21 @@ $show_pagination = $this->show_pagination;
                                                             data-showbuttons="left" 
                                                             class="is-editable" <?php } ?>>
                                                             <?php echo $data['patient']; ?> 
+                                                        </span>
+                                                    </td>
+                                                    <td class="td-time">
+                                                        <span <?php if($can_edit){ ?> data-value="<?php echo $data['time']; ?>" 
+                                                            data-pk="<?php echo $data['id'] ?>" 
+                                                            data-url="<?php print_link("reminder/editfield/" . urlencode($data['id'])); ?>" 
+                                                            data-name="time" 
+                                                            data-title="Enter Time" 
+                                                            data-placement="left" 
+                                                            data-toggle="click" 
+                                                            data-type="time" 
+                                                            data-mode="popover" 
+                                                            data-showbuttons="left" 
+                                                            class="is-editable" <?php } ?>>
+                                                            <?php echo $data['time']; ?> 
                                                         </span>
                                                     </td>
                                                     <th class="td-btn">

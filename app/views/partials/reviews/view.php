@@ -94,40 +94,6 @@ $show_export_btn = $this->show_export_btn;
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr  class="td-doctor_message">
-                                        <th class="title"> Doctor Message: </th>
-                                        <td class="value">
-                                            <span <?php if($can_edit){ ?> data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("reviews/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="doctor_message" 
-                                                data-title="Enter Doctor Message" 
-                                                data-placement="left" 
-                                                data-toggle="click" 
-                                                data-type="textarea" 
-                                                data-mode="popover" 
-                                                data-showbuttons="left" 
-                                                class="is-editable" <?php } ?>>
-                                                <?php echo $data['doctor_message']; ?> 
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr  class="td-patient_message">
-                                        <th class="title"> Patient Message: </th>
-                                        <td class="value">
-                                            <span <?php if($can_edit){ ?> data-pk="<?php echo $data['id'] ?>" 
-                                                data-url="<?php print_link("reviews/editfield/" . urlencode($data['id'])); ?>" 
-                                                data-name="patient_message" 
-                                                data-title="Enter Patient Message" 
-                                                data-placement="left" 
-                                                data-toggle="click" 
-                                                data-type="textarea" 
-                                                data-mode="popover" 
-                                                data-showbuttons="left" 
-                                                class="is-editable" <?php } ?>>
-                                                <?php echo $data['patient_message']; ?> 
-                                            </span>
-                                        </td>
-                                    </tr>
                                     <tr  class="td-date">
                                         <th class="title"> Date: </th>
                                         <td class="value">
@@ -144,6 +110,23 @@ $show_export_btn = $this->show_export_btn;
                                                 data-showbuttons="left" 
                                                 class="is-editable" <?php } ?>>
                                                 <?php echo $data['date']; ?> 
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr  class="td-message">
+                                        <th class="title"> Message: </th>
+                                        <td class="value">
+                                            <span <?php if($can_edit){ ?> data-pk="<?php echo $data['id'] ?>" 
+                                                data-url="<?php print_link("reviews/editfield/" . urlencode($data['id'])); ?>" 
+                                                data-name="message" 
+                                                data-title="Enter Message" 
+                                                data-placement="left" 
+                                                data-toggle="click" 
+                                                data-type="textarea" 
+                                                data-mode="popover" 
+                                                data-showbuttons="left" 
+                                                class="is-editable" <?php } ?>>
+                                                <?php echo $data['message']; ?> 
                                             </span>
                                         </td>
                                     </tr>
