@@ -22,9 +22,6 @@
         <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">REVIEWS</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link " href="index.php?page=login">LOGIN</a>
       </li>
     </ul>
