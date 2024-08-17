@@ -89,10 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="container">
     <h1>Login</h1>
 
-    <?php if (!empty($error)): ?>
-        <div class="error"><?php echo $error; ?></div>
-    <?php endif; ?>
-
     
 <section class="vh-100" style="background-color: #9A616D;">
   <div class="container py-5 h-100">
@@ -111,10 +107,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                   <div class="d-flex align-items-center mb-3 pb-1">
                     <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                    <span class="h1 fw-bold mb-0">Medicine Tracker System</span>
+                    <span class="h1 fw-bold mb-0">MTS</span>
                   </div>
 
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+
+                  <?php if (!empty($error)): ?>
+        <div class="error"><?php echo $error; ?></div>
+    <?php endif; ?>
 
                   <div data-mdb-input-init class="form-outline mb-4">
                     <input type="text" id="username" name="username" required class="form-control form-control-lg" />
