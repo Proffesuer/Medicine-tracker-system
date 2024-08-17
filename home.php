@@ -8,8 +8,36 @@
     <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css"> 
 </head>
 <body>
+    <!--Navigation bar starts here-->
 
-<div  class="my-1">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Medicine Tracker System</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">REVIEWS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="index.php?page=login">LOGIN</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+    <!--Navigation Bar ends here-->
+
+
+<div  class="py-1">
             <div class="container-fluid">
                 <div class="row ">
                     <div class="col-md-12 comp-grid">
@@ -42,7 +70,7 @@
                                                                                 <li class="active"><a href="./">Home</a></li>
                                                                                 <li><a href="./info/about">About Us</a></li>
                                                                                 <li><a href="./info/contact">Contact</a></li>
-                                                                                <li><a href="/medicine-tracker-system/Home">Login</a></li>
+                                                                              
                                                                             </ul>
                                                                         </nav>
                                                                     </div>
@@ -222,12 +250,6 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="form-group text-center">
-                                                                                        <button class="btn btn-primary btn-block btn-md" type="submit"> 
-                                                                                            <i class="load-indicator">
-                                                                                                <clip-loader :loading="loading" color="#fff" size="20px"></clip-loader> 
-                                                                                            </i>
-                                                                                            Login <i class="fa fa-key"></i>
-                                                                                        </button>
                                                                                     </div>
                                                                                     <hr />
                                                                                     <div class="text-center">
