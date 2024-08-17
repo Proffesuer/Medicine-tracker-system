@@ -1,5 +1,5 @@
 <?php
-require_once '../config.php';
+require_once 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username']);
@@ -30,13 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Redirect based on user role
                 switch ($role) {
                     case 'Doctor':
-                        redirect('doctor_dashboard.php');
+                        redirect('app/doctor_dashboard.php?page=doctor_dashboard');
                         break;
                     case 'Administrator':
-                        redirect('admin_dashboard.php');
+                        redirect('app/admin_dashboard.php?page=admin_dashboard');
                         break;
                     case 'patient':
-                        redirect('patient_dashboard.php');
+                        redirect('app/patient_dashboard.php?page=patient_dashboard');
                         break;
                     default:
                         $error = "Invalid user role.";

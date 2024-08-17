@@ -3,7 +3,7 @@
 session_start();
 
 // Set the base URL of the project
-define('BASE_URL', './medicine-tracker-system/');
+define('BASE_URL', '/medicine-tracker-system/');
 
 // Database configuration
 define('DB_HOST', 'localhost');
