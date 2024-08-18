@@ -1,3 +1,13 @@
+<?php
+
+require_once '../config.php';
+if (!isset($_SESSION['id'])) {
+    header('Location: ../index.php?page=login&error=notloggedin');
+    exit();
+}
+
+// The rest of your protected page code goes here
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
