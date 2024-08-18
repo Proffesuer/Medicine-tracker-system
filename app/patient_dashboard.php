@@ -33,16 +33,20 @@ if (!isset($_SESSION['id'])) {
         <nav class="nav">
             <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">MTS Client</span> </a>
                 <div class="nav_list"> <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a> 
-                <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Reminders</span> </a> <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Prescriptions</span> </a> 
-                 <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Reviews</span> </a> </div>
+                <a href="#" class="nav_link" onclick="loadContent('reminder.php')"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Reminders</span> </a> 
+                <a href="#" class="nav_link" onclick="loadContent('prescription.php')"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Prescriptions</span> </a> 
+                 <a href="#" class="nav_link" onclick="loadContent('reviews.php')"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Reviews</span> </a> </div>
             </div> <a href="logout.php" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
         </nav>
     </div>
     <!--Container Main start-->
-    <div class="height-100 bg-light">
+    <div class="content" id="content">
+        <br><br><br>
         <h4>Main Components</h4>
+        
     </div>
     <!--Container Main end-->
+  <script src="../plugins/script.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
    
