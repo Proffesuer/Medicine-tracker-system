@@ -1,11 +1,20 @@
 
 <br><br><br>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add New Prescription</button>
+<?php
+require_once '../config.php';
+// Start session to get the active user's role
+$user_role = $_SESSION['role'];  // The role of the currently logged-in user
+?>
 
-
+<!-- Add New Prescription Button -->
+<?php if ($user_role !== 'patient') : ?>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+        Add New Prescription
+    </button>
+<?php endif; ?>
 <?php
 // Include database configuration file to establish connection
-require_once '../config.php';
+
 
 // Fetch all medicines to populate the Medicine dropdown
 $sql_medicine = "SELECT medicine_name FROM medicine";
