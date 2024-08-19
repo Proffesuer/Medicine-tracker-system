@@ -11,18 +11,27 @@
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label for="medicine_name" class="col-form-label">Medicine Name:</label>
+            <input type="text" class="form-control" id="medicine_name">
           </div>
           <div class="mb-3">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
+            <label for="indications" class="col-form-label">Indication Name:</label>
+            <input type="text" class="form-control" id="indications">
           </div>
+          <div class="mb-3">
+            <label for="precausions" class="col-form-label">Precausions:</label>
+            <input type="text" class="form-control" id="precausions">
+          </div>
+          <div class="mb-3">
+            <label for="storage" class="col-form-label">Storage:</label>
+            <input type="text" class="form-control" id="storage">
+          </div>
+        
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <button type="button" class="btn btn-primary">Submit</button>
       </div>
     </div>
   </div>
