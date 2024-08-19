@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $status = $_POST['status'];
     $patient = $_POST['patient'];
     $time_date_start = $_POST['time_date_start'];
-    $doctor = $_POST['id'];
+    $doctor = $_POST['doctor'];
 
     // Prepare an SQL statement to insert the data into the reminders table
     $sql = "INSERT INTO reminder (prescription_id, phone, mode, status, patient, time_date_start, doctor) 
@@ -24,7 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Execute the statement
         if ($stmt->execute()) {
             // If successful, redirect to a confirmation page or back to the form
-            header("Location: success.php");
+            echo "<script>alert('New Reminder Created Successfully');</script>";
+            // Redirect or reload the page after the alert
+           
+            echo "<script>alert('New Reminder Created Successfully');</script>";
+
             exit();
         } else {
             echo "Error: Could not execute the query: " . $stmt->error;
@@ -43,4 +47,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("Location: form_page.php");
     exit();
 }
-?>
+
