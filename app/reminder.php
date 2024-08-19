@@ -1,3 +1,4 @@
+
 <br><br><br>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add New Reminder</button>
 
@@ -47,3 +48,69 @@
     </div>
   </div>
 </div>
+<?php 
+require_once '../config.php';
+// Get the logged-in user's role and username from the session
+$role = $_SESSION['role'];  // This should be set during login
+$username = $_SESSION['username']; // Username or user ID of the logged-in user
+$user_id = $_SESSION['id'];
+// Query to get reminders based on role
+$sql = "";
+if ($role === 'Administrator') {
+    // Administrator can see all reminders
+    $sql = "SELECT * FROM reminder";
+} elseif ($role === 'patient') {
+    // Patients can only see reminders where the patient field matches their username
+    $sql = "SELECT * FROM reminder WHERE patient =?";
+
+} elseif ($role === 'Doctor') {
+    // Doctors can only see reminders where the user_id matches their username or ID
+    $sql = "SELECT * FROM reminder WHERE doctor =?";
+
+} else {
+    // If the role is unrecognized, deny access
+    echo "Access denied.";
+    exit;
+}
+
+// Prepare and execute the SQL query
+$stmt = $connection->prepare($sql);
+
+if ($role !== 'Administrator') {
+    $stmt->bind_param("s", $username);
+}
+
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Check if any reminders were found
+if ($result->num_rows > 0) {
+    echo '<div class="container mt-5">';
+    echo '<h2 class="mb-4">Your Reminders</h2>';
+    echo '<ul class="list-group">';
+
+    // Fetch and display reminders
+    while ($row = $result->fetch_assoc()) {
+        echo '<li class="list-group-item">';
+        echo '<h5 class="mb-1">Reminder ID: ' . htmlspecialchars($row['id']) . '</h5>';
+        echo '<p class="mb-0">Prescription ID: ' . htmlspecialchars($row['prescription_id']) . '</p>';
+        echo '<p class="mb-0">Phone: ' . htmlspecialchars($row['phone']) . '</p>';
+        echo '<p class="mb-0">Mode: ' . htmlspecialchars($row['mode']) . '</p>';
+        echo '<p class="mb-0">Status: ' . htmlspecialchars($row['status']) . '</p>';
+        echo '<p class="mb-0">Patient: ' . htmlspecialchars($row['patient']) . '</p>';
+        echo '<p class="mb-0">Time & Date Start: ' . htmlspecialchars($row['time_date_start']) . '</p>';
+        echo '</li>';
+    }
+
+    echo '</ul>';
+    echo '</div>';
+} else {
+    echo '<div class="container mt-5">';
+    echo '<h2 class="mb-4">No Reminders Found</h2>';
+    echo '</div>';
+}
+
+// Close the statement and connection
+$stmt->close();
+$connection->close();
+?>
