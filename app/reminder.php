@@ -216,6 +216,5 @@ if (isset($_GET['prescription_id'])) {
 
     $stmt->close();
 }
-
 $connection->close();
 ?>
