@@ -26,7 +26,7 @@ if (!isset($_SESSION['id'])) {
 </head>
 <body id="body-pd">
     <header class="header" id="header">
-        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> Welcome <?php echo htmlentities($_SESSION['username']);?></div>
         <div>Medical Tracker System</div>
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
     </header>

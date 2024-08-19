@@ -7,6 +7,8 @@ if (!isset($_SESSION['id'])) {
 }
 
 // The rest of your protected page code goes here
+// Assuming you have fetched the user's name from the database
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +28,7 @@ if (!isset($_SESSION['id'])) {
 </head>
 <body id="body-pd">
     <header class="header" id="header">
-        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i>Welcome <?php echo htmlentities($_SESSION['username']);?></div>
         <div>Medical Tracker System</div>
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
     </header>
