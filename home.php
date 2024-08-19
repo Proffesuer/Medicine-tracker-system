@@ -6,6 +6,11 @@
     <title>Medical Tracker System</title>
     <link rel="stylesheet" href="plugins/main.css"> 
     <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css"> 
+   <style>
+    a{
+        text-decoration: none;
+    }
+   </style>
 </head>
 <body>
     <!--Navigation bar starts here-->
@@ -19,16 +24,13 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">HOME</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="index.php?page=login">LOGIN</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+  
   </div>
 </nav>
     <!--Navigation Bar ends here-->
