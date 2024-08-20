@@ -27,34 +27,32 @@ $result = $connection->query($query);
             margin-right: 5px;
         }
     </style>
-</head>
-<body>
 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add New Medicine</button>
-<div class="modal fade" medicine_id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" medicine_id="exampleModalLabel">Add New Medicine</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Medicine</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="submit_medicine.php" method="POST">
           <div class="mb-3">
             <label for="medicine_name" class="col-form-label">Medicine Name:</label>
-            <input type="text" class="form-control" medicine_id="medicine_name" name="medicine_name" required>
+            <input type="text" class="form-control" id="medicine_name" name="medicine_name" required>
           </div>
           <div class="mb-3">
             <label for="indications" class="col-form-label">Indication Name:</label>
-            <input type="text" class="form-control" medicine_id="indications" name="indications" required>
+            <input type="text" class="form-control" id="indications" name="indications" required>
           </div>
           <div class="mb-3">
             <label for="precausions" class="col-form-label">Precautions:</label>
-            <input type="text" class="form-control" medicine_id="precausions" name="precausions" required>
+            <input type="text" class="form-control" id="precausions" name="precausions" required>
           </div>
           <div class="mb-3">
             <label for="storage" class="col-form-label">Storage:</label>
-            <input type="text" class="form-control" medicine_id="storage" name="storage" required>
+            <input type="text" class="form-control" id="storage" name="storage" required>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -89,8 +87,8 @@ $result = $connection->query($query);
                         echo '<td>' . htmlspecialchars($row['precautions']) . '</td>';
                         echo '<td>' . htmlspecialchars($row['storage']) . '</td>';
                         echo '<td>';
-                        echo '<a href="edit_medicine.php?medicine_id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-warning btn-sm">Edit</a>';
-                        echo '<a href="delete_medicine.php?medicine_id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this medicine?\');">Delete</a>';
+                        echo '<a href="edit_medicine.php?id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-warning btn-sm">Edit</a>';
+                        echo '<a href="delete_medicine.php?id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this medicine?\');">Delete</a>';
                         echo '</td>';
                         echo '</tr>';
                     }
@@ -102,8 +100,7 @@ $result = $connection->query($query);
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+
 
 <?php
 // Close the connection

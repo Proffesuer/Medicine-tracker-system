@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($update_stmt->execute()) {
         // If successful, redirect to the reminder list with a success message
-        echo "<script>alert('Reminder updated successfully'); window.location.href='list_reminders.php';</script>";
+        echo "<script>alert('Reminder updated successfully'); ';</script>";
     } else {
         // If there's an error, display an error message
         echo "<script>alert('Error: Could not update reminder'); window.history.back();</script>";
