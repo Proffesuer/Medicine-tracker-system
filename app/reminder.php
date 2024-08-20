@@ -1,5 +1,93 @@
 
-<br><br><?php 
+<br><br><br>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add New Reminder</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">New Reminder</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="submit_reminder.php" method="POST">
+          <div class="mb-3">
+            <label for="prescription_id" class="col-form-label">Prescription ID:</label>
+            <select class="form-control" id="prescription_id" name="prescription_id" required>
+              <!-- Options will be populated by PHP -->
+              <?php
+              // Fetch prescription IDs from the database
+              require_once '../config.php';
+              $sql = "SELECT id FROM prescription";
+              $result = $connection->query($sql);
+
+              if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                  echo '<option value="' . htmlspecialchars($row['id']) . '">' . htmlspecialchars($row['id']) . '</option>';
+                }
+              } else {
+                echo '<option value="">No Prescriptions Available</option>';
+              }
+              ?>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="col-form-label">Phone:</label>
+            <input type="tel" class="form-control" id="phone" name="phone" pattern="\+254[0-9]{9,10}" placeholder="+254XXXXXXXXX" required>
+          </div>
+          <div class="mb-3">
+            <label for="mode" class="col-form-label">Mode:</label>
+            <select class="form-control" id="mode" name="mode" required>
+              <option value="Daily">Daily</option>
+              <option value="Weekly">Weekly</option>
+              <option value="Monthly">Monthly</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="status" class="col-form-label">Status:</label>
+            <select class="form-control" id="status" name="status" required>
+              <option value="Subscribe">Subscribe</option>
+              <option value="Unsubscribe">Unsubscribe</option>
+        
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="patient" class="col-form-label">Patient:</label>
+            <select class="form-control" id="patient" name="patient" required>
+              <!-- Options will be populated by PHP -->
+              <?php
+              $sql = "SELECT DISTINCT patient FROM prescription";
+              $result = $connection->query($sql);
+
+              if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                  echo '<option value="' . htmlspecialchars($row['patient']) . '">' . htmlspecialchars($row['patient']) . '</option>';
+                }
+              } else {
+                echo '<option value="">No Patients Available</option>';
+              }
+              ?>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="'time_date_start" class="col-form-label">Time/Date Start:</label>
+            <input type="time" class="form-control" id="time_date_start" name="time_date_start"required>
+          </div>
+          <div class="mb-3">
+            <!-- Hidden doctor field -->
+            <input type="hidden" class="form-control" id="doctor" name="doctor" value="<?php echo htmlspecialchars($_SESSION['id']); ?>">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php 
 require_once '../config.php';
 
 // Get the logged-in user's role, username, and ID from the session
