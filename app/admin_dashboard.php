@@ -56,8 +56,9 @@ $connection->close();
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i>Welcome <?php echo htmlentities($_SESSION['username']);?></div>
         <div>Medical Tracker System</div>
+        
         <div class="header_img">
-    <img src="<?php echo htmlspecialchars($image_url); ?>" alt="User Image">
+        <img src="<?php echo htmlspecialchars($image_url); ?>" alt="User Image">
 </div>
     </header>
     <div class="l-navbar" id="nav-bar">
