@@ -7,6 +7,32 @@ if (!isset($_SESSION['id'])) {
 }
 
 // The rest of your protected page code goes here
+if (isset($_SESSION['id'])) {
+    $user_id = $_SESSION['id'];
+ // Prepare and execute the SQL query to fetch the image field
+ $stmt = $connection->prepare("SELECT image FROM user WHERE id = ?");
+ $stmt->bind_param("i", $user_id);
+ $stmt->execute();
+ $stmt->bind_result($image);
+ $stmt->fetch();
+
+ // Close the statement
+ $stmt->close();
+
+ // Check if an image exists for the user
+ if ($image) {
+     $image_url = 'uploads/' . htmlspecialchars($image);
+ } else {
+     // Default image or placeholder if no image exists
+     $image_url = 'https://i.imgur.com/hczKIze.jpg';
+ }
+} else {
+ // Default image or placeholder if no user is logged in
+ $image_url = 'https://i.imgur.com/hczKIze.jpg';
+}
+
+// Close the database connection
+$connection->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +53,9 @@ if (!isset($_SESSION['id'])) {
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> Welcome Dr.<?php echo htmlentities($_SESSION['username']);?></div>
         <div>Medical Tracker System</div>
-        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+        <div class="header_img">
+    <img src="<?php echo htmlspecialchars($image_url); ?>" alt="User Image">
+</div>
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">

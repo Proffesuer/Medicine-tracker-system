@@ -70,6 +70,7 @@ if ($result->num_rows > 0) {
     echo '<th>DOB</th>';
     echo '<th>Image</th>';
     echo '<th>Role</th>';
+    echo '<th>Actions</th>'; // New column for actions
     echo '</tr>';
     echo '</thead>';
     echo '<tbody>';
@@ -90,6 +91,12 @@ if ($result->num_rows > 0) {
         }
         echo '</td>';
         echo '<td>' . htmlspecialchars($row['role']) . '</td>';
+        echo '<td>';
+        // Edit button
+        echo '<a href="edit_user.php?id=' . htmlspecialchars($row['id']) . '" class="btn btn-sm btn-primary">Edit</a> ';
+        // Delete button
+        echo '<a href="delete_user.php?id=' . htmlspecialchars($row['id']) . '" class="btn btn-sm btn-danger" onclick="return confirm(\'Are you sure you want to delete this user?\')">Delete</a>';
+        echo '</td>';
         echo '</tr>';
     }
 
