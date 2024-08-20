@@ -36,4 +36,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // If the form is not submitted via POST, redirect to the dashboard
     echo "<script>window.location.href='your_dashboard.php';</script>";  // Replace 'your_dashboard.php' with the appropriate file
 }
-?>
+
