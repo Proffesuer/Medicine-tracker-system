@@ -1,16 +1,22 @@
 <?php 
-require_once '../config.php'; // Include your database connection
+require_once '../config.php';
+$user_role = $_SESSION['role']; // Replace with actual method to get the user role
 
-// Get the logged-in user's role, username, and ID from the session
-$role = $_SESSION['role'] ?? '';  
-$username = $_SESSION['username'] ?? ''; 
-$user_id = $_SESSION['id'] ?? '';
+// Check if the user is neither 'Administrator' nor 'Patient'
+$should_display_button = ($user_role !== 'Administrator' && $user_role !== 'patient');
+?>
+<br><br><br>
+<?php if ($should_display_button): ?>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+            Add New Reminder
+        </button>
+    <?php endif; ?>
+<br><?php  date_default_timezone_set('Africa/Nairobi');
 
-// Show the "Add New Reminder" button only if the user is not an Administrator or Patient
-if ($role !== 'Administrator' && $role !== 'Patient' && $role !== 'patient') { ?>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add New Reminder</button>
-<?php } ?>
-
+// Get the current time and add one hour, formatted as 'H:i' (hours and minutes)
+$current_time = date('H:i');
+    echo "The Current time is $current_time.";
+?>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

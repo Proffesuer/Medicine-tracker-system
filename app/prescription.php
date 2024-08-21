@@ -3,15 +3,17 @@
 <?php
 require_once '../config.php';
 // Start session to get the active user's role
-$user_role = $_SESSION['role'];  // The role of the currently logged-in user
+$user_role = $_SESSION['role'];  
+$should_display_button = ($user_role !== 'patient' && $user_role !== 'Administrator');
+// The role of the currently logged-in user
 ?>
 
 <!-- Add New Prescription Button -->
-<?php if ( $user_role !== 'patient' && $user_role !== 'Patient' && $user_role !== 'Administrator') : ?>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
-        Add New Prescription
-    </button>
-<?php endif; ?>
+<?php if ($should_display_button): ?>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+            Add New Prescription
+        </button>
+    <?php endif; ?>
 <?php
 // Include database configuration file to establish connection
 
@@ -163,21 +165,33 @@ if ($result->num_rows > 0) {
 
     // Fetch and display each row of the result
     while ($row = $result->fetch_assoc()) {
-        echo "<tr>
-                <td>" . htmlspecialchars($row['id']) . "</td>
-                <td>" . htmlspecialchars($row['medicine']) . "</td>
-                <td>" . htmlspecialchars($row['quantity']) . "</td>
-                <td>" . htmlspecialchars($row['times']) . "</td>
-                <td>" . htmlspecialchars($row['days_prescribed']) . "</td>
-                <td>" . htmlspecialchars($row['number_refils']) . "</td>
-                <td>" . htmlspecialchars($row['instructions']) . "</td>
-                <td>" . htmlspecialchars($row['patient']) . "</td>
-                <td>" . htmlspecialchars($row['date']) . "</td>
-              </tr>";
-    }
-
-    echo "</tbody>";
-    echo "</table>";
+      echo "<tr>
+              <td>" . htmlspecialchars($row['id']) . "</td>
+              <td>" . htmlspecialchars($row['medicine']) . "</td>
+              <td>" . htmlspecialchars($row['quantity']) . "</td>
+              <td>" . htmlspecialchars($row['times']) . "</td>
+              <td>" . htmlspecialchars($row['days_prescribed']) . "</td>
+              <td>" . htmlspecialchars($row['number_refils']) . "</td>
+              <td>" . htmlspecialchars($row['instructions']) . "</td>
+              <td>" . htmlspecialchars($row['patient']) . "</td>
+              <td>" . htmlspecialchars($row['date']) . "</td>";
+  
+      // Show edit and delete buttons only if user is not a patient
+      if ($user_role !== 'patient') {
+          echo "<td>
+                  <a href='edit.php?id=" . urlencode($row['id']) . "' class='btn btn-warning btn-sm'>Edit</a>
+                  <a href='delete.php?id=" . urlencode($row['id']) . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete this record?\");'>Delete</a>
+                </td>";
+      } else {
+          echo "<td>No Actions Available</td>";
+      }
+      
+      echo "</tr>";
+  }
+  
+  echo "</tbody>";
+  echo "</table>";
+  
 } else {
     echo "<p>No prescriptions found.</p>";
 }
