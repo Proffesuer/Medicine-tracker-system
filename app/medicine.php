@@ -9,7 +9,7 @@ require_once '../config.php';
 // Fetch medicines from the 'medicine' table
 $query = "SELECT medicine_id, medicine_name, indications, precautions, storage FROM medicine";
 $result = $connection->query($query);
-
+$user_role = $_SESSION['role']; 
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +28,11 @@ $result = $connection->query($query);
         }
     </style>
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add New Medicine</button>
+<?php if ($user_role !== 'Administrator') : ?>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+        Add New Medicine
+    </button>
+<?php endif; ?>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

@@ -3,15 +3,17 @@
 <?php
 require_once '../config.php';
 // Start session to get the active user's role
-$user_role = $_SESSION['role'];  // The role of the currently logged-in user
+$user_role = $_SESSION['role'];  
+$should_display_button = ($user_role !== 'patient' && $user_role !== 'Administrator');
+// The role of the currently logged-in user
 ?>
 
 <!-- Add New Prescription Button -->
-<?php if ($user_role !== 'patient') : ?>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
-        Add New Prescription
-    </button>
-<?php endif; ?>
+<?php if ($should_display_button): ?>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+            Add New Prescription
+        </button>
+    <?php endif; ?>
 <?php
 // Include database configuration file to establish connection
 
