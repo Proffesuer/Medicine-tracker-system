@@ -152,9 +152,9 @@
                                                                                          
                                                                                         </div>
                                                                                         <div class="col-sm-6 col-lg-4 text-center item mb-4">
-                                                                                            <span class="tag">Sale</span>
+                                                                                           
                                                                                             <a href="shop-single.html"> <img src="assets/images/product_06.png" alt="Image"></a>
-                                                                                                <h3 class="text-dark"><a href="shop-single.html">Poo Pourri</a></h3>
+                                                                                                <h3 class="text-dark"><a href="#">Poo Pourri</a></h3>
                                                                                                
                                                                                             </div>
                                                                                         </div>
