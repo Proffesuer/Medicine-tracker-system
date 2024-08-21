@@ -67,18 +67,14 @@
                                                                         <nav class="site-navigation text-right text-md-center" role="navigation">
                                                                             <ul class="site-menu js-clone-nav d-none d-lg-block">
                                                                                 <li class="active"><a href="./">Home</a></li>
-                                                                                <li><a href="./info/about">About Us</a></li>
-                                                                                <li><a href="./info/contact">Contact</a></li>
+                                                                                <li><a href="#">About Us</a></li>
+                                                                                <li><a href="#">Contact</a></li>
                                                                               
                                                                             </ul>
                                                                         </nav>
                                                                     </div>
                                                                     <div class="icons">
-                                                                        <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
-                                                                        <a href="./info/help" class="icons-btn d-inline-block bag">
-                                                                            <span class="icon-shopping-bag"></span>
-                                                                            <span class="number">Info</span>
-                                                                        </a>
+                                                                       
                                                                         <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
                                                                         class="icon-menu"></span></a>
                                                                     </div>
@@ -150,56 +146,31 @@
                                                                                 <div class="col-sm-6 col-lg-4 text-center item mb-4">
                                                                                     <a href="shop-single.html"> <img src="assets/images/product_04.png" alt="Image"></a>
                                                                                         <h3 class="text-dark"><a href="shop-single.html">Cetyl Pure</a></h3>
-                                                                                        <p class="price"><del>45.00</del> &mdash; $20.00</p>
+                                                                                       
                                                                                     </div>
                                                                                     <div class="col-sm-6 col-lg-4 text-center item mb-4">
                                                                                         <a href="shop-single.html"> <img src="assets/images/product_05.png" alt="Image"></a>
                                                                                             <h3 class="text-dark"><a href="shop-single.html">CLA Core</a></h3>
-                                                                                            <p class="price">$38.00</p>
+                                                                                         
                                                                                         </div>
                                                                                         <div class="col-sm-6 col-lg-4 text-center item mb-4">
                                                                                             <span class="tag">Sale</span>
                                                                                             <a href="shop-single.html"> <img src="assets/images/product_06.png" alt="Image"></a>
                                                                                                 <h3 class="text-dark"><a href="shop-single.html">Poo Pourri</a></h3>
-                                                                                                <p class="price"><del>$89</del> &mdash; $38.00</p>
+                                                                                               
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row mt-5">
                                                                                             <div class="col-12 text-center">
-                                                                                                <a href="shop.html" class="btn btn-primary px-4 py-3">View All Products</a>
+
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <footer class="site-footer">
                                                                                     <div class="container">
-                                                                                        <div class="row">
-                                                                                            <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-                                                                                                <div class="block-7">
-                                                                                                    <h3 class="footer-heading mb-4">About Us</h3>
-                                                                                                    <p>This project was done for learning purposes.The project intends to help patients have a tool to remind them when to take medicine.</p>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
-                                                                                                <h3 class="footer-heading mb-4">Quick Links</h3>
-                                                                                                <ul class="list-unstyled">
-                                                                                                    <li><a href="#">Supplements</a></li>
-                                                                                                    <li><a href="#">Vitamins</a></li>
-                                                                                                    <li><a href="#">Diet &amp; Nutrition</a></li>
-                                                                                                    <li><a href="#">Tea &amp; Coffee</a></li>
-                                                                                                </ul>
-                                                                                            </div>
-                                                                                            <div class="col-md-6 col-lg-3">
-                                                                                                <div class="block-5 mb-5">
-                                                                                                    <h3 class="footer-heading mb-4">Contact Info</h3>
-                                                                                                    <ul class="list-unstyled">
-                                                                                                        <li class="address">CUEA Gaba Campus,Eldoret,Kenya</li>
-                                                                                                        <li class="phone"><a href="tel://23923929210">+254 700 892737</a></li>
-                                                                                                        <li class="email">patricia@gmail.com</li>
-                                                                                                    </ul>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
+                                                                                       
+                                                                                          
                                                                                         <div class="row pt-5 mt-5 text-center">
                                                                                             <div class="col-md-12">
                                                                                                 <p>
