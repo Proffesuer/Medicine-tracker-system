@@ -10,6 +10,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $role = $_POST['role'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Encrypt the password
 
+    //validate the email
+    $pattern = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
+
+    if (!preg_match($pattern, $email)) {
+        echo "Invalid email address.";
+        exit;
+    }
+
+    //validate dob
+    $birthday = $_POST['dob'];
+    if(preg_match('/^(\d){1,2}\/(\d){1,2}\/(\d){4}$/',$birthday)){
+        list($month,$day,$year) = explode('/',$birthday);
+        // here you should check that $day isn't bigger then days_in_month($month), and $month is between 1-12
+        if(date('Y')-$year<18){ // you need to take into account $month to be more strict
+            echo "User can not be under 18.";
+            exit;
+        }
+    }
     // Handle the image upload
     $image = '';
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {

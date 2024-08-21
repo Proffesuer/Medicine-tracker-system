@@ -26,53 +26,46 @@ $user_role = $_SESSION['role'];
             margin-right: 5px;
         }
     </style>
-</head>
-<body>
-    <br><br><br>
-    <?php if ($user_role !== 'Administrator') : ?>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Add New Medicine
-        </button>
-    <?php endif; ?>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Medicine</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add New Medicine</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Medicine</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="submit_medicine.php" method="POST">
+          <div class="mb-3">
+            <label for="medicine_name" class="col-form-label">Medicine Name:</label>
+            <input type="text" class="form-control" id="medicine_name" name="medicine_name" required>
           </div>
-          <div class="modal-body">
-            <form action="submit_medicine.php" method="POST">
-              <div class="mb-3">
-                <label for="medicine_name" class="col-form-label">Medicine Name:</label>
-                <input type="text" class="form-control" id="medicine_name" name="medicine_name" required>
-              </div>
-              <div class="mb-3">
-                <label for="indications" class="col-form-label">Indications:</label>
-                <input type="text" class="form-control" id="indications" name="indications" required>
-              </div>
-              <div class="mb-3">
-                <label for="precautions" class="col-form-label">Precautions:</label>
-                <input type="text" class="form-control" id="precautions" name="precautions" required>
-              </div>
-              <div class="mb-3">
-                <label for="storage" class="col-form-label">Storage:</label>
-                <input type="text" class="form-control" id="storage" name="storage" required>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </form>
+          <div class="mb-3">
+            <label for="indications" class="col-form-label">Indication Name:</label>
+            <input type="text" class="form-control" id="indications" name="indications" required>
           </div>
-        </div>
+          <div class="mb-3">
+            <label for="precausions" class="col-form-label">Precautions:</label>
+            <input type="text" class="form-control" id="precausions" name="precausions" required>
+          </div>
+          <div class="mb-3">
+            <label for="storage" class="col-form-label">Storage:</label>
+            <input type="text" class="form-control" id="storage" name="storage" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
       </div>
     </div>
-
-    <!-- Medicine list starts here -->
-    <div class="container mt-4">
+  </div>
+</div>
+<!--Medicine list starts her-->
+<div class="container mt-4">
         <h2>Medicine List</h2>
+        <a href="medicine_csv.php" class="btn btn-success mb-3">Download CSV</a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -85,31 +78,23 @@ $user_role = $_SESSION['role'];
                 </tr>
             </thead>
             <tbody>
-                <?php
-                if ($result) {
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            echo '<tr>';
-                            echo '<td>' . htmlspecialchars($row['medicine_id']) . '</td>';
-                            echo '<td>' . htmlspecialchars($row['medicine_name']) . '</td>';
-                            echo '<td>' . htmlspecialchars($row['indications']) . '</td>';
-                            echo '<td>' . htmlspecialchars($row['precautions']) . '</td>';
-                            echo '<td>' . htmlspecialchars($row['storage']) . '</td>';
-                            echo '<td>';
-                            // Correctly encode and use the medicine_id in URLs
-                            $encoded_id = urlencode($row['medicine_id']);
-                            echo '<a href="edit_medicine.php?medicine_id=' . $encoded_id . '" class="btn btn-warning btn-sm">Edit</a> ';
-                            echo '<a href="delete_medicine.php?medicine_id=' . $encoded_id . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this medicine?\');">Delete</a>';
-                            echo '</td>';
-                            echo '</tr>';
-                        }
-                    } else {
-                        echo '<tr><td colspan="6">No medicines found.</td></tr>';
+                <?php if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<tr>';
+                        echo '<td>' . htmlspecialchars($row['medicine_id']) . '</td>';
+                        echo '<td>' . htmlspecialchars($row['medicine_name']) . '</td>';
+                        echo '<td>' . htmlspecialchars($row['indications']) . '</td>';
+                        echo '<td>' . htmlspecialchars($row['precautions']) . '</td>';
+                        echo '<td>' . htmlspecialchars($row['storage']) . '</td>';
+                        echo '<td>';
+                        echo '<a href="edit_medicine.php?id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-warning btn-sm">Edit</a>';
+                        echo '<a href="delete_medicine.php?id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this medicine?\');">Delete</a>';
+                        echo '</td>';
+                        echo '</tr>';
                     }
                 } else {
-                    echo '<tr><td colspan="6">Error fetching records: ' . mysqli_error($connection) . '</td></tr>';
-                }
-                ?>
+                    echo '<tr><td colspan="6">No medicines found.</td></tr>';
+                } ?>
             </tbody>
         </table>
     </div>

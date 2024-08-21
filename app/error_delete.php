@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<h1>Error 5114 --> the data was mot deleted</h1>
+<h1>Error 5114 --> the data was not deleted</h1>
     
 </body>
 </html>

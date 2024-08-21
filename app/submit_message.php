@@ -9,7 +9,7 @@ require_once '../config.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Get the form data
-    $user_id = htmlspecialchars($_POST['user_id']);
+    $user_id = $_SESSION['username'];
     $recipient = htmlspecialchars($_POST['user_id']);
     $message = htmlspecialchars($_POST['message-text']);
 

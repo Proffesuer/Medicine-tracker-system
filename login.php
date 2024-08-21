@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     case 'Administrator':
                         redirect('app/admin_dashboard.php?page=admin_dashboard');
                         break;
-                    case 'patient':
+                    case 'patient' || 'patient':
                         redirect('app/patient_dashboard.php?page=patient_dashboard');
                         break;
                     default:
@@ -130,11 +130,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                   <button type="submit">Login</button>
                   </div>
 
-                  <a class="small text-muted" href="#!">Forgot password?</a>
-                  <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="register.php"
+                  <!-- <a class="small text-muted" href="#!">Forgot password?</a> -->
+                  <!-- <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="register.php"
                       style="color: #393f81;">Register here</a></p>
                   <a href="#!" class="small text-muted">Terms of use.</a>
-                  <a href="#!" class="small text-muted">Privacy policy</a>
+                  <a href="#!" class="small text-muted">Privacy policy</a> -->
                 </form>
 
               </div>

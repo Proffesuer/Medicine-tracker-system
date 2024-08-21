@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <select class="form-control" id="role" name="role" required>
                 <option value="Administrator" <?php echo ($user['role'] === 'Administrator') ? 'selected' : ''; ?>>Administrator</option>
                 <option value="Doctor" <?php echo ($user['role'] === 'Doctor') ? 'selected' : ''; ?>>Doctor</option>
-                <option value="Patient" <?php echo ($user['role'] === 'Patient') ? 'selected' : ''; ?>>Patient</option>
+                <option value="patient" <?php echo ($user['role'] === 'patient') ? 'selected' : ''; ?>>patient</option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>

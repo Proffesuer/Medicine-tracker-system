@@ -35,7 +35,7 @@
     <select class="form-control" id="role" name="role" required>
       <option value="Administrator">Administrator</option>
       <option value="Doctor">Doctor</option>
-      <option value="Patient">Patient</option>
+      <option value="patient">patient</option>
     </select>
   </div>
   <div class="mb-3">
@@ -60,6 +60,7 @@ $result = $connection->query($sql);
 if ($result->num_rows > 0) {
     echo '<div class="container mt-5">';
     echo '<h2 class="mb-4">List of Users</h2>';
+    echo '<a href="users_csv.php" class="btn btn-success mb-3">Download CSV</a>';
     echo '<table class="table table-bordered">';
     echo '<thead>';
     echo '<tr>';
