@@ -67,8 +67,6 @@
                                                                         <nav class="site-navigation text-right text-md-center" role="navigation">
                                                                             <ul class="site-menu js-clone-nav d-none d-lg-block">
                                                                                 <li class="active"><a href="./">Home</a></li>
-                                                                                <li><a href="#">About Us</a></li>
-                                                                                <li><a href="#">Contact</a></li>
                                                                               
                                                                             </ul>
                                                                         </nav>
