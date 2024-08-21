@@ -7,7 +7,7 @@ $user_role = $_SESSION['role'];  // The role of the currently logged-in user
 ?>
 
 <!-- Add New Prescription Button -->
-<?php if ($user_role !== 'patient') : ?>
+<?php if ( $user_role !== 'patient' && $user_role !== 'Patient' && $user_role !== 'Administrator') : ?>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
         Add New Prescription
     </button>
@@ -29,6 +29,9 @@ $result_patient = $connection->query($sql_patient);
 $user_id = $_SESSION['id'];  // The ID of the currently logged-in user
 ?>
 
+<div style="margin-top : 10px;">
+  <a href="prescription_csv.php" class="btn btn-success mb-3">Download CSV</a>
+</div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -120,13 +123,16 @@ $user_role = $_SESSION['role'];  // The role of the currently logged-in user
 $username = $_SESSION['username']; // The username of the currently logged-in user
 
 // Prepare the SQL query based on user role
-if ($user_role === 'Doctor' || $user_role === 'Administrator') {
-    // Query for users with Doctor or Administrator roles
-    $stmt = $connection->prepare("SELECT id, medicine, quantity, times, days_prescribed, number_refils, instructions, patient, date FROM prescription WHERE user_id = ?");
-    $stmt->bind_param("s", $user_id);
-} elseif ($user_role === 'patient') {
+if ( $user_role === 'Administrator') {
+  // Query for users with Doctor or Administrator roles
+  $stmt = $connection->prepare("SELECT `id`, `medicine`, `quantity`, `times`, `days_prescribed`, `number_refils`, `instructions`, `patient`, `date` FROM prescription");
+} elseif ($user_role === 'Doctor') {
+  // Query for users with Doctor or Administrator roles
+  $stmt = $connection->prepare("SELECT `id`, `medicine`, `quantity`, `times`, `days_prescribed`, `number_refils`, `instructions`, `patient`, `date` FROM prescription WHERE user_id = ?");
+  $stmt->bind_param("s", $user_id);
+} elseif ($user_role === 'patient'|| $user_role === 'Patient') {
     // Query for users with Patient roles
-    $stmt = $connection->prepare("SELECT id, medicine, quantity, times, days_prescribed, number_refils, instructions, patient, date FROM prescription WHERE patient = ?");
+    $stmt = $connection->prepare("SELECT `id`, `medicine`, `quantity`, `times`, `days_prescribed`, `number_refils`, `instructions`, `patient`, `date` FROM prescription WHERE patient = ?");
     $stmt->bind_param("s", $username);
 } else {
     // If the user has an invalid role, redirect to an error page or display an error message

@@ -28,7 +28,13 @@ $result = $connection->query($query);
         }
     </style>
 
+<?php 
+require_once '../config.php';
+// Start session to get the active user's role
+$user_role = $_SESSION['role']; 
+if ( $user_role !== 'patient' && $user_role !== 'Administrator') { ?>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add New Medicine</button>
+<?php } ?>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -66,6 +72,7 @@ $result = $connection->query($query);
 <!--Medicine list starts her-->
 <div class="container mt-4">
         <h2>Medicine List</h2>
+        <a href="medicine_csv.php" class="btn btn-success mb-3">Download CSV</a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -87,8 +94,8 @@ $result = $connection->query($query);
                         echo '<td>' . htmlspecialchars($row['precautions']) . '</td>';
                         echo '<td>' . htmlspecialchars($row['storage']) . '</td>';
                         echo '<td>';
-                        echo '<a href="edit_medicine.php?id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-warning btn-sm">Edit</a>';
-                        echo '<a href="delete_medicine.php?id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this medicine?\');">Delete</a>';
+                        echo '<a href="edit_medicine.php?medicine_id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-warning btn-sm">Edit</a>';
+                        echo '<a href="delete_medicine.php?medicine_id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this medicine?\');">Delete</a>';
                         echo '</td>';
                         echo '</tr>';
                     }

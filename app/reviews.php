@@ -64,7 +64,6 @@ require_once '../config.php';
       <div class="modal-body">
         <form action="submit_message.php" method="POST">
           <!-- Hidden field for user_id -->
-          <input type="hidden" class="form-control" id="user_id" name="user_id" value="<?php echo htmlspecialchars($active_user_username); ?>">
 
           <div class="mb-3">
             <label for="user_id" class="col-form-label">Recipient:</label>
@@ -113,7 +112,7 @@ $stmt = $connection->prepare($query);
 $stmt->bind_param("ss", $active_user, $active_user);
 $stmt->execute();
 $result = $stmt->get_result();
-
+// die(var_dump($result));
 if ($result->num_rows > 0) {
     // Display messages in a chatbox format
     echo '<div class="chatbox">';

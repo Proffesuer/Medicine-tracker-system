@@ -1,6 +1,15 @@
+<?php 
+require_once '../config.php'; // Include your database connection
 
-<br><br><br>
+// Get the logged-in user's role, username, and ID from the session
+$role = $_SESSION['role'] ?? '';  
+$username = $_SESSION['username'] ?? ''; 
+$user_id = $_SESSION['id'] ?? '';
+
+// Show the "Add New Reminder" button only if the user is not an Administrator or Patient
+if ($role !== 'Administrator' && $role !== 'Patient' && $role !== 'patient') { ?>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add New Reminder</button>
+<?php } ?>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -17,7 +26,6 @@
               <!-- Options will be populated by PHP -->
               <?php
               // Fetch prescription IDs from the database
-              require_once '../config.php';
               $sql = "SELECT id FROM prescription";
               $result = $connection->query($sql);
 
@@ -48,7 +56,6 @@
             <select class="form-control" id="status" name="status" required>
               <option value="Subscribe">Subscribe</option>
               <option value="Unsubscribe">Unsubscribe</option>
-        
             </select>
           </div>
           <div class="mb-3">
@@ -70,12 +77,12 @@
             </select>
           </div>
           <div class="mb-3">
-            <label for="'time_date_start" class="col-form-label">Time/Date Start:</label>
-            <input type="time" class="form-control" id="time_date_start" name="time_date_start"required>
+            <label for="time_date_start" class="col-form-label">Time/Date Start:</label>
+            <input type="time" class="form-control" id="time_date_start" name="time_date_start" required>
           </div>
           <div class="mb-3">
             <!-- Hidden doctor field -->
-            <input type="hidden" class="form-control" id="doctor" name="doctor" value="<?php echo htmlspecialchars($_SESSION['id']); ?>">
+            <input type="hidden" class="form-control" id="doctor" name="doctor" value="<?php echo htmlspecialchars($user_id); ?>">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -88,18 +95,11 @@
 </div>
 
 <?php 
-require_once '../config.php';
-
-// Get the logged-in user's role, username, and ID from the session
-$role = $_SESSION['role'];  
-$username = $_SESSION['username']; 
-$user_id = $_SESSION['id'];
-
 // Define the SQL query based on the user's role
 if ($role === 'Administrator') {
     // Administrator can see all reminders
     $sql = "SELECT * FROM reminder";
-} elseif ($role === 'patient') {
+} elseif ($role === 'Patient' || $role === 'patient') {
     // Patients can only see reminders where the patient field matches their username
     $sql = "SELECT * FROM reminder WHERE patient = ?";
 } elseif ($role === 'Doctor') {
@@ -114,27 +114,32 @@ if ($role === 'Administrator') {
 // Prepare and execute the SQL query
 $stmt = $connection->prepare($sql);
 
-// Bind the appropriate parameter based on the user's role
+if ($stmt === false) {
+    die('Prepare failed: ' . htmlspecialchars($connection->error));
+}
+
 if ($role === 'Administrator') {
     // No binding needed for Administrator since they see all reminders
 } else {
-    // Bind the patient username or doctor ID for patients and doctors, respectively
-    if ($role === 'patient') {
-      // Bind the patient username as a string
-      $stmt->bind_param("s", $username);
-  } elseif ($role === 'Doctor') {
-      // Bind the doctor ID as an integer
-      $stmt->bind_param("i", $user_id);
-  }
-  
+    if ($role === 'Patient' || $role === 'patient') {
+        // Bind the patient username as a string
+        $stmt->bind_param("s", $username);
+    } elseif ($role === 'Doctor') {
+        // Bind the doctor ID as an integer
+        $stmt->bind_param("i", $user_id);
+    }
 }
 
 $stmt->execute();
 $result = $stmt->get_result();
 
+if ($result === false) {
+    die('Query failed: ' . htmlspecialchars($stmt->error));
+}
+
 // Check if any reminders were found
 if ($result->num_rows > 0) {
-    echo '<div class="container mt-5">';
+    echo '<div class="container mt-5" style="margin-top:5rem!important">';
     echo '<h2 class="mb-4">Your Reminders</h2>';
     echo '<ul class="list-group">';
 
@@ -149,9 +154,10 @@ if ($result->num_rows > 0) {
         echo '<p class="mb-0">Patient: ' . htmlspecialchars($row['patient']) . '</p>';
         echo '<p class="mb-0">Time & Date Start: ' . htmlspecialchars($row['time_date_start']) . '</p>';
 
-        // Edit button for all roles
-        echo '<a href="edit_reminder.php?id=' . htmlspecialchars($row['id']) . '" class="btn btn-sm btn-primary">Edit</a>';
-
+        // Edit button for all roles except Administrator
+        if ($role !== 'Administrator') {
+            echo '<a href="edit_reminder.php?id=' . htmlspecialchars($row['id']) . '" class="btn btn-sm btn-primary">Edit</a>';
+        }
         // Delete button for Doctor and Administrator roles
         if ($role === 'Doctor' || $role === 'Administrator') {
             echo ' <a href="delete_reminder.php?id=' . htmlspecialchars($row['id']) . '" class="btn btn-sm btn-danger" onclick="return confirm(\'Are you sure you want to delete this reminder?\')">Delete</a>';

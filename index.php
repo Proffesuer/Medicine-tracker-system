@@ -9,7 +9,7 @@
 require_once 'config.php';
 
 // Include the home.php file by default or another file based on the 'page' parameter
-$page = isset($_GET['page']) ? $_GET['page'] : 'home';
+$page = isset($_GET['page']) ? $_GET['page'] : 'login';
 
 function loadPage($page) {
     // Sanitize the page name to prevent directory traversal attacks
