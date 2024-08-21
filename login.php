@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     case 'Administrator':
                         redirect('app/admin_dashboard.php?page=admin_dashboard');
                         break;
-                    case 'patient' || 'Patient':
+                    case 'patient' || 'patient':
                         redirect('app/patient_dashboard.php?page=patient_dashboard');
                         break;
                     default:

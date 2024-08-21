@@ -5,8 +5,8 @@ require_once '../config.php'; // Include your database connection
 $sql = '';
 $params = [];
 
-// Check if the user role is Patient
-if (isset($_SESSION['role']) && ($_SESSION['role'] == 'Patient' || $_SESSION['role'] == 'patient')) {
+// Check if the user role is patient
+if (isset($_SESSION['role']) && ($_SESSION['role'] == 'patient' || $_SESSION['role'] == 'patient')) {
     // Use the username from the session
     $username = $_SESSION['username'];
 
@@ -22,7 +22,7 @@ if (isset($_SESSION['role']) && ($_SESSION['role'] == 'Patient' || $_SESSION['ro
     $sql = "SELECT `id`, `medicine`, `quantity`, `times`, `days_prescribed`, `number_refils`, `instructions`, `patient`, `date` FROM prescription WHERE `user_id` = ?";
     $params = [$doctorId];
 
-// If neither Patient nor Doctor, fetch all prescriptions
+// If neither patient nor Doctor, fetch all prescriptions
 } else {
     // Prepare the SQL query to fetch all prescriptions
     $sql = "SELECT `id`, `medicine`, `quantity`, `times`, `days_prescribed`, `number_refils`, `instructions`, `patient`, `date` FROM prescription";
@@ -43,10 +43,10 @@ if ($stmt = $connection->prepare($sql)) {
 
         $output = fopen('php://output', 'w');
         
-        if (isset($_SESSION['role']) && ($_SESSION['role'] == 'Patient' || $_SESSION['role'] == 'patient')) {
+        if (isset($_SESSION['role']) && ($_SESSION['role'] == 'patient' || $_SESSION['role'] == 'patient')) {
             fputcsv($output, array('ID', 'Medicine', 'Quantity', 'Time', 'Days Prescribed', 'Number Of Refils', 'Instructions', 'Date'));
         } else {
-            fputcsv($output, array('ID', 'Medicine', 'Quantity', 'Time', 'Days Prescribed', 'Number Of Refils', 'Instructions', 'Patient', 'Date'));
+            fputcsv($output, array('ID', 'Medicine', 'Quantity', 'Time', 'Days Prescribed', 'Number Of Refils', 'Instructions', 'patient', 'Date'));
         }
 
         while ($row = $result->fetch_assoc()) {

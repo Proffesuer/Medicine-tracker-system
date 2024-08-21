@@ -5,7 +5,7 @@ require_once '../config.php';
 // Start session to check user role
 
 // Check if user is authenticated and authorized (optional)
-if (!isset($_SESSION['role']) || $_SESSION['role'] === 'Patient') {
+if (!isset($_SESSION['role']) || $_SESSION['role'] === 'patient') {
     echo "<script>alert('Access denied.'); window.location.href='list_medicines.php';</script>";
     exit();
 }

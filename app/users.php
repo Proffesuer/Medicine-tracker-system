@@ -35,7 +35,7 @@
     <select class="form-control" id="role" name="role" required>
       <option value="Administrator">Administrator</option>
       <option value="Doctor">Doctor</option>
-      <option value="Patient">Patient</option>
+      <option value="patient">patient</option>
     </select>
   </div>
   <div class="mb-3">
