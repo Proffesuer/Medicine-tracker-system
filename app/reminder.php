@@ -1,7 +1,12 @@
 
 <br><br><br>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add New Reminder</button>
+<?php  date_default_timezone_set('Africa/Nairobi');
 
+// Get the current time and add one hour, formatted as 'H:i' (hours and minutes)
+$current_time = date('H:i');
+    echo "The Current time is $current_time.";
+?>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
