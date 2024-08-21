@@ -1,7 +1,17 @@
+<?php 
+require_once '../config.php';
+$user_role = $_SESSION['role']; // Replace with actual method to get the user role
 
+// Check if the user is neither 'Administrator' nor 'Patient'
+$should_display_button = ($user_role !== 'Administrator' && $user_role !== 'patient');
+?>
 <br><br><br>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add New Reminder</button>
-<?php  date_default_timezone_set('Africa/Nairobi');
+<?php if ($should_display_button): ?>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+            Add New Reminder
+        </button>
+    <?php endif; ?>
+<br><?php  date_default_timezone_set('Africa/Nairobi');
 
 // Get the current time and add one hour, formatted as 'H:i' (hours and minutes)
 $current_time = date('H:i');
