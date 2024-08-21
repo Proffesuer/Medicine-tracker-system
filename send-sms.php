@@ -68,7 +68,7 @@ if ($result) {
             $instructions = $row['instructions'];
 
             // Set the message content
-            $message = "Jambo $patient_name, it's time to take your medicine $medicine. Kindly take $quantity tablets or spoons $times a day. Don't forget to follow the doctor's instructions: $instructions. Regards, MTS.";
+            $message = "Jambo $patient_name, it's time to take your medicine $medicine. Kindly take $quantity tablets or spoons $times times a day. Don't forget to follow the doctor's instructions: $instructions. Regards, MTS.";
 
             // Send the SMS
             try {
@@ -86,7 +86,7 @@ if ($result) {
         echo "No reminders found for the current time.\n";
     }
 } else {
-    echo "Database query error: " . mysqli_error($con);
+    echo "Database query error: " . mysqli_error($connection);
 }
 
 // Close the database connection

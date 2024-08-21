@@ -32,7 +32,7 @@ if (isset($_SESSION['id'])) {
 }
 
 // Close the database connection
-$connection->close();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +60,7 @@ $connection->close();
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">MTS DOCTOR</span> </a>
-                <div class="nav_list"> <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a> 
+                <div class="nav_list"> <a href="doctor_dashboard.php" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a> 
                 <a href="#" class="nav_link" onclick="loadContent('reminder.php')"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Reminders</span> </a> 
                 <a href="#" class="nav_link" onclick="loadContent('prescription.php')"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Prescriptions</span> </a> 
                 <a href="#" class="nav_link" onclick="loadContent('medicine.php')"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Medicine</span> </a>
@@ -71,7 +71,86 @@ $connection->close();
     <!--Container Main start-->
     <div class="content" id="content">
         <br><br><br>
-        <h4>Main Components</h4>
+        <h4>Main Dashboard</h4>
+        <?php
+        $queries = [
+            'reminder' => "SELECT COUNT(*) as reminder_count FROM reminder",
+            'prescription' => "SELECT COUNT(*) as prescription_count FROM prescription",
+            'medicine' => "SELECT COUNT(*) as medicine_count FROM medicine",
+            'reviews' => "SELECT COUNT(*) as reviews_count FROM reviews"
+        ];
+
+        $titles = [
+            'reminder' => 'Reminders',
+            'prescription' => 'Prescriptions',
+            'medicine' => 'Medicines',
+            'reviews' => 'Reviews'
+        ];
+
+        $counter = 0; // To keep track of the number of cards in the current row
+        echo "<div class='row'>"; // Start the first row
+
+        foreach ($queries as $key => $query) {
+            $result = mysqli_query($connection, $query);
+
+            if ($result) {
+                $row = mysqli_fetch_assoc($result);
+                $count = $row[$key . '_count'];
+                $title = $titles[$key];
+
+                // Determine the card color based on the count value
+                if ($count > 20) {
+                    $colorClass = 'card-red';
+                } elseif ($count > 10) {
+                    $colorClass = 'card-green';
+                } else {
+                    $colorClass = 'card-blue';
+                }
+
+                echo "
+                <div class='col-md-4 mb-4'>
+                    <div class='card $colorClass'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>$title</h5>
+                            <p class='card-text'>Number of $title: $count</p>
+                        </div>
+                    </div>
+                </div>";
+
+                $counter++;
+
+                // Start a new row after every 3 cards
+                if ($counter % 3 == 0) {
+                    echo "</div><div class='row'>"; // Close the current row and start a new one
+                }
+            } else {
+                echo "
+                <div class='col-md-4 mb-4'>
+                    <div class='card card-red'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>$title</h5>
+                            <p class='card-text'>Error: " . mysqli_error($connection) . "</p>
+                        </div>
+                    </div>
+                </div>";
+
+                $counter++;
+
+                // Start a new row after every 3 cards
+                if ($counter % 3 == 0) {
+                    echo "</div><div class='row'>"; // Close the current row and start a new one
+                }
+            }
+        }
+
+        // Close the last row if there are less than 3 cards
+        if ($counter % 3 != 0) {
+            echo "</div>";
+        }
+
+        // Close the database connection
+        mysqli_close($connection);
+        ?>
         
     </div>
     <!--Container Main end-->
