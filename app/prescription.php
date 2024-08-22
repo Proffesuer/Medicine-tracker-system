@@ -177,7 +177,7 @@ if ($result->num_rows > 0) {
               <td>" . htmlspecialchars($row['date']) . "</td>";
   
       // Show edit and delete buttons only if user is not a patient
-      if ($user_role !== 'Administration') {
+      if ($user_role !== 'patient') {
           echo "<td>
             
                   <a href='edit.php?id=" . urlencode($row['id']) . "' class='btn btn-warning btn-sm'>Edit</a>
