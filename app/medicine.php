@@ -87,7 +87,9 @@ $user_role = $_SESSION['role'];
                         echo '<td>' . htmlspecialchars($row['precautions']) . '</td>';
                         echo '<td>' . htmlspecialchars($row['storage']) . '</td>';
                         echo '<td>';
+                        if ($user_role !=='Administrator') {
                         echo '<a href="edit_medicine.php?id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-warning btn-sm">Edit</a>';
+                        }
                         echo '<a href="delete_medicine.php?id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this medicine?\');">Delete</a>';
                         echo '</td>';
                         echo '</tr>';
