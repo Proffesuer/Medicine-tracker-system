@@ -16,7 +16,7 @@
   </div>
   <div class="mb-3">
     <label for="email" class="col-form-label">Email:</label>
-    <input type="email" class="form-control" id="email" name="email" required>
+    <input type="email"  pattern="[^ @]@[^ @]" class="form-control" id="email" name="email" required>
   </div>
   <div class="mb-3">
     <label for="phone" class="col-form-label">Phone:</label>

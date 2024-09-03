@@ -64,7 +64,10 @@ if (isset($_SESSION['id'])) {
                 <a href="#" class="nav_link" onclick="loadContent('reminder.php')"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Reminders</span> </a> 
                 <a href="#" class="nav_link" onclick="loadContent('prescription.php')"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Prescriptions</span> </a> 
                 <a href="#" class="nav_link" onclick="loadContent('medicine.php')"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Medicine</span> </a>
-                 <a href="#" class="nav_link" onclick="loadContent('reviews.php')"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Reviews</span> </a> </div>
+               
+                <a href="#" class="nav_link" onclick="loadContent('reviews.php')"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Reviews</span> </a> 
+                        
+                <a href="#" class="nav_link" onclick="loadContent('views.php')"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Reminder Feed</span> </a></div>
             </div> <a href="logout.php" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
         </nav>
     </div>

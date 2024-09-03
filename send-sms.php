@@ -40,6 +40,7 @@ $current_time = date('H:i');
 // Query to find reminders with the current time, joining with the prescription table
 $query = "
     SELECT 
+        r.id, 
         r.phone, 
         r.patient, 
         p.medicine, 
@@ -60,6 +61,7 @@ $result = mysqli_query($con, $query);
 if ($result) {
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
+            $reminder_id = $row['id'];
             $phone = $row['phone'];
             $patient_name = $row['patient'];
             $medicine = $row['medicine'];
@@ -78,6 +80,20 @@ if ($result) {
                     'from'    => '' // Optional: Set a sender ID if you have one
                 ]);
                 echo "Message sent to $patient_name at $phone\n";
+
+                // Update the 'sent' field in the reminder table for the specific reminder ID
+                $update_query = "UPDATE reminder SET sent = 'sent' WHERE id = ?";
+                $stmt = $con->prepare($update_query);
+                $stmt->bind_param("i", $reminder_id);
+                $stmt->execute();
+
+                if ($stmt->affected_rows > 0) {
+                    echo "Reminder status updated to 'sent' for reminder ID $reminder_id.\n";
+                } else {
+                    echo "Failed to update reminder status for reminder ID $reminder_id.\n";
+                }
+
+                $stmt->close();
             } catch (Exception $e) {
                 echo "Error sending message: " . $e->getMessage();
             }
@@ -86,7 +102,7 @@ if ($result) {
         echo "No reminders found for the current time.\n";
     }
 } else {
-    echo "Database query error: " . mysqli_error($connection);
+    echo "Database query error: " . mysqli_error($con);
 }
 
 // Close the database connection

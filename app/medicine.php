@@ -8,8 +8,10 @@ require_once '../config.php';
 // Fetch medicines from the 'medicine' table
 $query = "SELECT medicine_id, medicine_name, indications, precautions, storage FROM medicine";
 $result = $connection->query($query);
-$user_role = $_SESSION['role']; 
+$user_role = $_SESSION['role'];
+$should_display_button = ($user_role !== 'patient' && $user_role !== 'Administrator'); 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +29,14 @@ $user_role = $_SESSION['role'];
         }
     </style>
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add New Medicine</button>
+
+<!-- Add New Prescription Button -->
+<?php if ($should_display_button): ?>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+            Add Medicine
+        </button>
+    <?php endif; ?>
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -89,8 +98,9 @@ $user_role = $_SESSION['role'];
                         echo '<td>';
                         if ($user_role !=='Administrator') {
                         echo '<a href="edit_medicine.php?id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-warning btn-sm">Edit</a>';
-                        }
+                        
                         echo '<a href="delete_medicine.php?id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this medicine?\');">Delete</a>';
+                        }
                         echo '</td>';
                         echo '</tr>';
                     }

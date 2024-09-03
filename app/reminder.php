@@ -155,25 +155,42 @@ if ($result->num_rows > 0) {
 
     // Fetch and display reminders
     while ($row = $result->fetch_assoc()) {
-        echo '<li class="list-group-item">';
-        echo '<h5 class="mb-1">Reminder ID: ' . htmlspecialchars($row['id']) . '</h5>';
-        echo '<p class="mb-0">Prescription ID: ' . htmlspecialchars($row['prescription_id']) . '</p>';
-        echo '<p class="mb-0">Phone: ' . htmlspecialchars($row['phone']) . '</p>';
-        echo '<p class="mb-0">Mode: ' . htmlspecialchars($row['mode']) . '</p>';
-        echo '<p class="mb-0">Status: ' . htmlspecialchars($row['status']) . '</p>';
-        echo '<p class="mb-0">Patient: ' . htmlspecialchars($row['patient']) . '</p>';
-        echo '<p class="mb-0">Time & Date Start: ' . htmlspecialchars($row['time_date_start']) . '</p>';
-
-        // Edit button for all roles
-        if ($role === 'Doctor' || $role !=='Administrator') {
-        echo '<a href="edit_reminder.php?id=' . htmlspecialchars($row['id']) . '" class="btn btn-sm btn-primary">Edit</a>';
-        }
-        // Delete button for Doctor and Administrator roles
-        if ($role === 'Doctor' || $role === 'Administrator') {
-            echo ' <a href="delete_reminder.php?id=' . htmlspecialchars($row['id']) . '" class="btn btn-sm btn-danger" onclick="return confirm(\'Are you sure you want to delete this reminder?\')">Delete</a>';
-        }
-
-        echo '</li>';
+      echo '<li class="list-group-item">';
+      echo '<h5 class="mb-1">Reminder ID: ' . htmlspecialchars($row['id']) . '</h5>';
+      echo '<p class="mb-0">Prescription ID: ' . htmlspecialchars($row['prescription_id']) . '</p>';
+      echo '<p class="mb-0">Phone: ' . htmlspecialchars($row['phone']) . '</p>';
+      echo '<p class="mb-0">Mode: ' . htmlspecialchars($row['mode']) . '</p>';
+      echo '<p class="mb-0">Status: ' . htmlspecialchars($row['status']) . '</p>';
+      echo '<p class="mb-0">Patient: ' . htmlspecialchars($row['patient']) . '</p>';
+      echo '<p class="mb-0">Time & Date Start: ' . htmlspecialchars($row['time_date_start']) . '</p>';
+      echo '<p class="mb-0" style="color:green;font-weight:bold">Patient Confirmation: ' . htmlspecialchars($row['confirmation']) . '</p>';
+      
+      // Only show the checkbox and submit button if the user role is 'patient'
+      if ($role === 'patient') {
+          echo '<form action="confirm_medication.php" method="POST">';
+          echo '<div class="form-check">';
+          echo '<input class="form-check-input" type="checkbox" name="confirmation" value="Confirmed" id="confirm_' . htmlspecialchars($row['id']) . '" required>';
+          echo '<label class="form-check-label" for="confirm_' . htmlspecialchars($row['id']) . '">';
+          echo 'I confirm I have taken my medication';
+          echo '</label>';
+          echo '</div>';
+          echo '<input type="hidden" name="reminder_id" value="' . htmlspecialchars($row['id']) . '">';
+          echo '<button type="submit" class="btn btn-success mt-2">Submit Confirmation</button>';
+          echo '</form>';
+      }
+      
+      // Edit button for all roles
+      if ($role === 'Doctor' || $role !== 'Administrator') {
+          echo '<a href="edit_reminder.php?id=' . htmlspecialchars($row['id']) . '" class="btn btn-sm btn-primary">Edit</a>';
+      }
+      
+      // Delete button for Doctor and Administrator roles
+      if ($role === 'Doctor' || $role === 'Administrator') {
+          echo ' <a href="delete_reminder.php?id=' . htmlspecialchars($row['id']) . '" class="btn btn-sm btn-danger" onclick="return confirm(\'Are you sure you want to delete this reminder?\')">Delete</a>';
+      }
+      
+      echo '</li>';
+      
     }
 
     echo '</ul>';
