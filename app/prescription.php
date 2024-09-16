@@ -19,7 +19,7 @@ $should_display_button = ($user_role !== 'patient' && $user_role !== 'Administra
 
 
 // Fetch all medicines to populate the Medicine dropdown
-$sql_medicine = "SELECT medicine_name FROM medicine";
+$sql_medicine = "SELECT medicine_id, medicine_name FROM medicine";
 $result_medicine = $connection->query($sql_medicine);
 
 // Fetch all patients to populate the Patient dropdown
@@ -50,7 +50,7 @@ $user_id = $_SESSION['id'];  // The ID of the currently logged-in user
               <?php
               if ($result_medicine->num_rows > 0) {
                   while ($row = $result_medicine->fetch_assoc()) {
-                      echo '<option value="' . htmlspecialchars($row['medicine_name']) . '">' . htmlspecialchars($row['medicine_name']) . '</option>';
+                      echo '<option value="' . htmlspecialchars($row['medicine_id']) . '">' . htmlspecialchars($row['medicine_name']) . '</option>';
                   }
               } else {
                   echo '<option value="">No medicines available</option>';
@@ -59,8 +59,12 @@ $user_id = $_SESSION['id'];  // The ID of the currently logged-in user
             </select>
           </div>
           <div class="mb-3">
-            <label for="quantity" class="col-form-label">Quantity:</label>
+            <label for="quantity" class="col-form-label">Dosage:</label>
             <input type="text" class="form-control" id="quantity" name="quantity" required>
+          </div>
+          <div class="mb-3">
+            <label for="quantity_given" class="col-form-label">Quantity Given:</label>
+            <input type="number" class="form-control" id="quantity_given" name="quantity_given" required>
           </div>
           <div class="mb-3">
             <label for="times" class="col-form-label">Times:</label>
@@ -127,14 +131,14 @@ $username = $_SESSION['username']; // The username of the currently logged-in us
 // Prepare the SQL query based on user role
 if ( $user_role === 'Administrator') {
   // Query for users with Doctor or Administrator roles
-  $stmt = $connection->prepare("SELECT `id`, `medicine`, `quantity`, `times`, `days_prescribed`, `number_refils`, `instructions`, `patient`, `date` FROM prescription");
+  $stmt = $connection->prepare("SELECT `id`, `medicine`, `quantity`, `times`, `days_prescribed`, `number_refils`, `quantity_given`, `instructions`, `patient`, `date` FROM prescription");
 } elseif ($user_role === 'Doctor') {
   // Query for users with Doctor or Administrator roles
-  $stmt = $connection->prepare("SELECT `id`, `medicine`, `quantity`, `times`, `days_prescribed`, `number_refils`, `instructions`, `patient`, `date` FROM prescription WHERE user_id = ?");
+  $stmt = $connection->prepare("SELECT `id`, `medicine`, `quantity`, `times`, `days_prescribed`, `number_refils`, `quantity_given`, `instructions`, `patient`, `date` FROM prescription WHERE user_id = ?");
   $stmt->bind_param("s", $user_id);
 } elseif ($user_role === 'patient'|| $user_role === 'Patient') {
     // Query for users with Patient roles
-    $stmt = $connection->prepare("SELECT `id`, `medicine`, `quantity`, `times`, `days_prescribed`, `number_refils`, `instructions`, `patient`, `date` FROM prescription WHERE patient = ?");
+    $stmt = $connection->prepare("SELECT `id`, `medicine`, `quantity`, `times`, `days_prescribed`, `number_refils`, `quantity_given`, `instructions`, `patient`, `date` FROM prescription WHERE patient = ?");
     $stmt->bind_param("s", $username);
 } else {
     // If the user has an invalid role, redirect to an error page or display an error message
@@ -153,10 +157,11 @@ if ($result->num_rows > 0) {
     echo "<thead><tr>
             <th>ID</th>
             <th>Medicine</th>
-            <th>Quantity</th>
+            <th>Dosage</th>
             <th>Times</th>
             <th>Days Prescribed</th>
             <th>Number of Refills</th>
+            <th>Quantity Given</th>
             <th>Instructions</th>
             <th>Patient</th>
             <th>Date</th>
@@ -172,6 +177,7 @@ if ($result->num_rows > 0) {
               <td>" . htmlspecialchars($row['times']) . "</td>
               <td>" . htmlspecialchars($row['days_prescribed']) . "</td>
               <td>" . htmlspecialchars($row['number_refils']) . "</td>
+              <td>" . htmlspecialchars($row['quantity_given']) . "</td>
               <td>" . htmlspecialchars($row['instructions']) . "</td>
               <td>" . htmlspecialchars($row['patient']) . "</td>
               <td>" . htmlspecialchars($row['date']) . "</td>";

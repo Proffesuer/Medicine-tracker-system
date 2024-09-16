@@ -10,16 +10,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $mode = $_POST['mode'];
     $status = $_POST['status'];
     $patient = $_POST['patient'];
+    $date = $_POST['date'];
     $time_date_start = $_POST['time_date_start'];
     $doctor = $_POST['doctor'];
 
     // Prepare an SQL statement to insert the data into the reminders table
-    $sql = "INSERT INTO reminder (prescription_id, phone, mode, status, patient, time_date_start, doctor) 
-            VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO reminder (prescription_id, phone, mode, status, patient, date, time_date_start, doctor) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
     if ($stmt = $connection->prepare($sql)) {
         // Bind the parameters to the SQL query
-        $stmt->bind_param("isssssi", $prescription_id, $phone, $mode, $status, $patient, $time_date_start, $doctor);
+        $stmt->bind_param("issssssi", $prescription_id, $phone, $mode, $status, $patient, $date, $time_date_start, $doctor);
 
         // Execute the statement
         if ($stmt->execute()) {

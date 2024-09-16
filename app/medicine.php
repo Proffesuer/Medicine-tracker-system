@@ -5,8 +5,8 @@ require_once '../config.php';
 
 // Start session if needed (e.g., for user authentication)
 
-// Fetch medicines from the 'medicine' table
-$query = "SELECT medicine_id, medicine_name, indications, precautions, storage FROM medicine";
+// Fetch medicines from the 'medicine' table, including the quantity field
+$query = "SELECT medicine_id, medicine_name, indications, precautions, storage, quantity FROM medicine";
 $result = $connection->query($query);
 $user_role = $_SESSION['role'];
 $should_display_button = ($user_role !== 'patient' && $user_role !== 'Administrator'); 
@@ -29,6 +29,8 @@ $should_display_button = ($user_role !== 'patient' && $user_role !== 'Administra
         }
     </style>
 
+</head>
+<body>
 
 <!-- Add New Prescription Button -->
 <?php if ($should_display_button): ?>
@@ -55,12 +57,16 @@ $should_display_button = ($user_role !== 'patient' && $user_role !== 'Administra
             <input type="text" class="form-control" id="indications" name="indications" required>
           </div>
           <div class="mb-3">
-            <label for="precausions" class="col-form-label">Precautions:</label>
-            <input type="text" class="form-control" id="precausions" name="precausions" required>
+            <label for="precautions" class="col-form-label">Precautions:</label>
+            <input type="text" class="form-control" id="precautions" name="precautions" required>
           </div>
           <div class="mb-3">
             <label for="storage" class="col-form-label">Storage:</label>
             <input type="text" class="form-control" id="storage" name="storage" required>
+          </div>
+          <div class="mb-3">
+            <label for="quantity" class="col-form-label">Quantity:</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" required>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -71,46 +77,47 @@ $should_display_button = ($user_role !== 'patient' && $user_role !== 'Administra
     </div>
   </div>
 </div>
-<!--Medicine list starts her-->
+<!--Medicine list starts here-->
 <div class="container mt-4">
-        <h2>Medicine List</h2>
-        <a href="medicine_csv.php" class="btn btn-success mb-3">Download CSV</a>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Medicine Name</th>
-                    <th>Indications</th>
-                    <th>Precautions</th>
-                    <th>Storage</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo '<tr>';
-                        echo '<td>' . htmlspecialchars($row['medicine_id']) . '</td>';
-                        echo '<td>' . htmlspecialchars($row['medicine_name']) . '</td>';
-                        echo '<td>' . htmlspecialchars($row['indications']) . '</td>';
-                        echo '<td>' . htmlspecialchars($row['precautions']) . '</td>';
-                        echo '<td>' . htmlspecialchars($row['storage']) . '</td>';
-                        echo '<td>';
-                        if ($user_role !=='Administrator') {
-                        echo '<a href="edit_medicine.php?id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-warning btn-sm">Edit</a>';
-                        
-                        echo '<a href="delete_medicine.php?id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this medicine?\');">Delete</a>';
-                        }
-                        echo '</td>';
-                        echo '</tr>';
+    <h2>Medicine List</h2>
+    <a href="medicine_csv.php" class="btn btn-success mb-3">Download CSV</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Medicine Name</th>
+                <th>Indications</th>
+                <th>Precautions</th>
+                <th>Storage</th>
+                <th>Quantity</th> 
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<tr>';
+                    echo '<td>' . htmlspecialchars($row['medicine_id']) . '</td>';
+                    echo '<td>' . htmlspecialchars($row['medicine_name']) . '</td>';
+                    echo '<td>' . htmlspecialchars($row['indications']) . '</td>';
+                    echo '<td>' . htmlspecialchars($row['precautions']) . '</td>';
+                    echo '<td>' . htmlspecialchars($row['storage']) . '</td>';
+                    echo '<td>' . htmlspecialchars($row['quantity']) . '</td>';  // Added quantity field
+                    echo '<td>';
+                    if ($user_role !== 'Administrator') {
+                        echo '<a href="edit_medicine.php?medicine_id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-warning btn-sm">Edit</a>';
+                        echo '<a href="delete_medicine.php?medicine_id=' . htmlspecialchars($row['medicine_id']) . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this medicine?\');">Delete</a>';
                     }
-                } else {
-                    echo '<tr><td colspan="6">No medicines found.</td></tr>';
-                } ?>
-            </tbody>
-        </table>
-    </div>
+                    echo '</td>';
+                    echo '</tr>';
+                }
+            } else {
+                echo '<tr><td colspan="7">No medicines found.</td></tr>';
+            } ?>
+        </tbody>
+    </table>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

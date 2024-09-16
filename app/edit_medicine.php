@@ -14,7 +14,7 @@ if (!isset($_GET['medicine_id']) || !is_numeric($_GET['medicine_id'])) {
 $medicine_id = intval($_GET['medicine_id']);
 
 // Fetch the current medicine details
-$query = "SELECT medicine_id, medicine_name, indications, precautions, storage FROM medicine WHERE medicine_id = ?";
+$query = "SELECT medicine_id, medicine_name, indications, precautions, storage, quantity FROM medicine WHERE medicine_id = ?";
 $stmt = $connection->prepare($query);
 $stmt->bind_param("i", $medicine_id);
 $stmt->execute();
@@ -34,15 +34,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $indications = $_POST['indications'];
     $precautions = $_POST['precautions'];
     $storage = $_POST['storage'];
+    $quantity = $_POST['quantity'];
 
     // Validate form data
     if (empty($medicine_name) || empty($indications) || empty($precautions) || empty($storage)) {
         echo "<script>alert('All fields are required.');</script>";
     } else {
         // Prepare and execute update query
-        $update_query = "UPDATE medicine SET medicine_name = ?, indications = ?, precautions = ?, storage = ? WHERE medicine_id = ?";
+        $update_query = "UPDATE medicine SET medicine_name = ?, indications = ?, precautions = ?, storage = ?, quantity = ? WHERE medicine_id = ?";
         $update_stmt = $connection->prepare($update_query);
-        $update_stmt->bind_param("ssssi", $medicine_name, $indications, $precautions, $storage, $medicine_id);
+        $update_stmt->bind_param("ssssii", $medicine_name, $indications, $precautions, $storage, $quantity, $medicine_id);
 
         if ($update_stmt->execute()) {
             echo "<script>alert('Medicine updated successfully.'); window.location.href='list_medicines.php';</script>";
@@ -83,6 +84,10 @@ mysqli_close($connection);
             <div class="mb-3">
                 <label for="storage" class="form-label">Storage:</label>
                 <input type="text" class="form-control" id="storage" name="storage" value="<?php echo htmlspecialchars($medicine['storage']); ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity:</label>
+                <input type="text" class="form-control" id="quantity" name="quantity" value="<?php echo htmlspecialchars($medicine['quantity']); ?>" required>
             </div>
             <button type="submit" class="btn btn-primary">Update Medicine</button>
             <a href="list_medicines.php" class="btn btn-secondary">Cancel</a>

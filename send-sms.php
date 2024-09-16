@@ -37,6 +37,9 @@ date_default_timezone_set('Africa/Nairobi');
 // Get the current time formatted as 'H:i' (hours and minutes)
 $current_time = date('H:i');
 
+// Get the current date in 'Y-m-d' format (Year-Month-Day)
+$today_date = date('Y-m-d');
+
 // Query to find reminders with the current time, joining with the prescription table
 $query = "
     SELECT 
@@ -54,7 +57,9 @@ $query = "
     ON 
         r.prescription_id = p.id 
     WHERE 
-        r.time_date_start = '$current_time'";
+        r.date = '$today_date'
+    AND 
+         r.time_date_start = '$current_time'";
 
 $result = mysqli_query($con, $query);
 
@@ -70,7 +75,7 @@ if ($result) {
             $instructions = $row['instructions'];
 
             // Set the message content
-            $message = "Jambo $patient_name, it's time to take your medicine $medicine. Kindly take $quantity tablets or spoons $times times a day. Don't forget to follow the doctor's instructions: $instructions. Regards, MTS.";
+            $message = "Jambo $patient_name, it's time to take your medicine $medicine. Kindly take $quantity $times times a day. Don't forget to follow the doctor's instructions: $instructions. Regards, MTS.";
 
             // Send the SMS
             try {

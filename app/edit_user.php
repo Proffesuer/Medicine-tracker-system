@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone = $_POST['phone'];
     $dob = $_POST['dob'];
     $role = $_POST['role'];
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     
     // Handle the image upload if a new image is provided
     $image = $user['image']; // Retain old image if no new image is uploaded
@@ -51,8 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Update user details in the database
-    $stmt = $connection->prepare("UPDATE user SET username = ?, email = ?, phone = ?, dob = ?, image = ?, role = ? WHERE id = ?");
-    $stmt->bind_param("ssssssi", $username, $email, $phone, $dob, $image, $role, $userId);
+    $stmt = $connection->prepare("UPDATE user SET username = ?, email = ?, phone = ?, dob = ?, image = ?, role = ?, password = ? WHERE id = ?");
+    $stmt->bind_param("sssssssi", $username, $email, $phone, $dob, $image, $role, $password, $userId);
 
     if ($stmt->execute()) {
         echo "User updated successfully!";
@@ -110,6 +111,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <option value="patient" <?php echo ($user['role'] === 'patient') ? 'selected' : ''; ?>>patient</option>
             </select>
         </div>
+        <div class="mb-3">
+            <label for="password" class="col-form-label">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" required
+                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{8,}"
+                  title="Password must be at least 8 characters long and contain at least one number, one uppercase letter, one lowercase letter, and one special character.">
+          </div>
         <button type="submit" class="btn btn-primary">Update</button>
         <a href="user_list.php" class="btn btn-secondary">Cancel</a>
     </form>

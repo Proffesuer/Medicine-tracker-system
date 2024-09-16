@@ -35,11 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $status = htmlspecialchars($_POST['status']);
     $patient = htmlspecialchars($_POST['patient']);
     $time_date_start = htmlspecialchars($_POST['time_date_start']);
+    $date = htmlspecialchars($_POST['date']);
 
     // Prepare and execute the SQL update statement
-    $update_query = "UPDATE reminder SET prescription_id = ?, phone = ?, mode = ?, status = ?, patient = ?, time_date_start = ? WHERE id = ?";
+    $update_query = "UPDATE reminder SET prescription_id = ?, phone = ?, mode = ?, status = ?, patient = ?, date = ?, time_date_start = ? WHERE id = ?";
     $update_stmt = $connection->prepare($update_query);
-    $update_stmt->bind_param("ssssssi", $prescription_id, $phone, $mode, $status, $patient, $time_date_start, $reminder_id);
+    $update_stmt->bind_param("sssssssi", $prescription_id, $phone, $mode, $status, $patient, $date, $time_date_start, $reminder_id);
 
     if ($update_stmt->execute()) {
         // If successful, redirect to the reminder list with a success message

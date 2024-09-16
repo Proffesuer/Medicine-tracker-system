@@ -25,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Set session variables
                 $_SESSION['id'] = $id;
                 $_SESSION['username'] = $db_username;
-                 $_SESSION['role'] = $role;
-
+                $_SESSION['role'] = $role;
+                
                 // Redirect based on user role
                 switch ($role) {
                     case 'Doctor':
@@ -34,6 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         break;
                     case 'Administrator':
                         redirect('app/admin_dashboard.php?page=admin_dashboard');
+                        break;
+                    case 'Pharmacist':
+                        redirect('app/pharmacist_dashboard.php?page=pharmacist_dashboard');
                         break;
                     case 'patient' || 'patient':
                         redirect('app/patient_dashboard.php?page=patient_dashboard');

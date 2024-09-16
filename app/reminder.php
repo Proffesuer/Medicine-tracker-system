@@ -85,7 +85,12 @@ $current_time = date('H:i');
             </select>
           </div>
           <div class="mb-3">
-            <label for="'time_date_start" class="col-form-label">Time/Date Start:</label>
+            <label for="date" class="col-form-label">Date Start:</label>
+            <input type="date" class="form-control" id="date" name="date" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="'time_date_start" class="col-form-label">Time Start:</label>
             <input type="time" class="form-control" id="time_date_start" name="time_date_start"required>
           </div>
           <div class="mb-3">
@@ -162,7 +167,7 @@ if ($result->num_rows > 0) {
       echo '<p class="mb-0">Mode: ' . htmlspecialchars($row['mode']) . '</p>';
       echo '<p class="mb-0">Status: ' . htmlspecialchars($row['status']) . '</p>';
       echo '<p class="mb-0">Patient: ' . htmlspecialchars($row['patient']) . '</p>';
-      echo '<p class="mb-0">Time & Date Start: ' . htmlspecialchars($row['time_date_start']) . '</p>';
+      echo '<p class="mb-0">Time & Date Start: ' . htmlspecialchars($row['date']) .'-'. htmlspecialchars($row['time_date_start']) . '</p>';
       echo '<p class="mb-0" style="color:green;font-weight:bold">Patient Confirmation: ' . htmlspecialchars($row['confirmation']) . '</p>';
       
       // Only show the checkbox and submit button if the user role is 'patient'

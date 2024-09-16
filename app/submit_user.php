@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($stmt->num_rows > 0) {
         // Username or email already exists
-        echo "Username or email already exists.";
+        echo "Username or email already exists."; 
         $stmt->close();
     } else {
         // Prepare an SQL statement to prevent SQL injection

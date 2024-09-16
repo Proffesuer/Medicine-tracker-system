@@ -11,12 +11,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the form data
     $medicine_name = htmlspecialchars($_POST['medicine_name']);
     $indications = htmlspecialchars($_POST['indications']);
-    $precausions = htmlspecialchars($_POST['precausions']);
+    $precautions = htmlspecialchars($_POST['precautions']);
     $storage = htmlspecialchars($_POST['storage']);
+    $quantity = htmlspecialchars($_POST['quantity']);
 
     // Prepare and bind the SQL statement
-    $stmt = $connection->prepare("INSERT INTO medicine (medicine_name, indications, precautions, storage) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $medicine_name, $indications, $precausions, $storage);
+    $stmt = $connection->prepare("INSERT INTO medicine (medicine_name, indications, precautions, storage, quantity) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssi", $medicine_name, $indications, $precautions, $storage, $quantity);
 
     // Execute the statement
     if ($stmt->execute()) {
